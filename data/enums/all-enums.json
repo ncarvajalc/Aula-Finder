@@ -1,0 +1,22 @@
+{
+  "buildings": [
+    "ML"
+  ],
+  "departments": [
+    "Ingeniería de Sistemas"
+  ],
+  "modalities": [
+    "Presencial"
+  ],
+  "campuses": [
+    "Principal"
+  ],
+  "languages": [
+    "Español"
+  ],
+  "days": [
+    "I",
+    "L"
+  ],
+  "timestamp": "2026-02-13T16:48:23.796673"
+}

@@ -1,0 +1,33 @@
+[
+  {
+    "nrc": "12345",
+    "courseCode": "ISIS1001",
+    "courseName": "Fundamentos de Programación",
+    "section": "1",
+    "credits": 3,
+    "professor": "John Doe",
+    "schedules": [
+      {
+        "day": "L",
+        "startTime": "08:00",
+        "endTime": "09:30",
+        "building": "ML",
+        "room": "301"
+      },
+      {
+        "day": "I",
+        "startTime": "08:00",
+        "endTime": "09:30",
+        "building": "ML",
+        "room": "301"
+      }
+    ],
+    "campus": "Principal",
+    "capacity": 40,
+    "enrolled": 35,
+    "available": 5,
+    "modality": "Presencial",
+    "language": "Español",
+    "department": "Ingeniería de Sistemas"
+  }
+]
