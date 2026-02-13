@@ -1,0 +1,199 @@
+{
+  "amenities": [
+    {
+      "code": "ML",
+      "amenities": [
+        {
+          "type": "coffee_shop",
+          "name": "Juan Valdez Café",
+          "location": "Primer piso",
+          "icon": "☕"
+        },
+        {
+          "type": "elevator",
+          "name": "Ascensores",
+          "count": 4,
+          "icon": "🛗"
+        },
+        {
+          "type": "accessible_restroom",
+          "name": "Baños accesibles",
+          "floors": [1, 2, 3, 4, 5, 6, 7],
+          "icon": "♿"
+        },
+        {
+          "type": "study_area",
+          "name": "Áreas de estudio",
+          "description": "Múltiples zonas de estudio colaborativo",
+          "icon": "📚"
+        },
+        {
+          "type": "printer",
+          "name": "Impresoras",
+          "location": "Biblioteca - Piso 7",
+          "icon": "🖨️"
+        },
+        {
+          "type": "wifi",
+          "name": "Wi-Fi",
+          "description": "Cobertura completa eduroam",
+          "icon": "📶"
+        }
+      ]
+    },
+    {
+      "code": "AU",
+      "amenities": [
+        {
+          "type": "elevator",
+          "name": "Ascensores",
+          "count": 2,
+          "icon": "🛗"
+        },
+        {
+          "type": "accessible_restroom",
+          "name": "Baños accesibles",
+          "floors": [1, 2, 3],
+          "icon": "♿"
+        },
+        {
+          "type": "vending_machine",
+          "name": "Máquinas expendedoras",
+          "location": "Primer piso",
+          "icon": "🥤"
+        },
+        {
+          "type": "wifi",
+          "name": "Wi-Fi",
+          "description": "Cobertura completa eduroam",
+          "icon": "📶"
+        }
+      ]
+    },
+    {
+      "code": "W",
+      "amenities": [
+        {
+          "type": "coffee_shop",
+          "name": "Cafetería",
+          "location": "Primer piso",
+          "icon": "☕"
+        },
+        {
+          "type": "elevator",
+          "name": "Ascensores",
+          "count": 2,
+          "icon": "🛗"
+        },
+        {
+          "type": "accessible_restroom",
+          "name": "Baños accesibles",
+          "floors": [1, 2, 3, 4, 5],
+          "icon": "♿"
+        },
+        {
+          "type": "study_area",
+          "name": "Salas de estudio",
+          "description": "Espacios para trabajo en grupo",
+          "icon": "📚"
+        },
+        {
+          "type": "wifi",
+          "name": "Wi-Fi",
+          "description": "Cobertura completa eduroam",
+          "icon": "📶"
+        }
+      ]
+    },
+    {
+      "code": "B",
+      "amenities": [
+        {
+          "type": "lab",
+          "name": "Laboratorios de Ingeniería",
+          "description": "Labs B3XX - Acceso restringido",
+          "icon": "🔬"
+        },
+        {
+          "type": "elevator",
+          "name": "Ascensores",
+          "count": 1,
+          "icon": "🛗"
+        },
+        {
+          "type": "accessible_restroom",
+          "name": "Baños accesibles",
+          "floors": [1, 2, 3],
+          "icon": "♿"
+        },
+        {
+          "type": "wifi",
+          "name": "Wi-Fi",
+          "description": "Cobertura completa eduroam",
+          "icon": "📶"
+        }
+      ]
+    },
+    {
+      "code": "C",
+      "amenities": [
+        {
+          "type": "elevator",
+          "name": "Ascensores",
+          "count": 1,
+          "icon": "🛗"
+        },
+        {
+          "type": "accessible_restroom",
+          "name": "Baños accesibles",
+          "floors": [1, 2],
+          "icon": "♿"
+        },
+        {
+          "type": "wifi",
+          "name": "Wi-Fi",
+          "description": "Cobertura completa eduroam",
+          "icon": "📶"
+        }
+      ]
+    },
+    {
+      "code": "RGD",
+      "amenities": [
+        {
+          "type": "elevator",
+          "name": "Ascensores",
+          "count": 2,
+          "icon": "🛗"
+        },
+        {
+          "type": "accessible_restroom",
+          "name": "Baños accesibles",
+          "floors": [1, 2, 3, 4],
+          "icon": "♿"
+        },
+        {
+          "type": "study_area",
+          "name": "Áreas de estudio",
+          "description": "Espacios silenciosos para estudio individual",
+          "icon": "📚"
+        },
+        {
+          "type": "wifi",
+          "name": "Wi-Fi",
+          "description": "Cobertura completa eduroam",
+          "icon": "📶"
+        }
+      ]
+    }
+  ],
+  "lastUpdated": "2026-02-13T17:00:00.000Z",
+  "sources": [
+    "Based on Universidad de los Andes campus infrastructure",
+    "https://uniandes.edu.co/es/infraestructura",
+    "TODO: Verify coffee shop locations and hours",
+    "TODO: Add parking information if available",
+    "TODO: Confirm elevator counts and accessibility features"
+  ],
+  "notes": "This data is maintained manually. Contributors can update amenities by editing this JSON file. Please add sources for any new information."
+}

@@ -90,6 +90,27 @@ export interface RoomData {
 }
 
 /**
+ * BuildingAmenity represents a facility or service available in a building
+ */
+export interface BuildingAmenity {
+  type: "coffee_shop" | "elevator" | "accessible_restroom" | "study_area" | "printer" | "wifi" | "lab" | "vending_machine" | "parking";
+  name: string;
+  icon?: string;
+  location?: string;
+  description?: string;
+  count?: number;
+  floors?: number[];
+}
+
+/**
+ * BuildingAmenities contains amenities for a specific building
+ */
+export interface BuildingAmenities {
+  code: string;
+  amenities: BuildingAmenity[];
+}
+
+/**
  * BuildingMetadata contains additional information about a building
  */
 export interface BuildingMetadata {
@@ -102,6 +123,7 @@ export interface BuildingMetadata {
     latitude: number;
     longitude: number;
   };
+  amenities?: BuildingAmenity[]; // Optional amenities for this building
 }
 
 /**
