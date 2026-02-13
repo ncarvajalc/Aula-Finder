@@ -83,8 +83,8 @@ export default function WeekCalendar({ occupancies, buildingCode, roomCode }: We
 
   // Check if current time is today
   const getCurrentDay = (): string | null => {
-    const dayIndex = currentTime.getDay(); // 0 = Sunday, 1 = Monday, etc.
-    const dayMap = [null, "L", "M", "I", "J", "V", "S", "D"];
+    const dayIndex = currentTime.getDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
+    const dayMap = ["D", "L", "M", "I", "J", "V", "S"]; // Sunday to Saturday
     return dayMap[dayIndex] || null;
   };
 
