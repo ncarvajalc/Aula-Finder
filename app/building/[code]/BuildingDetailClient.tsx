@@ -7,6 +7,7 @@ import Link from "next/link";
 
 import buildingsMetadata from "@/data/buildings-metadata.json";
 import coursesData from "@/data/courses/courses-202610.json";
+import manifestData from "@/data/courses/manifest.json";
 import ciclosData from "@/data/ciclos.json";
 import { parseCourseSections, groupByRoom, getCurrentCiclo } from "@/lib/parse-courses";
 import { getRoomRestrictions } from "@/lib/data-loader";
@@ -39,7 +40,7 @@ export default function BuildingDetailClient({ code }: { code: string }) {
   const [selectedCiclo, setSelectedCiclo] = useState<PartOfTerm | "all">("all");
 
   useEffect(() => {
-    const ciclo = getCurrentCiclo("202610", ciclosData);
+    const ciclo = getCurrentCiclo(manifestData.term, ciclosData);
     setSelectedCiclo(ciclo);
   }, []);
 
@@ -176,7 +177,7 @@ export default function BuildingDetailClient({ code }: { code: string }) {
                   isAutoTime ? "bg-green-100 text-green-800 border border-green-300" : "bg-secondary text-muted-foreground"
                 }`}
               >
-                {isAutoTime ? "🟢 Ahora" : "📍 Ahora"}
+                {isAutoTime ? "🟢 Ahora" : "📍 Ir a ahora"}
               </button>
             </div>
             <select
@@ -186,8 +187,8 @@ export default function BuildingDetailClient({ code }: { code: string }) {
             >
               <option value="all">Todos los ciclos</option>
               <option value="1">Semestre completo</option>
-              <option value="8A">Ciclo 8A</option>
-              <option value="8B">Ciclo 8B</option>
+              <option value="8A">Ciclo 8A (1ª mitad)</option>
+              <option value="8B">Ciclo 8B (2ª mitad)</option>
             </select>
           </div>
         </div>
