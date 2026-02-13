@@ -27,6 +27,9 @@ function getCurrentTime(): string {
   return `${String(now.getHours()).padStart(2, "0")}:${String(now.getMinutes()).padStart(2, "0")}`;
 }
 
+// Classes end 10 minutes early to allow students to move between classrooms
+const CLASS_TRANSITION_MINUTES = 10;
+
 export default function BuildingDetailClient({ code }: { code: string }) {
   const buildingCode = code.toUpperCase();
 
@@ -97,7 +100,7 @@ export default function BuildingDetailClient({ code }: { code: string }) {
     if (previous) {
       const [ph, pm] = previous.endTime.split(":").map(Number);
       const [sh, sm] = selectedTime.split(":").map(Number);
-      if ((sh * 60 + sm) - (ph * 60 + pm) < 10) {
+      if ((sh * 60 + sm) - (ph * 60 + pm) < CLASS_TRANSITION_MINUTES) {
         return { status: "gap" as const, label: "En cambio de clase", sublabel: `Clase terminó a las ${previous.endTime}` };
       }
     }
@@ -106,7 +109,7 @@ export default function BuildingDetailClient({ code }: { code: string }) {
     if (next) {
       const [nh, nm] = next.startTime.split(":").map(Number);
       const [sh, sm] = selectedTime.split(":").map(Number);
-      if ((nh * 60 + nm) - (sh * 60 + sm) < 10) {
+      if ((nh * 60 + nm) - (sh * 60 + sm) < CLASS_TRANSITION_MINUTES) {
         return { status: "gap" as const, label: "Próxima clase en minutos", sublabel: `${next.courseCode} a las ${next.startTime}` };
       }
       return { status: "available" as const, label: "Disponible", sublabel: `Próxima clase: ${next.startTime}` };

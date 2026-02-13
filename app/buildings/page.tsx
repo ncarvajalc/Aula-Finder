@@ -51,12 +51,15 @@ function isRoomAvailableNow(
   });
   for (const occ of occupancies) {
     if (time >= occ.startTime && time < occ.endTime) return false;
-    // 10-minute gap rule
-    const gapEnd = addMinutes(occ.endTime, 10);
+    // 10-minute gap rule: transition time between classes
+    const gapEnd = addMinutes(occ.endTime, CLASS_TRANSITION_MINUTES);
     if (time >= occ.endTime && time < gapEnd) return false;
   }
   return true;
 }
+
+// Classes end 10 minutes before the next slot to allow students to move between classrooms
+const CLASS_TRANSITION_MINUTES = 10;
 
 function addMinutes(time: string, mins: number): string {
   const [h, m] = time.split(":").map(Number);

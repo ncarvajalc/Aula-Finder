@@ -2,6 +2,7 @@ name: Fetch Course Data
 
 on:
   schedule:
+    # Runs on the Monday within each date range (day-of-week = 1 = Monday)
     # Second week of January (semester XXXX10)
     - cron: '0 6 8-14 1 1'
     # First week of June (semester XXXX19 - intersemestral)

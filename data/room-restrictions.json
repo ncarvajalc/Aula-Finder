@@ -9,5 +9,5 @@
     }
   ],
   "lastUpdated": "2026-02-13T17:00:00.000Z",
-  "notes": "Room restrictions: rooms shown in gray in the UI but still visible in course details. Wildcard 'X*' matches all rooms starting with 'X'."
+  "notes": "Room restrictions are matched per building. The 'room' field uses wildcard '*': e.g. '3*' in building 'B' matches rooms 301, 302, etc. Restricted rooms appear grayed out in the UI but are still shown in course detail views."
 }
