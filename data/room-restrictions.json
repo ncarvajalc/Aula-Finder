@@ -1,0 +1,28 @@
+{
+  "restrictions": [
+    {
+      "building": "B",
+      "room": "B3*",
+      "isRestricted": true,
+      "restrictionType": "lab",
+      "note": "Laboratorios de ingeniería - Acceso restringido a estudiantes del departamento",
+      "allowedDepartments": ["Ingeniería de Sistemas", "Ingeniería Eléctrica", "Ingeniería Electrónica"]
+    },
+    {
+      "building": "ML",
+      "room": "ML701",
+      "isRestricted": true,
+      "restrictionType": "office",
+      "note": "Oficina administrativa - No disponible para clases"
+    },
+    {
+      "building": "W",
+      "room": "W501",
+      "isRestricted": true,
+      "restrictionType": "restricted",
+      "note": "Sala de reuniones - Requiere reserva previa"
+    }
+  ],
+  "lastUpdated": "2026-02-13T17:00:00.000Z",
+  "notes": "Room restrictions are displayed in gray in the UI but are not excluded from course details. Wildcards like 'B3*' match all rooms starting with 'B3'."
+}

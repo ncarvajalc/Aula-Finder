@@ -1,0 +1,72 @@
+{
+  "buildings": [
+    {
+      "code": "ML",
+      "name": "Mario Laserna",
+      "campus": "Principal",
+      "order": 1,
+      "imageUrl": "/images/buildings/ml.jpg",
+      "coordinates": {
+        "latitude": 4.601861,
+        "longitude": -74.064722
+      }
+    },
+    {
+      "code": "AU",
+      "name": "Aulas",
+      "campus": "Principal",
+      "order": 2,
+      "imageUrl": "/images/buildings/au.jpg",
+      "coordinates": {
+        "latitude": 4.602222,
+        "longitude": -74.065278
+      }
+    },
+    {
+      "code": "W",
+      "name": "Edificio W",
+      "campus": "Principal",
+      "order": 3,
+      "imageUrl": "/images/buildings/w.jpg",
+      "coordinates": {
+        "latitude": 4.601500,
+        "longitude": -74.065000
+      }
+    },
+    {
+      "code": "B",
+      "name": "Bloque B",
+      "campus": "Principal",
+      "order": 4,
+      "imageUrl": "/images/buildings/b.jpg",
+      "coordinates": {
+        "latitude": 4.602000,
+        "longitude": -74.064500
+      }
+    },
+    {
+      "code": "C",
+      "name": "Bloque C",
+      "campus": "Principal",
+      "order": 5,
+      "imageUrl": "/images/buildings/c.jpg",
+      "coordinates": {
+        "latitude": 4.601800,
+        "longitude": -74.064800
+      }
+    },
+    {
+      "code": "RGD",
+      "name": "Edificio Ramón de Zubiría",
+      "campus": "Principal",
+      "order": 6,
+      "imageUrl": "/images/buildings/rgd.jpg",
+      "coordinates": {
+        "latitude": 4.601700,
+        "longitude": -74.065100
+      }
+    }
+  ],
+  "defaultImage": "/images/buildings/default.jpg",
+  "lastUpdated": "2026-02-13T17:00:00.000Z"
+}

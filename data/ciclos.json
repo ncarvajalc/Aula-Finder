@@ -1,0 +1,68 @@
+{
+  "ciclos": [
+    {
+      "id": "1",
+      "name": "Semestre Completo",
+      "description": "Full semester course (16 weeks)",
+      "duration": "16 weeks"
+    },
+    {
+      "id": "8A",
+      "name": "Primera Mitad",
+      "description": "First 8 weeks of semester",
+      "duration": "8 weeks"
+    },
+    {
+      "id": "8B",
+      "name": "Segunda Mitad",
+      "description": "Second 8 weeks of semester",
+      "duration": "8 weeks"
+    }
+  ],
+  "terms": {
+    "202610": {
+      "year": 2026,
+      "semester": 1,
+      "startDate": "2026-01-15",
+      "endDate": "2026-05-15",
+      "midpoint": "2026-03-15",
+      "ciclos": {
+        "1": {
+          "startDate": "2026-01-15",
+          "endDate": "2026-05-15"
+        },
+        "8A": {
+          "startDate": "2026-01-15",
+          "endDate": "2026-03-15"
+        },
+        "8B": {
+          "startDate": "2026-03-15",
+          "endDate": "2026-05-15"
+        }
+      }
+    },
+    "202620": {
+      "year": 2026,
+      "semester": 2,
+      "startDate": "2026-07-15",
+      "endDate": "2026-11-15",
+      "midpoint": "2026-09-15",
+      "ciclos": {
+        "1": {
+          "startDate": "2026-07-15",
+          "endDate": "2026-11-15"
+        },
+        "8A": {
+          "startDate": "2026-07-15",
+          "endDate": "2026-09-15"
+        },
+        "8B": {
+          "startDate": "2026-09-15",
+          "endDate": "2026-11-15"
+        }
+      }
+    }
+  },
+  "lastUpdated": "2026-02-13T17:00:00.000Z",
+  "notes": "Ciclo dates are approximate and should be updated each semester. Use ptrm field from API for accurate course scheduling."
+}
