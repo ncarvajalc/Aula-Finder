@@ -1,19 +1,14 @@
 name: Fetch Course Data
 
 on:
-  # Run on semester key dates
   schedule:
-    # Beginning of semester 1 (January): 1st and 15th
-    - cron: '0 2 1 1 *'
-    - cron: '0 2 15 1 *'
-    # Beginning of semester 2 (July): 1st and 15th
-    - cron: '0 2 1 7 *'
-    - cron: '0 2 15 7 *'
-    # Mid-semester updates (March, September): 1st
-    - cron: '0 2 1 3 *'
-    - cron: '0 2 1 9 *'
-  
-  # Allow manual trigger
+    # Second week of January (semester XXXX10)
+    - cron: '0 6 8-14 1 1'
+    # First week of June (semester XXXX19 - intersemestral)
+    - cron: '0 6 1-7 6 1'
+    # Last week of July (semester XXXX20)
+    - cron: '0 6 25-31 7 1'
+
   workflow_dispatch:
     inputs:
       term:
@@ -24,55 +19,66 @@ on:
 jobs:
   fetch-courses:
     runs-on: ubuntu-latest
-    
+
     permissions:
       contents: write
-    
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      
+
       - name: Install Python dependencies
-        run: |
-          python -m pip install --upgrade pip
-          # Add any required dependencies here
-          # pip install -r scripts/requirements.txt
-      
+        run: pip install requests
+
       - name: Determine academic term
         id: term
         run: |
           if [ -n "${{ github.event.inputs.term }}" ]; then
             echo "term=${{ github.event.inputs.term }}" >> $GITHUB_OUTPUT
           else
-            # Calculate current term based on date
             YEAR=$(date +%Y)
             MONTH=$(date +%m)
-            if [ $MONTH -le 6 ]; then
+            if [ "$MONTH" -le 5 ]; then
               TERM="${YEAR}10"
+            elif [ "$MONTH" -le 7 ]; then
+              TERM="${YEAR}19"
             else
               TERM="${YEAR}20"
             fi
             echo "term=$TERM" >> $GITHUB_OUTPUT
           fi
-      
+
       - name: Fetch course data
-        run: |
-          python scripts/fetch-courses.py ${{ steps.term.outputs.term }}
-      
+        run: python scripts/fetch-courses.py ${{ steps.term.outputs.term }}
+
       - name: Analyze enums
+        run: python scripts/analyze-enums.py
+
+      - name: Validate fetched data
         run: |
-          python scripts/analyze-enums.py
-      
+          TERM="${{ steps.term.outputs.term }}"
+          FILE="data/courses/courses-${TERM}.json"
+          if [ ! -f "$FILE" ]; then
+            echo "ERROR: Expected file $FILE not found"
+            exit 1
+          fi
+          MANIFEST_TERM=$(python3 -c "import json; print(json.load(open('data/courses/manifest.json'))['term'])")
+          if [ "$MANIFEST_TERM" != "$TERM" ]; then
+            echo "ERROR: Manifest term $MANIFEST_TERM does not match expected $TERM"
+            exit 1
+          fi
+          SECTIONS=$(python3 -c "import json; print(json.load(open('data/courses/manifest.json'))['totalSections'])")
+          echo "Validated: $SECTIONS sections for term $TERM"
+
       - name: Check for changes
         id: changes
-        run: |
-          git diff --quiet data/ || echo "has_changes=true" >> $GITHUB_OUTPUT
-      
+        run: git diff --quiet data/ || echo "has_changes=true" >> $GITHUB_OUTPUT
+
       - name: Commit and push changes
         if: steps.changes.outputs.has_changes == 'true'
         run: |
@@ -81,15 +87,17 @@ jobs:
           git add data/
           git commit -m "Update course data for term ${{ steps.term.outputs.term }}"
           git push
-      
+
       - name: Create summary
         run: |
           echo "### Course Data Update" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "**Term:** ${{ steps.term.outputs.term }}" >> $GITHUB_STEP_SUMMARY
           echo "**Status:** ✓ Complete" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
           if [ -f data/courses/manifest.json ]; then
-            echo "**Manifest:**" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo '```json' >> $GITHUB_STEP_SUMMARY
             cat data/courses/manifest.json >> $GITHUB_STEP_SUMMARY
+            echo '' >> $GITHUB_STEP_SUMMARY
+            echo '```' >> $GITHUB_STEP_SUMMARY
           fi
