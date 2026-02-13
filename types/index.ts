@@ -168,9 +168,6 @@ export interface EnumsData {
 
 // Utility types for filtering and querying
 export type DayOfWeek = "L" | "M" | "I" | "J" | "V" | "S" | "D";
-export type TimeSlot = { startTime: string; endTime: string };
-export type BuildingCode = string;
-export type RoomCode = string;
 
 /**
  * PartOfTerm represents the ciclo types

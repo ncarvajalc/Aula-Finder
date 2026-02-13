@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Analyze course data and extract unique enum values
-Writes to src/data/enums/*.json
+Writes to data/enums/*.json
 """
 
 import json
