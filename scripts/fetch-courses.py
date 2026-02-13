@@ -74,28 +74,26 @@ def sanitize_building(building: str) -> str:
     return building
 
 
-def extract_modality(attrs: list | None) -> str:
-    """Derive modality from the attr list."""
+def extract_attr_codes(attrs: list | None) -> set[str]:
+    """Extract attribute codes from the API attr list (array of {code: ...})."""
     if not attrs:
-        return "Presencial"
-    attr_set = {a.upper() if isinstance(a, str) else "" for a in attrs}
-    if "VIRTUAL" in attr_set or "VIRT" in attr_set:
-        return "Virtual"
-    if "HIBRIDO" in attr_set or "HÍBRIDO" in attr_set:
-        return "Híbrido"
-    return "Presencial"
+        return set()
+    codes = set()
+    for a in attrs:
+        if isinstance(a, dict):
+            code = str(a.get("code", "")).upper()
+            if code:
+                codes.add(code)
+        elif isinstance(a, str):
+            codes.add(a.upper())
+    return codes
 
 
 def extract_language(attrs: list | None) -> str:
     """Derive language from the attr list."""
-    if not attrs:
-        return "Español"
-    for a in attrs:
-        if not isinstance(a, str):
-            continue
-        upper = a.upper()
-        if "INGL" in upper or "ENGLISH" in upper:
-            return "Inglés"
+    codes = extract_attr_codes(attrs)
+    if "INGL" in codes:
+        return "Inglés"
     return "Español"
 
 
@@ -134,19 +132,19 @@ def transform_course(raw: dict) -> dict:
         inst["name"] for inst in instructors if inst.get("name")
     )
 
-    course_code = raw.get("course", "")
-    department = course_code[:4] if len(course_code) >= 4 else course_code
+    department = str(raw.get("class", ""))
+    course_number = str(raw.get("course", ""))
+    course_code = f"{department}{course_number}"
 
     attrs = raw.get("attr")
-    modality = extract_modality(attrs)
     language = extract_language(attrs)
 
     schedules = transform_schedules(raw.get("schedules"))
 
-    # If all schedule buildings are NOREQ, check modality
+    # Determine modality from schedules
+    modality = "Presencial"
     if schedules and all(sc["building"] == "NOREQ" for sc in schedules):
-        if modality == "Presencial":
-            modality = "Virtual"
+        modality = "Virtual"
 
     return {
         "nrc": str(raw.get("nrc", "")),
@@ -154,7 +152,7 @@ def transform_course(raw: dict) -> dict:
         "term": str(raw.get("term", "")),
         "ptrm": str(raw.get("ptrm", "")),
         "ptrmdesc": raw.get("ptrmdesc", ""),
-        "class": str(raw.get("class", "")),
+        "class": str(raw.get("section", "")),
         "course": course_code,
         "title": raw.get("title", ""),
         "credits": safe_int(raw.get("credits")),
