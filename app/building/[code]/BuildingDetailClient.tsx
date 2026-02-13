@@ -37,12 +37,7 @@ export default function BuildingDetailClient({ code }: { code: string }) {
   const [selectedDay, setSelectedDay] = useState<DayOfWeek>(getCurrentDayCode());
   const [selectedTime, setSelectedTime] = useState<string>(getCurrentTime());
   const [isAutoTime, setIsAutoTime] = useState(true);
-  const [selectedCiclo, setSelectedCiclo] = useState<PartOfTerm | "all">("all");
-
-  useEffect(() => {
-    const ciclo = getCurrentCiclo(manifestData.term, ciclosData);
-    setSelectedCiclo(ciclo);
-  }, []);
+  const [selectedCiclo, setSelectedCiclo] = useState<PartOfTerm | "all">(() => getCurrentCiclo(manifestData.term, ciclosData));
 
   useEffect(() => {
     if (!isAutoTime) return;

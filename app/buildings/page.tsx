@@ -77,13 +77,7 @@ export default function BuildingsPage() {
   const [selectedDay, setSelectedDay] = useState<DayOfWeek>(getCurrentDayCode());
   const [selectedTime, setSelectedTime] = useState<string>(getCurrentTime());
   const [isAutoTime, setIsAutoTime] = useState(true);
-  const [selectedCiclo, setSelectedCiclo] = useState<PartOfTerm | "all">("all");
-
-  // Auto-detect ciclo
-  useEffect(() => {
-    const ciclo = getCurrentCiclo(manifestData.term, ciclosData);
-    setSelectedCiclo(ciclo);
-  }, []);
+  const [selectedCiclo, setSelectedCiclo] = useState<PartOfTerm | "all">(() => getCurrentCiclo(manifestData.term, ciclosData));
 
   // Auto-update time every 30 seconds
   useEffect(() => {

@@ -1,529 +1,225 @@
 # AulaFinder
 
-> 🏫 Find available classrooms at Universidad de los Andes
+> 🏫 Encuentra salones disponibles en la Universidad de los Andes
 
-[![Built with Next.js](https://img.shields.io/badge/Built%20with-Next.js-000000?style=flat&logo=next.js)](https://nextjs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=flat&logo=typescript)](https://www.typescriptlang.org/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind-CSS-38B2AC?style=flat&logo=tailwind-css)](https://tailwindcss.com/)
+[![Deploy to GitHub Pages](https://github.com/Open-Source-Uniandes/AulaFinder/actions/workflows/deploy.yml/badge.svg)](https://github.com/Open-Source-Uniandes/AulaFinder/actions/workflows/deploy.yml)
+[![Built with Next.js](https://img.shields.io/badge/Next.js-16-000000?style=flat&logo=next.js)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.9-blue?style=flat&logo=typescript)](https://www.typescriptlang.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-AulaFinder is a modern web application that helps students and faculty at Universidad de los Andes find available classrooms based on real-time course schedule data.
-
-## ✨ Features (Phase 3 - UI Implementation)
-
-- 🏢 **Buildings Explorer**: Browse campus buildings with photos, coordinates, and amenities
-- 🗂️ **Classroom Browser**: Navigate classrooms organized by floor with restriction information
-- 📅 **Weekly Calendar**: Visual schedule showing course occupancy with real-time indicators
-- 🎨 **Responsive Design**: Mobile-first interface built with Tailwind CSS
-- 📝 **Editable Metadata**: Contribute building and classroom information via simple JSON files
-- ♿ **Accessible**: Semantic HTML with ARIA support for screen readers
-
-### Previous Features (Phase 1 & 2)
-
-- ⚡ **Modern Stack**: Built with Next.js 14+ (App Router), TypeScript, and Tailwind CSS
-- 📱 **Responsive Design**: Mobile-first design with dark mode support
-- 🔄 **Automated Data Pipeline**: Python scripts to fetch and process course data
-- 📊 **Type-Safe**: Full TypeScript type definitions for course and room data
-- 🎨 **Design System**: Reusable UI components based on modern best practices
-- 📦 **Static Export**: Deployable to GitHub Pages with no server required
-
-## 🚀 Getting Started
-
-### Prerequisites
-
-- Node.js 18+ 
-- npm or yarn
-- Python 3.11+ (for data scripts)
-
-### Installation
-
-```bash
-# Clone the repository
-git clone https://github.com/Open-Source-Uniandes/AulaFinder.git
-cd AulaFinder
-
-# Install dependencies
-npm install
-
-# Run development server
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) to view the application.
-
-### Building for Production
-
-```bash
-# Build static site
-npm run build
-
-# The static site will be in the 'out' directory
-```
-
-## 📁 Project Structure
-
-```
-AulaFinder/
-├── app/                    # Next.js App Router
-│   ├── layout.tsx         # Root layout with global styles
-│   ├── page.tsx           # Home page
-│   └── globals.css        # Global styles with CSS variables
-├── components/            # React components
-│   └── ui/               # Reusable UI components
-│       ├── button.tsx
-│       ├── card.tsx
-│       └── modal.tsx
-├── lib/                   # Utility libraries
-│   ├── utils.ts          # Utility functions
-│   └── parse-courses.ts  # Course data parser
-├── types/                 # TypeScript type definitions
-│   └── index.ts          # Core types (CourseSection, Room, etc.)
-├── data/                  # Data files
-│   ├── courses/          # Course section data by term
-│   │   ├── courses-YYYYMM.json
-│   │   └── manifest.json
-│   └── enums/            # Extracted enum values
-│       ├── buildings.json
-│       ├── departments.json
-│       └── all-enums.json
-├── scripts/               # Data pipeline scripts
-│   ├── fetch-courses.py  # Fetch course data from API
-│   └── analyze-enums.py  # Extract enum values
-├── public/                # Static assets
-│   └── images/
-│       └── buildings/    # Building photos
-└── .github/
-    └── workflows/
-        └── fetch-courses.yml  # Automated data updates
-```
-
-## 🛠 Data Pipeline
-
-The data pipeline consists of Python scripts that fetch and process course data:
-
-### Fetching Course Data
-
-```bash
-# Fetch courses for current term
-python scripts/fetch-courses.py
-
-# Fetch for specific term (YYYYMM format)
-python scripts/fetch-courses.py 202610
-```
-
-This script:
-- Fetches course sections from the API
-- Saves data to `data/courses/courses-YYYYMM.json`
-- Updates the manifest file with metadata
-
-### Analyzing Enums
-
-```bash
-# Extract unique values from course data
-python scripts/analyze-enums.py
-```
-
-This script:
-- Parses the latest course data
-- Extracts unique values for buildings, departments, modalities, etc.
-- Saves enum files to `data/enums/`
-
-### Automated Updates
-
-The GitHub Actions workflow (`.github/workflows/fetch-courses.yml`) automatically:
-- Runs at the beginning of each semester and mid-semester
-- Fetches latest course data
-- Commits updates to the repository
-- Can be triggered manually for on-demand updates
-
-## 🎨 Design System
-
-The application uses a custom design system built with Tailwind CSS:
-
-- **Colors**: Theme-aware color system with dark mode support
-- **Components**: Button, Card, Modal, and more
-- **Utilities**: Helper functions for className merging (cn)
-- **Typography**: Consistent font scales and spacing
-
-All design tokens are defined in `tailwind.config.js` and can be customized.
-
-## 📚 Type Definitions
-
-TypeScript types are defined in `types/index.ts`:
-
-- **CourseSection**: Complete course information including schedules
-- **Schedule**: Individual class meeting time and location
-- **RoomData**: Room occupancy information
-- **BuildingData**: Building-level data aggregation
-- **Enums**: Type-safe enums for all dropdown/filter values
-
-## 🧪 Development
-
-### Available Scripts
-
-- `npm run dev` - Start development server
-- `npm run build` - Build for production (static export)
-- `npm run start` - Start production server (for testing)
-- `npm run lint` - Run ESLint
-
-### Code Style
-
-- Use TypeScript for all new files
-- Follow the existing component patterns
-- Use Tailwind CSS for styling (no CSS modules or styled-components)
-- Keep components small and focused
-
-## 🚧 Roadmap
-
-### Phase 1: Foundation ✅
-- [x] Project scaffolding with Next.js 14+
-- [x] Tailwind CSS and component system
-- [x] TypeScript type definitions
-- [x] Data pipeline scripts
-- [x] GitHub Actions workflow
-
-### Phase 2: Core Data Models & Logic ✅ (Current)
-- [x] Enhanced course parser with full API field support
-- [x] Ciclo (8A/8B/Full semester) handling
-- [x] Building and room metadata system
-- [x] Room availability logic with 10-minute gap rule
-- [x] Compound room parsing (e.g., AU 103-4)
-- [x] Room restriction and floor mapping
-
-### Phase 3: UI Implementation ✅
-- [x] Buildings screen with grid layout
-- [x] Classroom listing by building and floor
-- [x] Weekly calendar view (6:00-22:00)
-- [x] Interactive course detail modals
-- [x] Responsive mobile-first design
-- [x] Editable JSON metadata system
-
-### Phase 4: Advanced Features (Future)
-- [ ] Classroom search and filtering interface
-- [ ] Interactive building map
-- [ ] Real-time availability display
-- [ ] Room booking suggestions
-- [ ] Schedule optimization
-- [ ] Analytics and usage patterns
-- [ ] API integration with Uniandes systems
-
-## 🤝 Contributing
-
-### How to Contribute Metadata
-
-AulaFinder uses JSON files to store building and classroom metadata. This makes it easy for anyone to contribute and update information without coding knowledge.
-
-#### Adding Building Amenities
-
-Edit `data/buildings-amenities.json`:
-
-```json
-{
-  "code": "ML",
-  "amenities": [
-    {
-      "type": "coffee_shop",
-      "name": "Juan Valdez Café",
-      "location": "Primer piso",
-      "icon": "☕"
-    }
-  ]
-}
-```
-
-**Supported amenity types:**
-- `coffee_shop` - Coffee shops and cafeterias
-- `elevator` - Elevators
-- `accessible_restroom` - Accessible bathrooms
-- `study_area` - Study rooms and collaborative spaces
-- `printer` - Printers and printing services
-- `wifi` - WiFi coverage information
-- `lab` - Laboratory spaces
-- `vending_machine` - Vending machines
-- `parking` - Parking information
-
-#### Updating Building Coordinates
-
-Edit `data/buildings-metadata.json`:
-
-```json
-{
-  "code": "ML",
-  "name": "Mario Laserna",
-  "campus": "Principal",
-  "order": 1,
-  "imageUrl": "/images/buildings/ml.jpg",
-  "coordinates": {
-    "latitude": 4.601861,
-    "longitude": -74.064722
-  }
-}
-```
-
-**To find coordinates:**
-1. Open Google Maps
-2. Right-click on the building
-3. Click on the coordinates to copy them
-4. Add the source URL in your pull request description
-
-#### Adding Room Restrictions
-
-Edit `data/room-restrictions.json`:
-
-```json
-{
-  "building": "B",
-  "room": "B3*",  // Use * for wildcards
-  "isRestricted": true,
-  "restrictionType": "lab",
-  "note": "Laboratorios de ingeniería - Acceso restringido a estudiantes del departamento",
-  "allowedDepartments": ["Ingeniería de Sistemas"]
-}
-```
-
-**Restriction types:**
-- `lab` - Laboratory (requires department access)
-- `office` - Administrative office
-- `restricted` - Requires prior booking
-- `maintenance` - Under maintenance
-
-### Data Quality Guidelines
-
-When contributing metadata:
-
-1. **Verify information** - Check official sources (uniandes.edu.co, campus maps)
-2. **Add sources** - Include URLs in your PR description
-3. **Mark uncertainties** - Add TODO comments for unverified data
-4. **Keep it simple** - Use clear, concise descriptions
-5. **Test locally** - Run `npm run dev` to verify your changes
-
-### Example Contribution Workflow
-
-1. Fork the repository
-2. Edit the appropriate JSON file
-3. Add source URLs in the commit message
-4. Create a pull request with:
-   - What you changed
-   - Where you got the information
-   - Any TODOs for future verification
-
-## 📚 Phase 2 & 3 Documentation
-
-### Data Models
-
-#### Course Sections
-Course sections are parsed from the Uniandes API with the following structure:
-
-```typescript
-interface CourseSection {
-  // Core identifiers
-  nrc: string;              // API: nrc (unique section identifier)
-  llave?: string;           // API: llave (alternate course key)
-  term: string;             // API: term (e.g., "202610")
-  
-  // Part-of-term (ciclo)
-  ptrm: string;             // "1" (full), "8A" (first 8 weeks), "8B" (second 8 weeks)
-  ptrmDesc?: string;        // Description of the part-of-term
-  
-  // Course info
-  courseCode: string;       // API: course (e.g., "ISIS1001")
-  courseName: string;       // API: title
-  section: string;          // API: class
-  credits: number;
-  
-  // Instructors
-  professor: string;        // First professor
-  professors?: string[];    // All professors (parsed from comma-separated)
-  
-  // Schedule and location
-  schedules: Schedule[];
-  campus: string;
-  
-  // Enrollment
-  capacity: number;         // API: maxenrol
-  enrolled: number;         // API: enrolled
-  available: number;        // API: seatsavail
-  
-  modality: string;
-  language: string;
-  department: string;
-  
-  requiresClassroom: boolean; // false for .NOREQ rooms
-}
-```
-
-#### Ciclo System
-
-The **ciclo** system allows courses to be scheduled for:
-- **Full Semester ("1")**: 16-week courses
-- **First Half ("8A")**: First 8 weeks
-- **Second Half ("8B")**: Second 8 weeks
-
-**Example Usage:**
-```typescript
-import { groupByCiclo, filterByCiclo, getCurrentCiclo } from "@/lib/parse-courses";
-import { getCicloData } from "@/lib/data-loader";
-
-// Group all courses by ciclo
-const cicloMap = groupByCiclo(sections);
-const fullSemester = cicloMap.get("1") || [];
-const firstHalf = cicloMap.get("8A") || [];
-const secondHalf = cicloMap.get("8B") || [];
-
-// Filter courses for a specific ciclo
-const firstHalfCourses = filterByCiclo(sections, "8A");
-
-// Determine current active ciclo based on today's date
-const cicloData = getCicloData();
-const currentCiclo = getCurrentCiclo("202610", cicloData);
-```
-
-#### Building & Room Structure
-
-Buildings and rooms are organized with metadata, restrictions, and floor mapping:
-
-```typescript
-interface BuildingData {
-  building: string;
-  campus: string;
-  metadata?: BuildingMetadata;  // Name, coordinates, image URL
-  rooms: RoomData[];
-}
-
-interface RoomData {
-  building: string;
-  room: string;
-  capacity?: number;
-  floor?: number;              // Extracted from first digit
-  isRestricted?: boolean;      // true for labs, offices
-  restrictionNote?: string;
-  occupancies: RoomOccupancy[];
-}
-```
-
-**Compound Rooms**: Rooms like "AU 103-4" are automatically parsed into separate entries for rooms 103 and 104, with both showing the course occupancy.
-
-**Example Usage:**
-```typescript
-import { groupByRoom } from "@/lib/parse-courses";
-import { getBuildingMetadata, getRoomRestrictions } from "@/lib/data-loader";
-
-const metadata = getBuildingMetadata();
-const restrictions = getRoomRestrictions();
-const buildings = groupByRoom(sections, metadata, restrictions);
-
-// Buildings are sorted by display order (whitelisted first)
-// Rooms within buildings are sorted by floor, then alphabetically
-```
-
-### Availability Logic
-
-The availability system provides real-time room status with a **10-minute gap rule**: rooms are not shown as available if the time gap between classes is less than 10 minutes.
-
-**Example Usage:**
-
-```typescript
-import { 
-  checkRoomAvailability, 
-  findAvailableSlots,
-  getTimeBlocks 
-} from "@/lib/parse-courses";
-
-// Check if a room is available at a specific time
-const availability = checkRoomAvailability(roomData, {
-  building: "ML",
-  room: "301",
-  day: "L",          // L, M, I, J, V, S, D
-  time: "14:30",
-  ptrm: "8A",        // Optional: filter by ciclo
-  respectGapRule: true  // Apply 10-minute gap rule
-});
-
-if (availability.isAvailable) {
-  console.log("Room is available!");
-  if (availability.nextStateChange) {
-    console.log(`Will be occupied at ${availability.nextStateChange.time}`);
-  }
-} else {
-  console.log("Room is occupied by:", availability.currentOccupancy);
-  console.log(`Will be free at ${availability.nextStateChange?.time}`);
-}
-
-// Check if a time slot is available
-const isAvailable = findAvailableSlots(
-  roomData, 
-  "L",           // Monday
-  "14:00",       // Start time
-  "16:00",       // End time
-  "1"            // Full semester courses only
-);
-
-// Get time blocks for calendar display
-const blocks = getTimeBlocks(
-  roomData,
-  "L",           // Day
-  "07:00",       // Start of day
-  "20:00",       // End of day
-  "8A"           // Filter by ciclo (optional)
-);
-
-blocks.forEach(block => {
-  if (block.isOccupied) {
-    console.log(`${block.startTime}-${block.endTime}: ${block.occupancy.courseCode}`);
-  } else {
-    console.log(`${block.startTime}-${block.endTime}: Available`);
-  }
-});
-```
-
-### Schedule Day Codes
-
-All day codes are parsed and normalized:
-- **L**: Lunes (Monday)
-- **M**: Martes (Tuesday)
-- **I**: Miércoles (Wednesday)
-- **J**: Jueves (Thursday)
-- **V**: Viernes (Friday)
-- **S**: Sábado (Saturday)
-- **D**: Domingo (Sunday)
-
-The parser handles various formats: "L", "LM", "L-M", "lm", etc.
-
-### Virtual vs Physical Courses
-
-Courses are automatically categorized:
-
-```typescript
-import { getVirtualSections, getPhysicalSections } from "@/lib/parse-courses";
-
-// Get courses that don't need a physical classroom
-const virtualCourses = getVirtualSections(sections);
-
-// Get courses that require a classroom
-const physicalCourses = getPhysicalSections(sections);
-```
-
-Courses with `.NOREQ` rooms are kept in the data but flagged as not requiring a classroom.
-
-
-
-## 🤝 Contributing
-
-Contributions are welcome! This is an Open Source Uniandes project.
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## 📄 License
-
-This project is licensed under the ISC License - see the [LICENSE](LICENSE) file for details.
-
-## 🏛 About Open Source Uniandes
-
-This project is developed and maintained by Open Source Uniandes, a student organization promoting open-source culture and collaborative software development at Universidad de los Andes.
+**[🌐 Visita la app → open-source-uniandes.github.io/AulaFinder](https://open-source-uniandes.github.io/AulaFinder/)**
 
 ---
 
-**Note**: Phase 1 established the foundation, and Phase 2 has implemented the core data models, parser, and availability logic. The repository is now ready for Phase 3 (UI implementation). No UI screens or calendar rendering have been implemented yet — all changes are in the data layer.
+¡Bienvenido! AulaFinder es una aplicación web que se nutre de la [API de cursos](https://ofertadecursos.uniandes.edu.co) de la Universidad de los Andes para ayudarte a encontrar salones libres en el campus.
+
+> **Nota:** Este proyecto es la evolución del repositorio original [Sobrecupo](https://github.com/Open-Source-Uniandes/Sobrecupo), reescrito con tecnologías modernas.
+
+## ✨ ¿Qué puede hacer?
+
+- 🏢 **Explorar edificios** — Ve todos los edificios del campus con cuántos salones están libres en tiempo real
+- 🗂️ **Ver salones por piso** — Navega los salones de cada edificio organizados por piso, con su estado actual (disponible, ocupado, en cambio de clase)
+- 📅 **Calendario semanal** — Visualiza el horario completo de cualquier salón en una vista de calendario
+- ⏱️ **Filtros de día, hora y ciclo** — Busca disponibilidad para cualquier momento de la semana, incluyendo soporte para ciclos 8A/8B
+- 📱 **Diseño responsive** — Funciona en celular, tablet y computador
+- 🔄 **Datos actualizados automáticamente** — Un pipeline de GitHub Actions actualiza los datos de cursos cada semestre
+
+## 🚀 Cómo usar la app
+
+1. **Selecciona el día y la hora** que te interesa (o presiona "Ahora" para el momento actual)
+2. **Haz clic en un edificio** para ver sus salones organizados por piso
+3. **Los salones muestran su estado:**
+   - 🟢 **Disponible** — El salón está libre
+   - 🔴 **Ocupado** — Hay una clase en curso
+   - ⏳ **En cambio de clase** — Hay un cambio de clase de menos de 10 minutos
+   - 🔒 **Restringido** — Laboratorio o espacio de acceso restringido
+4. **Haz clic en un salón** para ver su calendario semanal completo
+
+## 🛠 Desarrollo local
+
+### Requisitos previos
+
+- [Node.js](https://nodejs.org/) 18+
+- [Python](https://www.python.org/) 3.11+ (solo para actualizar datos de cursos)
+
+### Instalación
+
+```bash
+# Clonar el repositorio
+git clone https://github.com/Open-Source-Uniandes/AulaFinder.git
+cd AulaFinder
+
+# Instalar dependencias
+npm install
+
+# Iniciar servidor de desarrollo
+npm run dev
+```
+
+Abre [http://localhost:3000/AulaFinder](http://localhost:3000/AulaFinder) en tu navegador.
+
+### Scripts disponibles
+
+| Comando | Descripción |
+|---------|-------------|
+| `npm run dev` | Inicia el servidor de desarrollo |
+| `npm run build` | Construye el sitio estático (directorio `out/`) |
+| `npm run lint` | Ejecuta ESLint |
+| `npm test` | Ejecuta los tests con Vitest |
+| `npm run test:watch` | Ejecuta los tests en modo watch |
+
+## 📁 Estructura del proyecto
+
+```
+AulaFinder/
+├── app/                        # Next.js App Router (páginas)
+│   ├── page.tsx               # Página principal (redirige a /buildings)
+│   ├── buildings/page.tsx     # Vista de edificios
+│   ├── building/[code]/       # Detalle de un edificio
+│   └── classroom/[building]/[room]/  # Calendario de un salón
+├── components/                 # Componentes React
+│   ├── ui/                    # Componentes reutilizables (Button, Card, Modal)
+│   └── WeekCalendar.tsx       # Componente de calendario semanal
+├── lib/                        # Lógica de negocio
+│   ├── parse-courses.ts       # Parser de cursos y lógica de disponibilidad
+│   ├── data-loader.ts         # Carga de metadatos
+│   └── utils.ts               # Utilidades
+├── types/                      # Definiciones TypeScript
+│   └── index.ts
+├── data/                       # Datos (JSON)
+│   ├── courses/               # Datos de cursos por semestre
+│   ├── buildings-metadata.json
+│   ├── buildings-amenities.json
+│   ├── room-restrictions.json
+│   └── ciclos.json            # Definiciones de ciclos (8A/8B)
+├── scripts/                    # Pipeline de datos (Python)
+│   ├── fetch-courses.py       # Descarga datos de la API
+│   └── analyze-enums.py       # Extrae valores únicos
+├── __tests__/                  # Tests
+└── .github/workflows/          # GitHub Actions
+    ├── deploy.yml             # Deploy a GitHub Pages
+    └── fetch-courses.yml      # Actualización automática de datos
+```
+
+## 📖 Conceptos clave
+
+### Códigos de día
+
+Los días de la semana se abrevian con un código de una letra:
+
+| Código | Día |
+|--------|-----|
+| **L** | Lunes |
+| **M** | Martes |
+| **I** | Miércoles |
+| **J** | Jueves |
+| **V** | Viernes |
+| **S** | Sábado |
+
+> **¿Por qué "I" para miércoles?** Porque "M" ya se usa para Martes. Esta es la convención usada por el sistema Banner de la Universidad de los Andes.
+
+### Sistema de ciclos (ptrm)
+
+Los cursos en Uniandes pueden tener diferentes duraciones dentro del semestre:
+
+| Ciclo | Código | Descripción |
+|-------|--------|-------------|
+| **Semestre completo** | `1` | 16 semanas (enero–mayo o agosto–noviembre) |
+| **Primera mitad** | `8A` | Primeras 8 semanas del semestre |
+| **Segunda mitad** | `8B` | Últimas 8 semanas del semestre |
+
+AulaFinder detecta automáticamente el ciclo actual y filtra los resultados.
+
+### Regla de los 10 minutos
+
+Para reflejar la realidad del campus, los salones no se muestran como "disponibles" si hay menos de 10 minutos entre el fin de una clase y el inicio de la siguiente. Este tiempo de transición es necesario para que los estudiantes se desplacen entre edificios.
+
+### Salones compuestos
+
+Algunos salones tienen notación compuesta como "AU 103-4", lo que significa que incluye los salones 103 y 104. AulaFinder los descompone automáticamente.
+
+## 🔄 Pipeline de datos
+
+### Actualización automática
+
+El workflow de GitHub Actions (`.github/workflows/fetch-courses.yml`) se ejecuta automáticamente 3 veces al año:
+- **Enero** — Semestre XXXX10
+- **Junio** — Intersemestral XXXX19
+- **Julio** — Semestre XXXX20
+
+También se puede ejecutar manualmente desde la pestaña Actions del repositorio.
+
+### Actualización manual
+
+```bash
+# Descargar datos del semestre actual
+python scripts/fetch-courses.py
+
+# Descargar un semestre específico
+python scripts/fetch-courses.py 202610
+
+# Extraer valores únicos (edificios, departamentos, etc.)
+python scripts/analyze-enums.py
+```
+
+## 🤝 Contribuir
+
+¡Todas las contribuciones son bienvenidas! Este es un proyecto de la comunidad Uniandina para la comunidad Uniandina. El software lo construimos entre todos 💛
+
+Consulta la **[Guía de Contribución](CONTRIBUTING.md)** para información detallada.
+
+### Formas rápidas de contribuir
+
+- **🐛 Reportar un error** — Abre un [issue](https://github.com/Open-Source-Uniandes/AulaFinder/issues)
+- **💡 Proponer una idea** — Abre un [issue](https://github.com/Open-Source-Uniandes/AulaFinder/issues) con la etiqueta "enhancement"
+- **📸 Agregar fotos de edificios** — Sube imágenes a `public/images/buildings/`
+- **📝 Actualizar metadatos** — Edita los archivos JSON en `data/` (no necesitas saber programar)
+- **🧑‍💻 Contribuir código** — Haz un fork, crea un branch, y abre un Pull Request
+
+## 🗺 Roadmap
+
+- [x] Parser de cursos con soporte completo de la API
+- [x] Sistema de ciclos (8A/8B/semestre completo)
+- [x] Metadatos de edificios y restricciones de salones
+- [x] Lógica de disponibilidad con regla de 10 minutos
+- [x] Vista de edificios con disponibilidad en tiempo real
+- [x] Vista de salones por piso con estado actual
+- [x] Calendario semanal interactivo
+- [x] Deploy automático a GitHub Pages
+- [x] Tests automatizados
+- [ ] Buscador de salones con filtros avanzados
+- [ ] Mapa interactivo del campus
+- [ ] Sugerencias de reserva de salones
+- [ ] Analytics de uso de salones
+
+## 👥 Contribuidores
+
+Gracias a todas las personas que han hecho posible este proyecto, incluyendo a quienes contribuyeron en la [versión original (Sobrecupo)](https://github.com/Open-Source-Uniandes/Sobrecupo):
+
+<!-- ALL-CONTRIBUTORS-LIST:START -->
+<table>
+  <tbody>
+    <tr>
+      <td align="center"><a href="https://github.com/t-montes"><img src="https://avatars.githubusercontent.com/u/59377362?v=4" width="80px;" alt="Tony Montes"/><br /><sub><b>Tony Montes</b></sub></a></td>
+      <td align="center"><a href="https://github.com/luccasrojas"><img src="https://avatars.githubusercontent.com/u/83490741?v=4" width="80px;" alt="Luccas Rojas"/><br /><sub><b>Luccas Rojas</b></sub></a></td>
+      <td align="center"><a href="https://github.com/SnowArtz"><img src="https://avatars.githubusercontent.com/u/93491002?v=4" width="80px;" alt="David Santiago Ortiz"/><br /><sub><b>David Santiago Ortiz</b></sub></a></td>
+      <td align="center"><a href="https://github.com/ddi4z"><img src="https://avatars.githubusercontent.com/u/110594320?v=4" width="80px;" alt="Daniel Diaz"/><br /><sub><b>Daniel Diaz</b></sub></a></td>
+      <td align="center"><a href="https://github.com/jsurrea"><img src="https://avatars.githubusercontent.com/u/68788933?v=4" width="80px;" alt="Sebastian Urrea"/><br /><sub><b>Sebastian Urrea</b></sub></a></td>
+    </tr>
+    <tr>
+      <td align="center"><a href="https://github.com/FranklinSRomero"><img src="https://avatars.githubusercontent.com/u/105438748?v=4" width="80px;" alt="Franklin Romero"/><br /><sub><b>Franklin Romero</b></sub></a></td>
+      <td align="center"><a href="https://github.com/ikbakkk"><img src="https://avatars.githubusercontent.com/u/80040032?v=4" width="80px;" alt="ikbakkk"/><br /><sub><b>ikbakkk</b></sub></a></td>
+    </tr>
+  </tbody>
+</table>
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+## 📄 Licencia
+
+Este proyecto está licenciado bajo la [Licencia MIT](LICENSE).
+
+## 🏛 Open Source Uniandes
+
+Este proyecto es desarrollado y mantenido por [Open Source Uniandes](https://github.com/Open-Source-Uniandes), una comunidad estudiantil que promueve la cultura open source y el desarrollo colaborativo de software en la Universidad de los Andes.
+
+Hecho con 💛 en Uniandes
