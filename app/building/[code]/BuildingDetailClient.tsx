@@ -230,7 +230,8 @@ export default function BuildingDetailClient({ code }: { code: string }) {
                 <div key={floor}>
                   <button
                     onClick={() => toggleFloor(floor)}
-                    className="flex items-center justify-between w-full text-left sm:pointer-events-none"
+                    aria-expanded={!isCollapsed}
+                    className="flex items-center justify-between w-full text-left sm:pointer-events-none sm:cursor-default"
                   >
                     <h2 className="text-lg font-bold text-muted-foreground">Piso {floor}</h2>
                     <div className="flex items-center gap-2 sm:hidden">
