@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "AulaFinder - Universidad de los Andes",
-  description: "Find available classrooms at Universidad de los Andes",
+  description: "Encuentra aulas disponibles en el campus de la Universidad de los Andes",
 };
 
 export default function RootLayout({
@@ -12,7 +12,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="es" suppressHydrationWarning>
       <body className="font-sans antialiased">
         {children}
       </body>
