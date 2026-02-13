@@ -1,11 +1,15 @@
 [
   {
     "nrc": "12345",
-    "courseCode": "ISIS1001",
-    "courseName": "Fundamentos de Programación",
-    "section": "1",
+    "llave": "ISIS1001-1",
+    "term": "202610",
+    "ptrm": "1",
+    "ptrmdesc": "Semestre Completo",
+    "class": "1",
+    "course": "ISIS1001",
+    "title": "Fundamentos de Programación",
     "credits": 3,
-    "professor": "John Doe",
+    "professors": "John Doe",
     "schedules": [
       {
         "day": "L",
@@ -23,11 +27,123 @@
       }
     ],
     "campus": "Principal",
-    "capacity": 40,
+    "maxenrol": 40,
     "enrolled": 35,
-    "available": 5,
+    "seatsavail": 5,
     "modality": "Presencial",
     "language": "Español",
     "department": "Ingeniería de Sistemas"
+  },
+  {
+    "nrc": "12346",
+    "llave": "MATE1105-2",
+    "term": "202610",
+    "ptrm": "8A",
+    "ptrmdesc": "Primera Mitad",
+    "class": "2",
+    "course": "MATE1105",
+    "title": "Cálculo Diferencial",
+    "credits": 3,
+    "professors": "Jane Smith, Carlos García",
+    "schedules": [
+      {
+        "day": "MJ",
+        "startTime": "10:00",
+        "endTime": "11:30",
+        "building": "AU",
+        "room": "103-4"
+      }
+    ],
+    "campus": "Principal",
+    "maxenrol": 80,
+    "enrolled": 78,
+    "seatsavail": 2,
+    "modality": "Presencial",
+    "language": "Español",
+    "department": "Matemáticas"
+  },
+  {
+    "nrc": "12347",
+    "llave": "FISI1018-1",
+    "term": "202610",
+    "ptrm": "8B",
+    "ptrmdesc": "Segunda Mitad",
+    "class": "1",
+    "course": "FISI1018",
+    "title": "Física Experimental",
+    "credits": 1,
+    "professors": "María López",
+    "schedules": [
+      {
+        "day": "V",
+        "startTime": "14:00",
+        "endTime": "16:00",
+        "building": "B",
+        "room": "301"
+      }
+    ],
+    "campus": "Principal",
+    "maxenrol": 20,
+    "enrolled": 18,
+    "seatsavail": 2,
+    "modality": "Presencial",
+    "language": "Español",
+    "department": "Física"
+  },
+  {
+    "nrc": "12348",
+    "llave": "LITE1611-1",
+    "term": "202610",
+    "ptrm": "1",
+    "ptrmdesc": "Semestre Completo",
+    "class": "1",
+    "course": "LITE1611",
+    "title": "Español",
+    "credits": 3,
+    "professors": "Pedro Ramírez",
+    "schedules": [
+      {
+        "day": "MI",
+        "startTime": "12:00",
+        "endTime": "13:30",
+        "building": ".NOREQ",
+        "room": ".NOREQ"
+      }
+    ],
+    "campus": "Principal",
+    "maxenrol": 30,
+    "enrolled": 25,
+    "seatsavail": 5,
+    "modality": "Virtual",
+    "language": "Español",
+    "department": "Humanidades y Literatura"
+  },
+  {
+    "nrc": "12349",
+    "llave": "DECO2400-1",
+    "term": "202610",
+    "ptrm": "1",
+    "ptrmdesc": "Semestre Completo",
+    "class": "1",
+    "course": "DECO2400",
+    "title": "Diseño de Interacción",
+    "credits": 3,
+    "professors": "Ana Martínez",
+    "schedules": [
+      {
+        "day": "L",
+        "startTime": "14:00",
+        "endTime": "17:00",
+        "building": "W",
+        "room": "201"
+      }
+    ],
+    "campus": "Principal",
+    "maxenrol": 25,
+    "enrolled": 24,
+    "seatsavail": 1,
+    "modality": "Híbrido",
+    "language": "Español",
+    "department": "Diseño"
   }
 ]
