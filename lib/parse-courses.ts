@@ -259,13 +259,24 @@ function parseCompoundRoom(room: string): string[] {
   const start = parseInt(compoundMatch[2]);
   const endStr = compoundMatch[3];
 
-  // If end is single digit, combine with start prefix (103-4 = 103, 104)
+  // Parse the end number
   let end: number;
-  if (endStr.length === 1) {
-    const startPrefix = Math.floor(start / 10) * 10;
-    end = startPrefix + parseInt(endStr);
+  if (endStr.length < compoundMatch[2].length) {
+    // Single digit or shorter ending (e.g., "103-4" or "109-11")
+    // Use the start number's digits as prefix, replace last N digits with endStr
+    const startStr = compoundMatch[2];
+    const replaceCount = endStr.length;
+    const prefixDigits = startStr.slice(0, -replaceCount);
+    end = parseInt(prefixDigits + endStr);
   } else {
+    // Full number ending (e.g., "103-104")
     end = parseInt(endStr);
+  }
+
+  // Validate: end should be greater than or equal to start
+  if (end < start) {
+    // Invalid compound room, return as-is
+    return [room];
   }
 
   // Generate room numbers
@@ -492,11 +503,12 @@ export function getTimeBlocks(
 
 /**
  * Get difference in minutes between two times (HH:MM format)
+ * Returns positive if time2 is after time1, negative if time2 is before time1
  */
 function getMinutesDifference(time1: string, time2: string): number {
   const [h1, m1] = time1.split(":").map(Number);
   const [h2, m2] = time2.split(":").map(Number);
-  return Math.abs((h2 * 60 + m2) - (h1 * 60 + m1));
+  return (h2 * 60 + m2) - (h1 * 60 + m1);
 }
 
 /**
@@ -538,23 +550,26 @@ export function getCurrentCiclo(
   const today = new Date();
   const termData = cicloData.terms[term];
 
-  // Check if we're in 8A period
+  // Check if we're in 8A period (before or on the last day of 8A)
   if (termData.ciclos["8A"]) {
+    const startDate8A = new Date(termData.ciclos["8A"].startDate);
     const endDate8A = new Date(termData.ciclos["8A"].endDate);
-    if (today < endDate8A) {
+    if (today >= startDate8A && today <= endDate8A) {
       return "8A";
     }
   }
 
-  // Check if we're in 8B period
+  // Check if we're in 8B period (on or after the first day of 8B)
   if (termData.ciclos["8B"]) {
     const startDate8B = new Date(termData.ciclos["8B"].startDate);
-    if (today >= startDate8B) {
+    const endDate8B = new Date(termData.ciclos["8B"].endDate);
+    if (today >= startDate8B && today <= endDate8B) {
       return "8B";
     }
   }
 
-  return "1"; // Full semester
+  // If we're before 8A or after 8B, or neither exists, return full semester
+  return "1";
 }
 
 /**
