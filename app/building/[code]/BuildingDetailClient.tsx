@@ -10,7 +10,7 @@ import coursesData from "@/data/courses/courses-202610.json";
 import manifestData from "@/data/courses/manifest.json";
 import ciclosData from "@/data/ciclos.json";
 import { parseCourseSections, groupByRoom, getCurrentCiclo } from "@/lib/parse-courses";
-import { getRoomRestrictions } from "@/lib/data-loader";
+import { getRoomRestrictions, getAmenitiesByBuildingCode } from "@/lib/data-loader";
 
 const DAY_NAMES: Record<string, string> = {
   L: "Lunes", M: "Martes", I: "Miércoles", J: "Jueves", V: "Viernes", S: "Sábado",
@@ -39,6 +39,17 @@ export default function BuildingDetailClient({ code }: { code: string }) {
   const [isAutoTime, setIsAutoTime] = useState(true);
   const [selectedCiclo, setSelectedCiclo] = useState<PartOfTerm | "all">(() => getCurrentCiclo(manifestData.term, ciclosData));
 
+  const [collapsedFloors, setCollapsedFloors] = useState<Set<number>>(new Set());
+
+  const toggleFloor = (floor: number) => {
+    setCollapsedFloors((prev) => {
+      const next = new Set(prev);
+      if (next.has(floor)) next.delete(floor);
+      else next.add(floor);
+      return next;
+    });
+  };
+
   useEffect(() => {
     if (!isAutoTime) return;
     const interval = setInterval(() => {
@@ -66,6 +77,7 @@ export default function BuildingDetailClient({ code }: { code: string }) {
   const restrictions = getRoomRestrictions();
   const buildingsData = groupByRoom(sections, allBuildings, restrictions);
   const buildingData = buildingsData.find((b) => b.building === buildingCode);
+  const amenities = getAmenitiesByBuildingCode(buildingCode);
 
   const roomsByFloor = new Map<number, RoomData[]>();
   if (buildingData) {
@@ -190,6 +202,20 @@ export default function BuildingDetailClient({ code }: { code: string }) {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 py-6">
+        {amenities.length > 0 && (
+          <div className="flex flex-wrap gap-2 mb-6">
+            {amenities.map((amenity, idx) => (
+              <span
+                key={idx}
+                className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-secondary text-xs text-muted-foreground"
+                title={amenity.description || amenity.name}
+              >
+                {amenity.icon && <span>{amenity.icon}</span>}
+                {amenity.name}
+              </span>
+            ))}
+          </div>
+        )}
         {sortedFloors.length === 0 ? (
           <div className="text-center py-12 text-muted-foreground">
             No hay datos de aulas disponibles para este edificio en el semestre actual.
@@ -198,10 +224,21 @@ export default function BuildingDetailClient({ code }: { code: string }) {
           <div className="space-y-8">
             {sortedFloors.map((floor) => {
               const rooms = roomsByFloor.get(floor)!;
+              const isCollapsed = collapsedFloors.has(floor);
+              const floorAvailable = rooms.filter((r) => getRoomStatus(r).status === "available").length;
               return (
                 <div key={floor}>
-                  <h2 className="text-lg font-bold mb-3 text-muted-foreground">Piso {floor}</h2>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
+                  <button
+                    onClick={() => toggleFloor(floor)}
+                    className="flex items-center justify-between w-full text-left sm:pointer-events-none"
+                  >
+                    <h2 className="text-lg font-bold text-muted-foreground">Piso {floor}</h2>
+                    <div className="flex items-center gap-2 sm:hidden">
+                      <span className="text-xs text-muted-foreground">{floorAvailable} libres</span>
+                      <span className="text-muted-foreground text-sm">{isCollapsed ? "▶" : "▼"}</span>
+                    </div>
+                  </button>
+                  <div className={`mt-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 ${isCollapsed ? "hidden sm:grid" : ""}`}>
                     {rooms.map((room) => {
                       const status = getRoomStatus(room);
                       return (

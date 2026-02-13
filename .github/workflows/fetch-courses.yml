@@ -3,12 +3,10 @@ name: Fetch Course Data
 on:
   schedule:
     # Runs on the Monday within each date range (day-of-week = 1 = Monday)
-    # Second week of January (semester XXXX10)
-    - cron: '0 6 8-14 1 1'
-    # First week of June (semester XXXX19 - intersemestral)
-    - cron: '0 6 1-7 6 1'
-    # Last week of July (semester XXXX20)
-    - cron: '0 6 25-31 7 1'
+    # Third week of January (semester XXXX10)
+    - cron: '0 6 15-21 1 1'
+    # First week of August (semester XXXX20)
+    - cron: '0 6 1-7 8 1'
 
   workflow_dispatch:
     inputs:
@@ -44,10 +42,8 @@ jobs:
           else
             YEAR=$(date +%Y)
             MONTH=$(date +%m)
-            if [ "$MONTH" -le 5 ]; then
+            if [ "$MONTH" -le 6 ]; then
               TERM="${YEAR}10"
-            elif [ "$MONTH" -le 7 ]; then
-              TERM="${YEAR}19"
             else
               TERM="${YEAR}20"
             fi

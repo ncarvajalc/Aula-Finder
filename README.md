@@ -13,7 +13,7 @@
 
 ¡Bienvenido! AulaFinder es una aplicación web que se nutre de la [API de cursos](https://ofertadecursos.uniandes.edu.co) de la Universidad de los Andes para ayudarte a encontrar salones libres en el campus.
 
-> **Nota:** Este proyecto es la evolución del repositorio original [Sobrecupo](https://github.com/Open-Source-Uniandes/Sobrecupo), reescrito con tecnologías modernas.
+> **Nota:** Este proyecto es la evolución del repositorio original Sobrecupo, reescrito con tecnologías modernas.
 
 ## ✨ ¿Qué puede hacer?
 
@@ -142,10 +142,9 @@ Algunos salones tienen notación compuesta como "AU 103-4", lo que significa que
 
 ### Actualización automática
 
-El workflow de GitHub Actions (`.github/workflows/fetch-courses.yml`) se ejecuta automáticamente 3 veces al año:
-- **Enero** — Semestre XXXX10
-- **Junio** — Intersemestral XXXX19
-- **Julio** — Semestre XXXX20
+El workflow de GitHub Actions (`.github/workflows/fetch-courses.yml`) se ejecuta automáticamente 2 veces al año:
+- **Enero (3ª semana)** — Semestre XXXX10
+- **Agosto (1ª semana)** — Semestre XXXX20
 
 También se puede ejecutar manualmente desde la pestaña Actions del repositorio.
 

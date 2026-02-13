@@ -110,7 +110,7 @@
       "amenities": [
         {
           "type": "lab",
-          "name": "Laboratorios de Ingeniería",
+          "name": "Laboratorios de Física",
           "description": "Labs B3XX - Acceso restringido",
           "icon": "🔬"
         },
