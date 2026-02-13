@@ -27,6 +27,8 @@ const START_HOUR = 6;
 const END_HOUR = 22;
 const HOURS_RANGE = END_HOUR - START_HOUR;
 const PIXELS_PER_HOUR = 60; // Height in pixels per hour
+// NOTE: Using the same PIXELS_PER_HOUR constant for both hour grid and course blocks
+// to prevent alignment issues (see Mi-Horario-Uniandes calendar alignment bug)
 
 // Color palette for different courses
 const COURSE_COLORS = [
