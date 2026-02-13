@@ -8,7 +8,16 @@
 
 AulaFinder is a modern web application that helps students and faculty at Universidad de los Andes find available classrooms based on real-time course schedule data.
 
-## ✨ Features (Phase 1 - Foundation)
+## ✨ Features (Phase 3 - UI Implementation)
+
+- 🏢 **Buildings Explorer**: Browse campus buildings with photos, coordinates, and amenities
+- 🗂️ **Classroom Browser**: Navigate classrooms organized by floor with restriction information
+- 📅 **Weekly Calendar**: Visual schedule showing course occupancy with real-time indicators
+- 🎨 **Responsive Design**: Mobile-first interface built with Tailwind CSS
+- 📝 **Editable Metadata**: Contribute building and classroom information via simple JSON files
+- ♿ **Accessible**: Semantic HTML with ARIA support for screen readers
+
+### Previous Features (Phase 1 & 2)
 
 - ⚡ **Modern Stack**: Built with Next.js 14+ (App Router), TypeScript, and Tailwind CSS
 - 📱 **Responsive Design**: Mobile-first design with dark mode support
@@ -180,19 +189,124 @@ TypeScript types are defined in `types/index.ts`:
 - [x] Compound room parsing (e.g., AU 103-4)
 - [x] Room restriction and floor mapping
 
-### Phase 3: UI Implementation (Next)
-- [ ] Classroom search and filtering interface
-- [ ] Interactive building map
-- [ ] Schedule visualization
-- [ ] Real-time availability display
+### Phase 3: UI Implementation ✅
+- [x] Buildings screen with grid layout
+- [x] Classroom listing by building and floor
+- [x] Weekly calendar view (6:00-22:00)
+- [x] Interactive course detail modals
+- [x] Responsive mobile-first design
+- [x] Editable JSON metadata system
 
 ### Phase 4: Advanced Features (Future)
+- [ ] Classroom search and filtering interface
+- [ ] Interactive building map
+- [ ] Real-time availability display
 - [ ] Room booking suggestions
 - [ ] Schedule optimization
 - [ ] Analytics and usage patterns
 - [ ] API integration with Uniandes systems
 
-## 📚 Phase 2 Documentation
+## 🤝 Contributing
+
+### How to Contribute Metadata
+
+AulaFinder uses JSON files to store building and classroom metadata. This makes it easy for anyone to contribute and update information without coding knowledge.
+
+#### Adding Building Amenities
+
+Edit `data/buildings-amenities.json`:
+
+```json
+{
+  "code": "ML",
+  "amenities": [
+    {
+      "type": "coffee_shop",
+      "name": "Juan Valdez Café",
+      "location": "Primer piso",
+      "icon": "☕"
+    }
+  ]
+}
+```
+
+**Supported amenity types:**
+- `coffee_shop` - Coffee shops and cafeterias
+- `elevator` - Elevators
+- `accessible_restroom` - Accessible bathrooms
+- `study_area` - Study rooms and collaborative spaces
+- `printer` - Printers and printing services
+- `wifi` - WiFi coverage information
+- `lab` - Laboratory spaces
+- `vending_machine` - Vending machines
+- `parking` - Parking information
+
+#### Updating Building Coordinates
+
+Edit `data/buildings-metadata.json`:
+
+```json
+{
+  "code": "ML",
+  "name": "Mario Laserna",
+  "campus": "Principal",
+  "order": 1,
+  "imageUrl": "/images/buildings/ml.jpg",
+  "coordinates": {
+    "latitude": 4.601861,
+    "longitude": -74.064722
+  }
+}
+```
+
+**To find coordinates:**
+1. Open Google Maps
+2. Right-click on the building
+3. Click on the coordinates to copy them
+4. Add the source URL in your pull request description
+
+#### Adding Room Restrictions
+
+Edit `data/room-restrictions.json`:
+
+```json
+{
+  "building": "B",
+  "room": "B3*",  // Use * for wildcards
+  "isRestricted": true,
+  "restrictionType": "lab",
+  "note": "Laboratorios de ingeniería - Acceso restringido a estudiantes del departamento",
+  "allowedDepartments": ["Ingeniería de Sistemas"]
+}
+```
+
+**Restriction types:**
+- `lab` - Laboratory (requires department access)
+- `office` - Administrative office
+- `restricted` - Requires prior booking
+- `maintenance` - Under maintenance
+
+### Data Quality Guidelines
+
+When contributing metadata:
+
+1. **Verify information** - Check official sources (uniandes.edu.co, campus maps)
+2. **Add sources** - Include URLs in your PR description
+3. **Mark uncertainties** - Add TODO comments for unverified data
+4. **Keep it simple** - Use clear, concise descriptions
+5. **Test locally** - Run `npm run dev` to verify your changes
+
+### Example Contribution Workflow
+
+1. Fork the repository
+2. Edit the appropriate JSON file
+3. Add source URLs in the commit message
+4. Create a pull request with:
+   - What you changed
+   - Where you got the information
+   - Any TODOs for future verification
+
+## 📚 Phase 2 & 3 Documentation
 
 ### Data Models
 
