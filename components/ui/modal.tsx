@@ -8,13 +8,39 @@ export interface ModalProps {
 }
 
 const Modal = ({ open, onOpenChange, children }: ModalProps) => {
+  // Prevent body scroll when modal is open
+  React.useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+      return () => {
+        document.body.style.overflow = "unset";
+      };
+    }
+  }, [open]);
+
+  // Handle escape key
+  React.useEffect(() => {
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape" && open) {
+        onOpenChange?.(false);
+      }
+    };
+    document.addEventListener("keydown", handleEscape);
+    return () => document.removeEventListener("keydown", handleEscape);
+  }, [open, onOpenChange]);
+
   if (!open) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center">
+    <div 
+      className="fixed inset-0 z-50 flex items-center justify-center"
+      role="dialog"
+      aria-modal="true"
+    >
       <div
         className="fixed inset-0 bg-background/80 backdrop-blur-sm"
         onClick={() => onOpenChange?.(false)}
+        aria-hidden="true"
       />
       <div className="relative z-50 max-w-lg w-full mx-4">
         {children}
@@ -57,6 +83,7 @@ const ModalTitle = React.forwardRef<
   <h2
     ref={ref}
     className={cn("text-lg font-semibold leading-none tracking-tight", className)}
+    id="modal-title"
     {...props}
   />
 ));

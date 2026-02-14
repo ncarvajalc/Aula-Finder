@@ -143,6 +143,7 @@ function BuildingsPageInner() {
               href={`/map${buildLinkQuery()}`}
               className="inline-flex items-center justify-center rounded-md text-sm font-medium h-8 w-8 text-white hover:bg-white/10 transition-colors"
               title="Mapa del campus"
+              aria-label="Ver mapa del campus"
             >
               🗺️
             </Link>
@@ -151,6 +152,7 @@ function BuildingsPageInner() {
               size="sm"
               onClick={() => setShowConfig(true)}
               className="text-white hover:bg-white/10"
+              aria-label="Abrir configuración"
             >
               ⚙️
             </Button>
@@ -159,6 +161,7 @@ function BuildingsPageInner() {
               size="sm"
               onClick={() => setShowHelp(true)}
               className="text-white hover:bg-white/10"
+              aria-label="Abrir ayuda"
             >
               ❓
             </Button>
@@ -171,7 +174,7 @@ function BuildingsPageInner() {
         <div className="max-w-7xl mx-auto px-4 py-3">
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
             {/* Day selector */}
-            <div className="flex gap-1">
+            <div className="flex gap-1" role="group" aria-label="Selector de día de la semana">
               {DAY_ORDER.map((day) => (
                 <button
                   key={day}
@@ -181,6 +184,8 @@ function BuildingsPageInner() {
                       ? "bg-uniandes-yellow text-uniandes-dark"
                       : "bg-secondary text-muted-foreground hover:bg-secondary/80"
                   }`}
+                  aria-label={`Seleccionar ${DAY_NAMES[day]}`}
+                  aria-pressed={selectedDay === day}
                 >
                   {DAY_NAMES[day]?.slice(0, 3)}
                 </button>
@@ -194,6 +199,7 @@ function BuildingsPageInner() {
                 value={selectedTime}
                 onChange={(e) => handleTimeChange(e.target.value)}
                 className="px-3 py-1.5 rounded-lg border bg-background text-sm"
+                aria-label="Seleccionar hora"
               />
               <button
                 onClick={() => {
@@ -204,6 +210,7 @@ function BuildingsPageInner() {
                     ? "bg-green-100 text-green-800 border border-green-300"
                     : "bg-secondary text-muted-foreground hover:bg-secondary/80"
                 }`}
+                aria-label={isAutoTime ? "Hora actual activa" : "Ir a la hora actual"}
               >
                 {isAutoTime ? "🟢 Ahora" : "📍 Ir a ahora"}
               </button>
@@ -214,6 +221,7 @@ function BuildingsPageInner() {
               value={selectedCiclo}
               onChange={(e) => handleCicloChange(e.target.value as PartOfTerm | "all")}
               className="px-3 py-1.5 rounded-lg border bg-background text-sm"
+              aria-label="Seleccionar ciclo académico"
             >
               <option value="all">Todos los ciclos</option>
               <option value="1">Semestre completo</option>
@@ -246,6 +254,7 @@ function BuildingsPageInner() {
                 key={building.code}
                 href={`/building/${building.code}${buildLinkQuery()}`}
                 className="group"
+                aria-label={`Ver salones del edificio ${building.name}`}
               >
                 <Card className={`overflow-hidden transition-all hover:shadow-lg hover:scale-[1.02] ${
                   isInactive ? "opacity-50 grayscale" : ""
@@ -352,6 +361,7 @@ function BuildingsPageInner() {
           <button
             onClick={() => setShowHelp(false)}
             className="mt-6 w-full px-4 py-2 bg-uniandes-dark text-white rounded-lg hover:bg-uniandes-dark/90 transition-colors"
+            aria-label="Cerrar modal de ayuda"
           >
             Cerrar
           </button>
@@ -405,6 +415,7 @@ function BuildingsPageInner() {
           <button
             onClick={() => setShowConfig(false)}
             className="mt-6 w-full px-4 py-2 bg-uniandes-dark text-white rounded-lg hover:bg-uniandes-dark/90 transition-colors"
+            aria-label="Cerrar modal de configuración"
           >
             Cerrar
           </button>
