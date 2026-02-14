@@ -139,6 +139,13 @@ function BuildingsPageInner() {
             </div>
           </div>
           <div className="flex items-center gap-2">
+            <Link
+              href={`/map${buildLinkQuery()}`}
+              className="inline-flex items-center justify-center rounded-md text-sm font-medium h-8 w-8 text-white hover:bg-white/10 transition-colors"
+              title="Mapa del campus"
+            >
+              🗺️
+            </Link>
             <Button
               variant="ghost"
               size="sm"
