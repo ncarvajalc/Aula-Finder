@@ -6,7 +6,7 @@ import { RoomData, PartOfTerm, DayOfWeek, BuildingMetadata } from "@/types";
 import Link from "next/link";
 
 import buildingsMetadata from "@/data/buildings-metadata.json";
-import coursesData from "@/data/courses/courses-202610.json";
+import coursesData from "@/data/courses/courses-latest.json";
 import { parseCourseSections, groupByRoom } from "@/lib/parse-courses";
 import { getRoomRestrictions, getAmenitiesByBuildingCode } from "@/lib/data-loader";
 import { useTimeState } from "@/lib/time-state";

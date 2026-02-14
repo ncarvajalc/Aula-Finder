@@ -205,6 +205,12 @@ def save_courses(courses: list[dict], term: str) -> None:
         json.dump(courses, f, ensure_ascii=False, indent=2)
     print(f"✓ Saved {len(courses)} sections to {filepath}")
 
+    # Also write the stable courses-latest.json used by the app
+    latest_path = data_dir / "courses-latest.json"
+    with open(latest_path, "w", encoding="utf-8") as f:
+        json.dump(courses, f, ensure_ascii=False, indent=2)
+    print(f"✓ Updated {latest_path}")
+
     unique_courses = set(c["course"] for c in courses)
     manifest = {
         "term": term,

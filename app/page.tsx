@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Modal, ModalContent, ModalHeader, ModalTitle } from "@/components/ui/modal";
 
 import buildingsMetadata from "@/data/buildings-metadata.json";
-import coursesData from "@/data/courses/courses-202610.json";
+import coursesData from "@/data/courses/courses-latest.json";
 import manifestData from "@/data/courses/manifest.json";
 import { parseCourseSections, groupByRoom } from "@/lib/parse-courses";
 import { getRoomRestrictions } from "@/lib/data-loader";
