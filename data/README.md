@@ -16,7 +16,6 @@ Define la lista de edificios del campus con su información básica.
   "name": "Mario Laserna",
   "campus": "Campus Principal",
   "order": 1,
-  "imageUrl": "/images/buildings/ml.jpg",
   "coordinates": {
     "latitude": 4.60186,
     "longitude": -74.06472
