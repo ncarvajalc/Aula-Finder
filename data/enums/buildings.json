@@ -1,8 +1,38 @@
 {
   "field": "buildings",
   "values": [
-    "ML"
+    "AU",
+    "B",
+    "C",
+    "CC",
+    "CH",
+    "CJ",
+    "CP",
+    "G",
+    "GA",
+    "GB",
+    "IP",
+    "J",
+    "K2",
+    "LL",
+    "M",
+    "ML",
+    "NOREQ",
+    "O",
+    "P1",
+    "Q",
+    "R",
+    "RGC",
+    "RGD",
+    "S1",
+    "S2",
+    "SD",
+    "T",
+    "TX",
+    "W",
+    "Y",
+    "Z"
   ],
-  "count": 1,
-  "timestamp": "2026-02-13T16:48:23.796673"
+  "count": 31,
+  "timestamp": "2026-02-14T04:06:26.808060"
 }
