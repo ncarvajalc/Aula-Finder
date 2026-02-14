@@ -1,2 +1,0 @@
-This directory contains building images.
-Place building photos here with names matching building codes (e.g., ML.jpg, W.jpg, etc.)

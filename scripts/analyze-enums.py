@@ -111,18 +111,6 @@ def save_enums(enums: dict):
             json.dump(data, f, ensure_ascii=False, indent=2)
         
         print(f"✓ Saved {len(values)} {field} to {filepath}")
-    
-    # Save combined enums file
-    combined_path = enums_dir / "all-enums.json"
-    combined_data = {
-        **enums,
-        "timestamp": timestamp
-    }
-    
-    with open(combined_path, 'w', encoding='utf-8') as f:
-        json.dump(combined_data, f, ensure_ascii=False, indent=2)
-    
-    print(f"✓ Saved combined enums to {combined_path}")
 
 def main():
     """Main execution function"""

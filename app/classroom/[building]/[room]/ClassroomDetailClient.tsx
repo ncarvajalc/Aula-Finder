@@ -34,7 +34,7 @@ export default function ClassroomDetailClient({
       <main className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold mb-2">Salón no encontrado</h1>
-          <Link href="/buildings" className="text-uniandes-yellow underline">
+          <Link href="/" className="text-uniandes-yellow underline">
             Volver a edificios
           </Link>
         </div>

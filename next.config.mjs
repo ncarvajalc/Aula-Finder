@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
-  basePath: '/AulaFinder',
+  basePath: '/Aula-Finder',
   images: {
     unoptimized: true,
   },

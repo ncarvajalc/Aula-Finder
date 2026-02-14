@@ -1,4 +1,4 @@
-// Type definitions for AulaFinder
+// Type definitions for Aula-Finder
 // Based on Universidad de los Andes course API structure
 
 /**
@@ -154,16 +154,6 @@ export interface CoursesManifest {
   filename: string;
   totalCourses: number;
   totalSections: number;
-}
-
-export interface EnumsData {
-  buildings: string[];
-  departments: string[];
-  modalities: string[];
-  campuses: string[];
-  languages: string[];
-  days: string[];
-  timestamp: string;
 }
 
 // Utility types for filtering and querying

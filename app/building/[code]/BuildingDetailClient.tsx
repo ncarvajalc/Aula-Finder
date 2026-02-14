@@ -67,7 +67,7 @@ export default function BuildingDetailClient({ code }: { code: string }) {
       <main className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold mb-2">Edificio no encontrado</h1>
-          <Link href="/buildings" className="text-uniandes-yellow underline">Volver a edificios</Link>
+          <Link href="/" className="text-uniandes-yellow underline">Volver a edificios</Link>
         </div>
       </main>
     );
@@ -140,7 +140,7 @@ export default function BuildingDetailClient({ code }: { code: string }) {
     <main className="min-h-screen bg-background">
       <header className="border-b bg-uniandes-dark text-white">
         <div className="max-w-7xl mx-auto px-4 py-4">
-          <Link href="/buildings" className="text-white/70 hover:text-white transition-colors text-sm">
+          <Link href="/" className="text-white/70 hover:text-white transition-colors text-sm">
             ← Edificios
           </Link>
           <h1 className="text-2xl font-bold mt-2">
