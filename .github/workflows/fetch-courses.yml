@@ -56,6 +56,14 @@ jobs:
       - name: Analyze enums
         run: python scripts/analyze-enums.py
 
+      - name: Upload enums as artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: enums-${{ steps.term.outputs.term }}
+          path: data/enums/
+          retention-days: 90
+
       - name: Validate fetched data
         run: |
           TERM="${{ steps.term.outputs.term }}"
@@ -71,6 +79,9 @@ jobs:
           fi
           SECTIONS=$(python3 -c "import json; print(json.load(open('data/courses/manifest.json'))['totalSections'])")
           echo "Validated: $SECTIONS sections for term $TERM"
+
+      - name: Remove enums from working tree before commit
+        run: rm -rf data/enums/
 
       - name: Check for changes
         id: changes

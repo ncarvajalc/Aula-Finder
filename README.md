@@ -85,14 +85,13 @@ Aula-Finder/
 │   └── index.ts
 ├── data/                       # Datos editables (ver data/README.md)
 │   ├── courses/               # Datos de cursos por semestre
-│   ├── enums/                 # Valores únicos extraídos (autogenerado)
 │   ├── buildings-metadata.json
 │   ├── buildings-amenities.json
 │   ├── room-restrictions.json
 │   └── ciclos.json            # Definiciones de ciclos (8A/8B)
 ├── scripts/                    # Pipeline de datos (Python)
 │   ├── fetch-courses.py       # Descarga datos de la API
-│   └── analyze-enums.py       # Extrae valores únicos
+│   └── analyze-enums.py       # Extrae valores únicos (genera artefactos de CI, no se versionan)
 ├── docs/                       # Documentación adicional
 │   └── API.md                 # Documentación de la API de cursos
 ├── __tests__/                  # Tests
@@ -115,6 +114,7 @@ Los días de la semana se abrevian con un código de una letra:
 | **J** | Jueves |
 | **V** | Viernes |
 | **S** | Sábado |
+| **D** | Domingo |
 
 > **¿Por qué "I" para miércoles?** Porque "M" ya se usa para Martes. Esta es la convención usada por el sistema Banner de la Universidad de los Andes.
 
@@ -127,6 +127,8 @@ Los cursos en Uniandes pueden tener diferentes duraciones dentro del semestre:
 | **Semestre completo** | `1` | 16 semanas (enero–mayo o agosto–noviembre) |
 | **Primera mitad** | `8A` | Primeras 8 semanas del semestre |
 | **Segunda mitad** | `8B` | Últimas 8 semanas del semestre |
+
+> **Nota:** En la API de cursos también existen otros valores de `ptrm` (como `2`, `3`, `D`) que corresponden a variantes menos comunes. Aula-Finder filtra principalmente por los ciclos `1`, `8A` y `8B`.
 
 Aula-Finder detecta automáticamente el ciclo actual y filtra los resultados.
 
@@ -157,7 +159,7 @@ python scripts/fetch-courses.py
 # Descargar un semestre específico
 python scripts/fetch-courses.py 202610
 
-# Extraer valores únicos (edificios, departamentos, etc.)
+# Extraer valores únicos (solo para depuración local, los archivos resultantes no se versionan)
 python scripts/analyze-enums.py
 ```
 

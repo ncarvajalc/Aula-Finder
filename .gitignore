@@ -45,3 +45,6 @@ __pycache__/
 venv/
 env/
 ENV/
+
+# auto-generated enum analysis (produced by scripts/analyze-enums.py)
+data/enums/

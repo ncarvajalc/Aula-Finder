@@ -178,7 +178,8 @@ Define las fechas de inicio y fin de cada ciclo (semestre completo, 8A, 8B) por 
 |---------|-------------|
 | `courses/courses-{term}.json` | Datos de cursos descargados de la API. Se actualizan automáticamente con `scripts/fetch-courses.py`. |
 | `courses/manifest.json` | Metadatos del último fetch (período, timestamp, conteos). |
-| `enums/*.json` | Artefactos de análisis: valores únicos extraídos de los cursos (edificios, departamentos, profesores, salones por edificio, estadísticas). Se generan con `scripts/analyze-enums.py`. **No se usan en el código de la app**; son útiles como referencia y documentación. |
+
+> **Nota:** El script `scripts/analyze-enums.py` genera archivos de análisis (valores únicos de edificios, departamentos, profesores, etc.) que se publican como **artefactos descargables** en cada ejecución del workflow de GitHub Actions. Estos archivos no se almacenan en el repositorio; son útiles para depuración y verificación de los datos descargados. Puedes descargarlos desde la pestaña Actions del repositorio.
 
 ---
 
@@ -193,7 +194,7 @@ python scripts/fetch-courses.py
 # Descargar un semestre específico
 python scripts/fetch-courses.py 202610
 
-# Regenerar valores únicos y estadísticas
+# Generar análisis de valores únicos y estadísticas (solo para depuración local, los archivos resultantes no se versionan)
 python scripts/analyze-enums.py
 ```
 
