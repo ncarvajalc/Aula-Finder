@@ -1,19 +1,17 @@
-# AulaFinder
+# Aula-Finder
 
 > 🏫 Encuentra salones disponibles en la Universidad de los Andes
 
-[![Deploy to GitHub Pages](https://github.com/Open-Source-Uniandes/AulaFinder/actions/workflows/deploy.yml/badge.svg)](https://github.com/Open-Source-Uniandes/AulaFinder/actions/workflows/deploy.yml)
+[![Deploy to GitHub Pages](https://github.com/Open-Source-Uniandes/Aula-Finder/actions/workflows/deploy.yml/badge.svg)](https://github.com/Open-Source-Uniandes/Aula-Finder/actions/workflows/deploy.yml)
 [![Built with Next.js](https://img.shields.io/badge/Next.js-16-000000?style=flat&logo=next.js)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.9-blue?style=flat&logo=typescript)](https://www.typescriptlang.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-**[🌐 Visita la app → open-source-uniandes.github.io/AulaFinder](https://open-source-uniandes.github.io/AulaFinder/)**
+**[🌐 Visita la app → open-source-uniandes.github.io/Aula-Finder](https://open-source-uniandes.github.io/Aula-Finder/)**
 
 ---
 
-¡Bienvenido! AulaFinder es una aplicación web que se nutre de la [API de cursos](https://ofertadecursos.uniandes.edu.co) de la Universidad de los Andes para ayudarte a encontrar salones libres en el campus.
-
-> **Nota:** Este proyecto es la evolución del repositorio original Sobrecupo, reescrito con tecnologías modernas.
+¡Bienvenido! Aula-Finder es una aplicación web que se nutre de la [API de cursos](https://ofertadecursos.uniandes.edu.co) de la Universidad de los Andes para ayudarte a encontrar salones libres en el campus. Para más detalles técnicos de la API, consulta la [Documentación de la API](docs/API.md).
 
 ## ✨ ¿Qué puede hacer?
 
@@ -46,8 +44,8 @@
 
 ```bash
 # Clonar el repositorio
-git clone https://github.com/Open-Source-Uniandes/AulaFinder.git
-cd AulaFinder
+git clone https://github.com/Open-Source-Uniandes/Aula-Finder.git
+cd Aula-Finder
 
 # Instalar dependencias
 npm install
@@ -56,7 +54,7 @@ npm install
 npm run dev
 ```
 
-Abre [http://localhost:3000/AulaFinder](http://localhost:3000/AulaFinder) en tu navegador.
+Abre [http://localhost:3000/Aula-Finder](http://localhost:3000/Aula-Finder) en tu navegador.
 
 ### Scripts disponibles
 
@@ -71,10 +69,9 @@ Abre [http://localhost:3000/AulaFinder](http://localhost:3000/AulaFinder) en tu 
 ## 📁 Estructura del proyecto
 
 ```
-AulaFinder/
+Aula-Finder/
 ├── app/                        # Next.js App Router (páginas)
-│   ├── page.tsx               # Página principal (redirige a /buildings)
-│   ├── buildings/page.tsx     # Vista de edificios
+│   ├── page.tsx               # Página principal (vista de edificios)
 │   ├── building/[code]/       # Detalle de un edificio
 │   └── classroom/[building]/[room]/  # Calendario de un salón
 ├── components/                 # Componentes React
@@ -86,8 +83,9 @@ AulaFinder/
 │   └── utils.ts               # Utilidades
 ├── types/                      # Definiciones TypeScript
 │   └── index.ts
-├── data/                       # Datos (JSON)
+├── data/                       # Datos editables (ver data/README.md)
 │   ├── courses/               # Datos de cursos por semestre
+│   ├── enums/                 # Valores únicos extraídos (autogenerado)
 │   ├── buildings-metadata.json
 │   ├── buildings-amenities.json
 │   ├── room-restrictions.json
@@ -95,6 +93,8 @@ AulaFinder/
 ├── scripts/                    # Pipeline de datos (Python)
 │   ├── fetch-courses.py       # Descarga datos de la API
 │   └── analyze-enums.py       # Extrae valores únicos
+├── docs/                       # Documentación adicional
+│   └── API.md                 # Documentación de la API de cursos
 ├── __tests__/                  # Tests
 └── .github/workflows/          # GitHub Actions
     ├── deploy.yml             # Deploy a GitHub Pages
@@ -128,7 +128,7 @@ Los cursos en Uniandes pueden tener diferentes duraciones dentro del semestre:
 | **Primera mitad** | `8A` | Primeras 8 semanas del semestre |
 | **Segunda mitad** | `8B` | Últimas 8 semanas del semestre |
 
-AulaFinder detecta automáticamente el ciclo actual y filtra los resultados.
+Aula-Finder detecta automáticamente el ciclo actual y filtra los resultados.
 
 ### Regla de los 10 minutos
 
@@ -136,7 +136,7 @@ Para reflejar la realidad del campus, los salones no se muestran como "disponibl
 
 ### Salones compuestos
 
-Algunos salones tienen notación compuesta como "AU 103-4", lo que significa que incluye los salones 103 y 104. AulaFinder los descompone automáticamente.
+Algunos salones tienen notación compuesta como "AU 103-4", lo que significa que incluye los salones 103 y 104. Aula-Finder los descompone automáticamente.
 
 ## 🔄 Pipeline de datos
 
@@ -169,31 +169,15 @@ Consulta la **[Guía de Contribución](CONTRIBUTING.md)** para información deta
 
 ### Formas rápidas de contribuir
 
-- **🐛 Reportar un error** — Abre un [issue](https://github.com/Open-Source-Uniandes/AulaFinder/issues)
-- **💡 Proponer una idea** — Abre un [issue](https://github.com/Open-Source-Uniandes/AulaFinder/issues) con la etiqueta "enhancement"
+- **🐛 Reportar un error** — Abre un [issue](https://github.com/Open-Source-Uniandes/Aula-Finder/issues)
+- **💡 Proponer una idea** — Abre un [issue](https://github.com/Open-Source-Uniandes/Aula-Finder/issues) con la etiqueta "enhancement"
 - **📸 Agregar fotos de edificios** — Sube imágenes a `public/images/buildings/`
-- **📝 Actualizar metadatos** — Edita los archivos JSON en `data/` (no necesitas saber programar)
+- **📝 Actualizar metadatos** — Edita los archivos JSON en `data/` (consulta `data/README.md` para instrucciones detalladas)
 - **🧑‍💻 Contribuir código** — Haz un fork, crea un branch, y abre un Pull Request
-
-## 🗺 Roadmap
-
-- [x] Parser de cursos con soporte completo de la API
-- [x] Sistema de ciclos (8A/8B/semestre completo)
-- [x] Metadatos de edificios y restricciones de salones
-- [x] Lógica de disponibilidad con regla de 10 minutos
-- [x] Vista de edificios con disponibilidad en tiempo real
-- [x] Vista de salones por piso con estado actual
-- [x] Calendario semanal interactivo
-- [x] Deploy automático a GitHub Pages
-- [x] Tests automatizados
-- [ ] Buscador de salones con filtros avanzados
-- [ ] Mapa interactivo del campus
-- [ ] Sugerencias de reserva de salones
-- [ ] Analytics de uso de salones
 
 ## 👥 Contribuidores
 
-Gracias a todas las personas que han hecho posible este proyecto, incluyendo a quienes contribuyeron en la [versión original (Sobrecupo)](https://github.com/Open-Source-Uniandes/Sobrecupo):
+Gracias a todas las personas que han hecho posible este proyecto:
 
 <!-- ALL-CONTRIBUTORS-LIST:START -->
 <table>
@@ -212,6 +196,8 @@ Gracias a todas las personas que han hecho posible este proyecto, incluyendo a q
   </tbody>
 </table>
 <!-- ALL-CONTRIBUTORS-LIST:END -->
+
+¿Quieres aparecer en esta lista? Consulta la [Guía de Contribución](CONTRIBUTING.md#añadirse-a-la-lista-de-contribuidores) para instrucciones.
 
 ## 📄 Licencia
 

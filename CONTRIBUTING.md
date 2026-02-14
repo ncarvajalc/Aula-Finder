@@ -1,6 +1,6 @@
 # Guía de Contribución
 
-¡Gracias por tu interés en contribuir a AulaFinder! 💛
+¡Gracias por tu interés en contribuir a Aula-Finder! 💛
 
 Este es un proyecto de [Open Source Uniandes](https://github.com/Open-Source-Uniandes), y toda contribución de la comunidad Uniandina es bienvenida.
 
@@ -13,6 +13,7 @@ Este es un proyecto de [Open Source Uniandes](https://github.com/Open-Source-Uni
 - [Contribuir metadatos (sin código)](#contribuir-metadatos-sin-código)
 - [Guía de estilo](#guía-de-estilo)
 - [Tests](#tests)
+- [Añadirse a la lista de contribuidores](#añadirse-a-la-lista-de-contribuidores)
 - [Preguntas frecuentes](#preguntas-frecuentes)
 
 ## Código de conducta
@@ -30,8 +31,8 @@ Este proyecto sigue un código de conducta basado en el respeto y la inclusión.
 
 Si encontraste un error:
 
-1. Revisa que no exista un [issue abierto](https://github.com/Open-Source-Uniandes/AulaFinder/issues) sobre el mismo tema
-2. Si no existe, [crea un nuevo issue](https://github.com/Open-Source-Uniandes/AulaFinder/issues/new) con:
+1. Revisa que no exista un [issue abierto](https://github.com/Open-Source-Uniandes/Aula-Finder/issues) sobre el mismo tema
+2. Si no existe, [crea un nuevo issue](https://github.com/Open-Source-Uniandes/Aula-Finder/issues/new) con:
    - **Título claro y descriptivo**
    - **Pasos para reproducir el error**
    - **Comportamiento esperado vs. actual**
@@ -40,7 +41,7 @@ Si encontraste un error:
 
 ### 💡 Proponer mejoras
 
-¿Tienes una idea increíble? Abre un [issue](https://github.com/Open-Source-Uniandes/AulaFinder/issues/new) con:
+¿Tienes una idea increíble? Abre un [issue](https://github.com/Open-Source-Uniandes/Aula-Finder/issues/new) con:
 
 - Descripción clara de la propuesta
 - Justificación de por qué sería útil
@@ -77,8 +78,8 @@ Para contribuciones de código, sigue el [flujo de trabajo con Git](#flujo-de-tr
 # 1. Fork del repositorio en GitHub
 
 # 2. Clonar tu fork
-git clone https://github.com/TU-USUARIO/AulaFinder.git
-cd AulaFinder
+git clone https://github.com/TU-USUARIO/Aula-Finder.git
+cd Aula-Finder
 
 # 3. Instalar dependencias
 npm install
@@ -87,7 +88,7 @@ npm install
 npm run dev
 ```
 
-La aplicación estará disponible en `http://localhost:3000/AulaFinder`.
+La aplicación estará disponible en `http://localhost:3000/Aula-Finder`.
 
 ### Scripts útiles
 
@@ -138,67 +139,28 @@ Actualizar metadatos del edificio ML
 
 ## Contribuir metadatos (sin código)
 
-AulaFinder usa archivos JSON para almacenar datos de edificios y salones. ¡Cualquiera puede editarlos directamente en GitHub!
+Aula-Finder usa archivos JSON para almacenar datos de edificios y salones. ¡Cualquiera puede editarlos directamente en GitHub!
 
-### Metadatos de edificios (`data/buildings-metadata.json`)
+Para instrucciones detalladas sobre cada archivo, su estructura y los valores permitidos, consulta el **[README de la carpeta data](data/README.md)**.
 
-Puedes agregar o actualizar información de un edificio:
+### Resumen rápido
 
-```json
-{
-  "code": "ML",
-  "name": "Mario Laserna",
-  "campus": "Principal",
-  "order": 1,
-  "imageUrl": "/images/buildings/ml.jpg",
-  "coordinates": {
-    "latitude": 4.601861,
-    "longitude": -74.064722
-  }
-}
-```
+| Archivo | Qué puedes hacer |
+|---------|-----------------|
+| `data/buildings-metadata.json` | Agregar/editar info de edificios (nombre, coordenadas, orden de aparición, imagen) |
+| `data/buildings-amenities.json` | Agregar amenidades de edificios (cafeterías, ascensores, laboratorios, etc.) |
+| `data/room-restrictions.json` | Marcar salones como restringidos (laboratorios, oficinas) |
+| `data/ciclos.json` | Actualizar fechas de los ciclos 8A y 8B del semestre |
 
-Para encontrar las coordenadas:
-1. Abre [Google Maps](https://maps.google.com)
-2. Haz clic derecho sobre el edificio
-3. Copia las coordenadas
-4. Incluye el enlace de Google Maps en tu PR
+### Fotos de edificios
 
-### Amenidades de edificios (`data/buildings-amenities.json`)
+Las imágenes se almacenan en `public/images/buildings/`. Para agregar o actualizar una foto:
 
-```json
-{
-  "code": "ML",
-  "amenities": [
-    {
-      "type": "coffee_shop",
-      "name": "Juan Valdez Café",
-      "location": "Primer piso",
-      "icon": "☕"
-    }
-  ]
-}
-```
-
-Tipos soportados: `coffee_shop`, `elevator`, `accessible_restroom`, `study_area`, `printer`, `wifi`, `lab`, `vending_machine`, `parking`.
-
-### Restricciones de salones (`data/room-restrictions.json`)
-
-```json
-{
-  "building": "B",
-  "room": "301",
-  "isRestricted": true,
-  "restrictionType": "lab",
-  "note": "Laboratorio de ingeniería"
-}
-```
-
-> **Tip:** Usa `"room": "B3*"` como wildcard para aplicar la restricción a todos los salones que empiezan con "B3".
-
-### Ciclos del semestre (`data/ciclos.json`)
-
-Si conoces las fechas exactas de los ciclos 8A y 8B, puedes actualizarlas aquí.
+1. La imagen debe ser en formato `.jpg` o `.webp`
+2. Nombre del archivo: `{código-en-minúscula}.jpg` (ejemplo: `ml.jpg` para Mario Laserna)
+3. Resolución recomendada: al menos 800x600px
+4. La imagen debe ser propia o de dominio público
+5. Agrega el campo `"imageUrl": "/images/buildings/{código}.jpg"` en `buildings-metadata.json`
 
 ## Guía de estilo
 
@@ -245,6 +207,27 @@ describe("miFuncion", () => {
 });
 ```
 
+## Añadirse a la lista de contribuidores
+
+Después de que tu Pull Request sea aceptado, puedes añadirte a la lista de contribuidores en el `README.md`:
+
+1. Abre `README.md` y busca la sección `<!-- ALL-CONTRIBUTORS-LIST:START -->`
+2. Agrega una nueva celda `<td>` dentro de la tabla con tu información:
+
+```html
+<td align="center">
+  <a href="https://github.com/TU-USUARIO">
+    <img src="https://avatars.githubusercontent.com/u/TU-ID?v=4" width="80px;" alt="Tu Nombre"/>
+    <br /><sub><b>Tu Nombre</b></sub>
+  </a>
+</td>
+```
+
+3. Reemplaza `TU-USUARIO` con tu nombre de usuario de GitHub
+4. Reemplaza `TU-ID` con tu ID numérico de GitHub (lo encuentras en `https://api.github.com/users/TU-USUARIO`)
+5. Reemplaza `Tu Nombre` con tu nombre
+6. Crea un PR con este cambio (puede ir en el mismo PR de tu contribución)
+
 ## Preguntas frecuentes
 
 ### ¿Qué significa el código "I" para miércoles?
@@ -265,4 +248,4 @@ Los datos se obtienen de la [API pública de oferta de cursos](https://ofertadec
 
 ---
 
-¿Tienes más preguntas? Abre un [issue](https://github.com/Open-Source-Uniandes/AulaFinder/issues) o contacta a [Open Source Uniandes](https://github.com/Open-Source-Uniandes). 👈
+¿Tienes más preguntas? Abre un [issue](https://github.com/Open-Source-Uniandes/Aula-Finder/issues) o contacta a [Open Source Uniandes](https://github.com/Open-Source-Uniandes). 👈
