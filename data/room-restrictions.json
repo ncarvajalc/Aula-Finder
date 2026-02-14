@@ -1,0 +1,13 @@
+{
+  "restrictions": [
+    {
+      "building": "B",
+      "room": "3*",
+      "isRestricted": true,
+      "restrictionType": "lab",
+      "note": "Laboratorios de física - Acceso restringido"
+    }
+  ],
+  "lastUpdated": "2026-02-13T17:00:00.000Z",
+  "notes": "Room restrictions are matched per building. The 'room' field uses wildcard '*': e.g. '3*' in building 'B' matches rooms 301, 302, etc. Restricted rooms appear grayed out in the UI but are still shown in course detail views."
+}

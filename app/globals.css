@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Universidad de los Andes institutional colors */
+    --background: 0 0% 99%;
+    --foreground: 220 20% 10%;
+    --primary: 42 100% 47%;
+    --primary-foreground: 220 20% 10%;
+    --secondary: 220 15% 95%;
+    --secondary-foreground: 220 20% 15%;
+    --muted: 220 15% 95%;
+    --muted-foreground: 220 10% 45%;
+    --accent: 42 80% 92%;
+    --accent-foreground: 220 20% 10%;
+    --border: 220 15% 90%;
+    --input: 220 15% 90%;
+    --ring: 42 100% 47%;
+    --radius: 0.75rem;
+    --card: 0 0% 100%;
+    --card-foreground: 220 20% 10%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --uniandes-yellow: #F0B000;
+    --uniandes-dark: #1B2A4A;
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
