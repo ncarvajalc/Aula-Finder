@@ -7,7 +7,15 @@
           "type": "coffee_shop",
           "name": "Juan Valdez Café",
           "location": "Primer piso",
-          "icon": "☕"
+          "icon": "☕",
+          "description": "Cafetería Juan Valdez en el lobby principal"
+        },
+        {
+          "type": "food",
+          "name": "Plaza de comidas",
+          "location": "Sótano",
+          "icon": "🍽️",
+          "description": "Diversas opciones de comida en el sótano"
         },
         {
           "type": "elevator",
@@ -16,15 +24,15 @@
           "icon": "🛗"
         },
         {
-          "type": "accessible_restroom",
-          "name": "Baños accesibles",
+          "type": "restroom",
+          "name": "Baños",
           "floors": [1, 2, 3, 4, 5, 6, 7],
-          "icon": "♿"
+          "icon": "🚻"
         },
         {
           "type": "study_area",
-          "name": "Áreas de estudio",
-          "description": "Múltiples zonas de estudio colaborativo",
+          "name": "Biblioteca y salas de estudio",
+          "description": "Biblioteca en los pisos superiores con zonas de estudio colaborativo e individual",
           "icon": "📚"
         },
         {
@@ -34,10 +42,87 @@
           "icon": "🖨️"
         },
         {
-          "type": "wifi",
-          "name": "Wi-Fi",
-          "description": "Cobertura completa eduroam",
-          "icon": "📶"
+          "type": "lab",
+          "name": "Laboratorios de cómputo",
+          "description": "Salas de computadores para estudiantes",
+          "icon": "💻"
+        },
+        {
+          "type": "vending_machine",
+          "name": "Máquinas expendedoras",
+          "location": "Varios pisos",
+          "icon": "🥤"
+        }
+      ]
+    },
+    {
+      "code": "SD",
+      "amenities": [
+        {
+          "type": "coffee_shop",
+          "name": "Café",
+          "location": "Primer piso",
+          "icon": "☕"
+        },
+        {
+          "type": "elevator",
+          "name": "Ascensores",
+          "count": 2,
+          "icon": "🛗"
+        },
+        {
+          "type": "restroom",
+          "name": "Baños",
+          "floors": [1, 2, 3, 4, 5],
+          "icon": "🚻"
+        },
+        {
+          "type": "study_area",
+          "name": "Áreas de estudio",
+          "description": "Espacios abiertos para estudio en grupo",
+          "icon": "📚"
+        },
+        {
+          "type": "lab",
+          "name": "Laboratorios",
+          "description": "Laboratorios de ciencias sociales y humanidades",
+          "icon": "🔬"
+        },
+        {
+          "type": "vending_machine",
+          "name": "Máquinas expendedoras",
+          "location": "Primer piso",
+          "icon": "🥤"
+        }
+      ]
+    },
+    {
+      "code": "RGD",
+      "amenities": [
+        {
+          "type": "food",
+          "name": "Cafetería",
+          "location": "Primer piso",
+          "icon": "🍽️",
+          "description": "Opciones de comida y cafetería"
+        },
+        {
+          "type": "elevator",
+          "name": "Ascensores",
+          "count": 2,
+          "icon": "🛗"
+        },
+        {
+          "type": "restroom",
+          "name": "Baños",
+          "floors": [1, 2, 3, 4],
+          "icon": "🚻"
+        },
+        {
+          "type": "study_area",
+          "name": "Áreas de estudio",
+          "description": "Espacios silenciosos para estudio individual",
+          "icon": "📚"
         }
       ]
     },
@@ -51,22 +136,16 @@
           "icon": "🛗"
         },
         {
-          "type": "accessible_restroom",
-          "name": "Baños accesibles",
+          "type": "restroom",
+          "name": "Baños",
           "floors": [1, 2, 3],
-          "icon": "♿"
+          "icon": "🚻"
         },
         {
           "type": "vending_machine",
           "name": "Máquinas expendedoras",
           "location": "Primer piso",
           "icon": "🥤"
-        },
-        {
-          "type": "wifi",
-          "name": "Wi-Fi",
-          "description": "Cobertura completa eduroam",
-          "icon": "📶"
         }
       ]
     },
@@ -86,10 +165,10 @@
           "icon": "🛗"
         },
         {
-          "type": "accessible_restroom",
-          "name": "Baños accesibles",
+          "type": "restroom",
+          "name": "Baños",
           "floors": [1, 2, 3, 4, 5],
-          "icon": "♿"
+          "icon": "🚻"
         },
         {
           "type": "study_area",
@@ -98,10 +177,10 @@
           "icon": "📚"
         },
         {
-          "type": "wifi",
-          "name": "Wi-Fi",
-          "description": "Cobertura completa eduroam",
-          "icon": "📶"
+          "type": "lab",
+          "name": "Laboratorios de ingeniería",
+          "description": "Laboratorios especializados",
+          "icon": "🔬"
         }
       ]
     },
@@ -111,7 +190,7 @@
         {
           "type": "lab",
           "name": "Laboratorios de Física",
-          "description": "Labs B3XX - Acceso restringido",
+          "description": "Labs B3XX - Acceso restringido para prácticas de laboratorio",
           "icon": "🔬"
         },
         {
@@ -121,16 +200,10 @@
           "icon": "🛗"
         },
         {
-          "type": "accessible_restroom",
-          "name": "Baños accesibles",
+          "type": "restroom",
+          "name": "Baños",
           "floors": [1, 2, 3],
-          "icon": "♿"
-        },
-        {
-          "type": "wifi",
-          "name": "Wi-Fi",
-          "description": "Cobertura completa eduroam",
-          "icon": "📶"
+          "icon": "🚻"
         }
       ]
     },
@@ -144,56 +217,34 @@
           "icon": "🛗"
         },
         {
-          "type": "accessible_restroom",
-          "name": "Baños accesibles",
-          "floors": [1, 2],
-          "icon": "♿"
+          "type": "restroom",
+          "name": "Baños",
+          "floors": [1, 2, 3],
+          "icon": "🚻"
         },
         {
-          "type": "wifi",
-          "name": "Wi-Fi",
-          "description": "Cobertura completa eduroam",
-          "icon": "📶"
-        }
-      ]
-    },
-    {
-      "code": "RGD",
-      "amenities": [
-        {
-          "type": "elevator",
-          "name": "Ascensores",
-          "count": 2,
-          "icon": "🛗"
-        },
-        {
-          "type": "accessible_restroom",
-          "name": "Baños accesibles",
-          "floors": [1, 2, 3, 4],
-          "icon": "♿"
-        },
-        {
-          "type": "study_area",
-          "name": "Áreas de estudio",
-          "description": "Espacios silenciosos para estudio individual",
-          "icon": "📚"
-        },
-        {
-          "type": "wifi",
-          "name": "Wi-Fi",
-          "description": "Cobertura completa eduroam",
-          "icon": "📶"
+          "type": "vending_machine",
+          "name": "Máquinas expendedoras",
+          "icon": "🥤"
         }
       ]
     }
   ],
-  "lastUpdated": "2026-02-13T17:00:00.000Z",
+  "amenityTypes": {
+    "coffee_shop": { "icon": "☕", "label": "Café" },
+    "food": { "icon": "🍽️", "label": "Comida" },
+    "elevator": { "icon": "🛗", "label": "Ascensores" },
+    "restroom": { "icon": "🚻", "label": "Baños" },
+    "study_area": { "icon": "📚", "label": "Sala de estudio" },
+    "printer": { "icon": "🖨️", "label": "Impresoras" },
+    "lab": { "icon": "🔬", "label": "Laboratorio" },
+    "vending_machine": { "icon": "🥤", "label": "Expendedoras" }
+  },
+  "lastUpdated": "2026-02-14T00:00:00.000Z",
   "sources": [
     "Based on Universidad de los Andes campus infrastructure",
-    "https://uniandes.edu.co/es/infraestructura",
-    "TODO: Verify coffee shop locations and hours",
-    "TODO: Add parking information if available",
-    "TODO: Confirm elevator counts and accessibility features"
+    "https://uniandes.edu.co/",
+    "Contributed by students and campus users"
   ],
-  "notes": "This data is maintained manually. Contributors can update amenities by editing this JSON file. Please add sources for any new information."
+  "notes": "This data is maintained manually. Contributors can update amenities by editing this JSON file. Please add sources for any new information. Use amenityTypes as reference for the type and icon fields."
 }

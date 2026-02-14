@@ -23,46 +23,46 @@
     "202610": {
       "year": 2026,
       "semester": 1,
-      "startDate": "2026-01-15",
-      "endDate": "2026-05-15",
-      "midpoint": "2026-03-15",
+      "startDate": "2026-01-20",
+      "endDate": "2026-05-30",
+      "midpoint": "2026-03-19",
       "ciclos": {
         "1": {
-          "startDate": "2026-01-15",
-          "endDate": "2026-05-15"
+          "startDate": "2026-01-20",
+          "endDate": "2026-05-30"
         },
         "8A": {
-          "startDate": "2026-01-15",
-          "endDate": "2026-03-15"
+          "startDate": "2026-01-20",
+          "endDate": "2026-03-14"
         },
         "8B": {
-          "startDate": "2026-03-15",
-          "endDate": "2026-05-15"
+          "startDate": "2026-03-24",
+          "endDate": "2026-05-23"
         }
       }
     },
     "202620": {
       "year": 2026,
       "semester": 2,
-      "startDate": "2026-07-15",
-      "endDate": "2026-11-15",
-      "midpoint": "2026-09-15",
+      "startDate": "2026-08-10",
+      "endDate": "2026-12-05",
+      "midpoint": "2026-10-10",
       "ciclos": {
         "1": {
-          "startDate": "2026-07-15",
-          "endDate": "2026-11-15"
+          "startDate": "2026-08-10",
+          "endDate": "2026-12-05"
         },
         "8A": {
-          "startDate": "2026-07-15",
-          "endDate": "2026-09-15"
+          "startDate": "2026-08-10",
+          "endDate": "2026-10-04"
         },
         "8B": {
-          "startDate": "2026-09-15",
-          "endDate": "2026-11-15"
+          "startDate": "2026-10-13",
+          "endDate": "2026-12-05"
         }
       }
     }
   },
-  "lastUpdated": "2026-02-13T17:00:00.000Z",
-  "notes": "Ciclo dates are approximate and should be updated each semester. Use ptrm field from API for accurate course scheduling."
+  "lastUpdated": "2026-02-14T00:00:00.000Z",
+  "notes": "Dates for 202610 were inferred from the course schedule data (dateIni/dateFin fields). Dates for 202620 are estimated and should be updated when the course data for that term is available. You can modify these dates if they don't match reality. For official dates, visit https://registro.uniandes.edu.co/"
 }

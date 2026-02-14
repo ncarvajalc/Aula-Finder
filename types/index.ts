@@ -95,7 +95,7 @@ export interface RoomData {
  * BuildingAmenity represents a facility or service available in a building
  */
 export interface BuildingAmenity {
-  type: "coffee_shop" | "elevator" | "accessible_restroom" | "study_area" | "printer" | "wifi" | "lab" | "vending_machine" | "parking";
+  type: "coffee_shop" | "food" | "elevator" | "restroom" | "study_area" | "printer" | "lab" | "vending_machine" | "parking";
   name: string;
   icon?: string;
   location?: string;
