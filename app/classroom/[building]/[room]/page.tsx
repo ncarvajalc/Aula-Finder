@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import ClassroomDetailClient from "./ClassroomDetailClient";
 import buildingsMetadata from "@/data/buildings-metadata.json";
 import coursesData from "@/data/courses/courses-202610.json";
@@ -20,6 +21,36 @@ export async function generateStaticParams() {
     });
   });
   return params;
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ building: string; room: string }>;
+}): Promise<Metadata> {
+  const { building, room } = await params;
+  const buildings = buildingsMetadata.buildings as BuildingMetadata[];
+  const buildingData = buildings.find((b) => b.code === building);
+  const buildingName = buildingData?.name || building;
+
+  const title = `${building} ${room} - Aula-Finder`;
+  const description = `Consulta el horario y disponibilidad del salón ${room} en ${buildingName} de la Universidad de los Andes.`;
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      url: `/Aula-Finder/classroom/${building}/${room}`,
+      type: "website",
+    },
+    twitter: {
+      card: "summary",
+      title,
+      description,
+    },
+  };
 }
 
 export default async function ClassroomDetailPage({
