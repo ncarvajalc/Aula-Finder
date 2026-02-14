@@ -105,29 +105,35 @@ function checkSpecialEvent(
 ): ClosureStatus {
   const { events } = closuresData.specialEvents;
 
-  for (const event of events) {
+  interface SpecialEvent {
+    name: string;
+    startDate: string;
+    endDate: string;
+    comment: string;
+    scope: string;
+    buildings?: string[];
+    rooms?: string[];
+  }
+
+  for (const raw of events) {
+    const event = raw as SpecialEvent;
     if (dateStr >= event.startDate && dateStr <= event.endDate) {
-      // Check scope
       if (event.scope === "campus") {
         return { isClosed: true, reason: event.comment };
       }
       if (
         event.scope === "building" &&
         building &&
-        "buildings" in event &&
-        Array.isArray((event as Record<string, unknown>).buildings) &&
-        ((event as Record<string, unknown>).buildings as string[]).includes(
-          building
-        )
+        event.buildings &&
+        event.buildings.includes(building)
       ) {
         return { isClosed: true, reason: event.comment };
       }
       if (
         event.scope === "room" &&
         room &&
-        "rooms" in event &&
-        Array.isArray((event as Record<string, unknown>).rooms) &&
-        ((event as Record<string, unknown>).rooms as string[]).includes(room)
+        event.rooms &&
+        event.rooms.includes(room)
       ) {
         return { isClosed: true, reason: event.comment };
       }

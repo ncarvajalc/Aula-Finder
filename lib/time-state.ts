@@ -54,7 +54,7 @@ export function useTimeState() {
     isValidDay(urlDay) ? urlDay : getCurrentDayCode()
   );
   const [selectedTime, setSelectedTime] = useState<string>(
-    isValidTime(urlTime) ? urlTime! : getCurrentTime()
+    isValidTime(urlTime) ? (urlTime as string) : getCurrentTime()
   );
   const [isAutoTime, setIsAutoTime] = useState(!hasUrlOverride);
   const [selectedCiclo, setSelectedCiclo] = useState<PartOfTerm | "all">(

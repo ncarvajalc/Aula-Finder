@@ -63,7 +63,7 @@ function UserLocationMarker({ position }: { position: [number, number] }) {
 
   useEffect(() => {
     map.flyTo(position, Math.max(map.getZoom(), DEFAULT_ZOOM));
-  }, [position, map]);
+  }, [position]); // eslint-disable-line react-hooks/exhaustive-deps -- map instance is stable
 
   return <Marker position={position} icon={createUserIcon()} />;
 }
