@@ -233,7 +233,9 @@ export default function WeekCalendar({ occupancies, buildingCode, roomCode }: We
             onClick={(e) => e.stopPropagation()}
           >
             <h3 className="text-lg font-bold mb-1">{selectedBlock.courseName}</h3>
-            <p className="text-sm text-muted-foreground mb-4">{selectedBlock.courseCode} · Sección {selectedBlock.section}</p>
+            <p className="text-sm text-muted-foreground mb-4">
+              {selectedBlock.courseCode} · Sección {selectedBlock.section}
+            </p>
             <div className="space-y-2 text-sm">
               <div className="flex justify-between">
                 <span className="text-muted-foreground">NRC</span>
@@ -262,6 +264,30 @@ export default function WeekCalendar({ occupancies, buildingCode, roomCode }: We
                     : selectedBlock.ptrm}
                 </span>
               </div>
+              {selectedBlock.modality && (
+                <div className="flex justify-between">
+                  <span className="text-muted-foreground">Modalidad</span>
+                  <span className="font-medium">{selectedBlock.modality}</span>
+                </div>
+              )}
+              {selectedBlock.language && (
+                <div className="flex justify-between">
+                  <span className="text-muted-foreground">Idioma</span>
+                  <span className="font-medium">🇬🇧 {selectedBlock.language}</span>
+                </div>
+              )}
+              {selectedBlock.attributes && selectedBlock.attributes.length > 0 && (
+                <div className="flex justify-between">
+                  <span className="text-muted-foreground">Atributos</span>
+                  <div className="flex gap-1 flex-wrap justify-end">
+                    {selectedBlock.attributes.map((attr) => (
+                      <span key={attr} className="px-1.5 py-0.5 rounded bg-secondary text-xs font-medium">
+                        {attr}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
             <button
               onClick={() => setSelectedBlock(null)}

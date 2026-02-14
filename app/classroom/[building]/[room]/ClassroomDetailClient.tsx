@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense } from "react";
+import { Suspense, useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { Card, CardContent } from "@/components/ui/card";
@@ -8,9 +8,11 @@ import WeekCalendar from "@/components/WeekCalendar";
 
 import buildingsMetadata from "@/data/buildings-metadata.json";
 import coursesData from "@/data/courses/courses-202610.json";
-import { parseCourseSections, groupByRoom } from "@/lib/parse-courses";
+import ciclosData from "@/data/ciclos.json";
+import manifestData from "@/data/courses/manifest.json";
+import { parseCourseSections, groupByRoom, getCurrentCiclo } from "@/lib/parse-courses";
 import { getRoomRestrictions } from "@/lib/data-loader";
-import { BuildingMetadata } from "@/types";
+import { BuildingMetadata, PartOfTerm } from "@/types";
 
 export default function ClassroomDetailClient({
   building,
@@ -37,6 +39,14 @@ function ClassroomDetailInner({
   const buildingCode = building.toUpperCase();
   const roomCode = decodeURIComponent(room);
 
+  // Determine default ciclo from URL or auto-detect
+  const urlCiclo = searchParams.get("ciclo");
+  const defaultCiclo = (urlCiclo && ["all", "1", "8A", "8B"].includes(urlCiclo))
+    ? urlCiclo as PartOfTerm | "all"
+    : getCurrentCiclo(manifestData.term, ciclosData);
+
+  const [selectedCiclo, setSelectedCiclo] = useState<PartOfTerm | "all">(defaultCiclo);
+
   const allBuildings = buildingsMetadata.buildings as BuildingMetadata[];
   const buildingMeta = allBuildings.find((b) => b.code === buildingCode);
 
@@ -59,13 +69,31 @@ function ClassroomDetailInner({
     );
   }
 
+  // Filter occupancies by selected ciclo
+  const filteredOccupancies = selectedCiclo === "all"
+    ? roomData.occupancies
+    : roomData.occupancies.filter((o) => o.ptrm === selectedCiclo || o.ptrm === "1");
+
   const uniqueCourses = Array.from(
-    new Set(roomData.occupancies.map((o) => o.courseCode))
+    new Set(filteredOccupancies.map((o) => o.courseCode))
   );
+
+  // Check if there are multiple ciclos in this room's data
+  const availableCiclos = Array.from(new Set(roomData.occupancies.map((o) => o.ptrm)));
+  const hasCicloVariety = availableCiclos.length > 1 || availableCiclos.some((c) => c === "8A" || c === "8B");
 
   // Preserve time params in back link
   const qs = searchParams.toString();
   const backQuery = qs ? `?${qs}` : "";
+
+  /**
+   * Check if a course title indicates it's in English.
+   * Courses with "INGLÉS" or "INGLES" in the title are taught in English.
+   */
+  function isEnglishCourse(courseName: string): boolean {
+    const upper = courseName.toUpperCase();
+    return upper.includes("INGLÉS") || upper.includes("INGLES");
+  }
 
   return (
     <main className="min-h-screen bg-background">
@@ -81,7 +109,7 @@ function ClassroomDetailInner({
             {buildingCode} {roomCode}
           </h1>
           <div className="flex items-center gap-4 mt-1 text-sm text-white/70">
-            <span>{roomData.occupancies.length} sesiones</span>
+            <span>{filteredOccupancies.length} sesiones</span>
             <span>·</span>
             <span>{uniqueCourses.length} cursos</span>
             {roomData.floor !== undefined && (
@@ -100,18 +128,39 @@ function ClassroomDetailInner({
         </div>
       </header>
 
+      {/* Ciclo filter */}
+      {hasCicloVariety && (
+        <div className="border-b bg-card">
+          <div className="max-w-7xl mx-auto px-4 py-3">
+            <div className="flex items-center gap-2">
+              <span className="text-sm text-muted-foreground">Ciclo:</span>
+              <select
+                value={selectedCiclo}
+                onChange={(e) => setSelectedCiclo(e.target.value as PartOfTerm | "all")}
+                className="px-3 py-1.5 rounded-lg border bg-background text-sm"
+              >
+                <option value="all">Todos los ciclos</option>
+                <option value="1">Semestre completo</option>
+                <option value="8A">Ciclo 8A (1ª mitad)</option>
+                <option value="8B">Ciclo 8B (2ª mitad)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      )}
+
       <div className="max-w-7xl mx-auto px-4 py-6">
         <div className="bg-card border rounded-xl p-4 md:p-6">
           <h2 className="text-lg font-bold mb-4">Calendario Semanal</h2>
-          {roomData.occupancies.length > 0 ? (
+          {filteredOccupancies.length > 0 ? (
             <WeekCalendar
-              occupancies={roomData.occupancies}
+              occupancies={filteredOccupancies}
               buildingCode={buildingCode}
               roomCode={roomCode}
             />
           ) : (
             <div className="text-center py-12 text-muted-foreground">
-              No hay clases programadas para este salón.
+              No hay clases programadas para este salón en el ciclo seleccionado.
             </div>
           )}
         </div>
@@ -121,7 +170,7 @@ function ClassroomDetailInner({
             <h2 className="text-lg font-bold mb-3">Cursos en este salón</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
               {uniqueCourses.map((courseCode) => {
-                const courseOccupancies = roomData.occupancies.filter(
+                const courseOccupancies = filteredOccupancies.filter(
                   (o) => o.courseCode === courseCode
                 );
                 const first = courseOccupancies[0];
@@ -137,14 +186,21 @@ function ClassroomDetailInner({
                     ? "Ciclo 8B"
                     : first.ptrm;
 
+                const isEnglish = isEnglishCourse(first.courseName);
+
                 return (
                   <Card
                     key={courseCode}
                     className="border-l-4 border-l-uniandes-yellow"
                   >
                     <CardContent className="p-4">
-                      <div className="font-semibold text-sm">
+                      <div className="font-semibold text-sm flex items-center gap-2">
                         {first.courseName}
+                        {isEnglish && (
+                          <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-medium bg-blue-100 text-blue-800">
+                            🇬🇧 EN
+                          </span>
+                        )}
                       </div>
                       <div className="text-xs text-muted-foreground mt-1 space-y-0.5">
                         <div>

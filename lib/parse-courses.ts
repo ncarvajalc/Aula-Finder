@@ -169,6 +169,7 @@ export function groupByRoom(
           endTime: schedule.endTime,
           modality: section.modality,
           ptrm: section.ptrm,
+          language: detectLanguage(section),
         };
 
         // Initialize building if not exists
@@ -295,6 +296,21 @@ function extractFloor(room: string): number | undefined {
   const match = room.match(/\d/);
   if (!match) return undefined;
   return parseInt(match[0]);
+}
+
+/**
+ * Detect course language. Returns the language tag only if non-Spanish.
+ * Checks both the language metadata field and the course title for "INGLÉS"/"INGLES".
+ */
+function detectLanguage(section: CourseSection): string | undefined {
+  if (section.language && section.language !== "Español") {
+    return section.language;
+  }
+  const upper = section.courseName.toUpperCase();
+  if (upper.includes("INGLÉS") || upper.includes("INGLES")) {
+    return "Inglés";
+  }
+  return undefined;
 }
 
 /**

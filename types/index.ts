@@ -74,6 +74,8 @@ export interface RoomOccupancy {
   endTime: string;
   modality: string;
   ptrm: string; // Part-of-term for filtering by ciclo
+  language?: string;
+  attributes?: string[]; // e.g., ["EPSI"]
 }
 
 /**
