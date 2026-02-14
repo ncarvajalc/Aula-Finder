@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import ClassroomDetailClient from "./ClassroomDetailClient";
 import buildingsMetadata from "@/data/buildings-metadata.json";
-import coursesData from "@/data/courses/courses-202610.json";
+import coursesData from "@/data/courses/courses-latest.json";
 import { parseCourseSections, groupByRoom } from "@/lib/parse-courses";
 import { getRoomRestrictions } from "@/lib/data-loader";
 import { BuildingMetadata } from "@/types";

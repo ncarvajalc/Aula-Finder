@@ -72,6 +72,11 @@ jobs:
             echo "ERROR: Expected file $FILE not found"
             exit 1
           fi
+          LATEST="data/courses/courses-latest.json"
+          if [ ! -f "$LATEST" ]; then
+            echo "ERROR: Expected file $LATEST not found"
+            exit 1
+          fi
           MANIFEST_TERM=$(python3 -c "import json; print(json.load(open('data/courses/manifest.json'))['term'])")
           if [ "$MANIFEST_TERM" != "$TERM" ]; then
             echo "ERROR: Manifest term $MANIFEST_TERM does not match expected $TERM"

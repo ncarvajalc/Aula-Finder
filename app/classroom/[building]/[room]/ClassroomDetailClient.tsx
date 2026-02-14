@@ -7,7 +7,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import WeekCalendar from "@/components/WeekCalendar";
 
 import buildingsMetadata from "@/data/buildings-metadata.json";
-import coursesData from "@/data/courses/courses-202610.json";
+import coursesData from "@/data/courses/courses-latest.json";
 import ciclosData from "@/data/ciclos.json";
 import manifestData from "@/data/courses/manifest.json";
 import { parseCourseSections, groupByRoom, getCurrentCiclo } from "@/lib/parse-courses";

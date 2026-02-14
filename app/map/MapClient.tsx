@@ -6,7 +6,7 @@ import dynamic from "next/dynamic";
 import { useSearchParams } from "next/navigation";
 
 import buildingsMetadata from "@/data/buildings-metadata.json";
-import coursesData from "@/data/courses/courses-202610.json";
+import coursesData from "@/data/courses/courses-latest.json";
 import manifestData from "@/data/courses/manifest.json";
 import buildingsAmenitiesData from "@/data/buildings-amenities.json";
 import { parseCourseSections, groupByRoom } from "@/lib/parse-courses";
