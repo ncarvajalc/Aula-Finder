@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import { DayOfWeek, PartOfTerm } from "@/types";
 import manifestData from "@/data/courses/manifest.json";
@@ -62,27 +62,24 @@ export function useTimeState() {
   );
 
   // Sync URL params when state changes (only for manual overrides)
-  const updateUrlParams = useCallback(
-    (day: DayOfWeek, time: string, ciclo: PartOfTerm | "all", auto: boolean) => {
-      const params = new URLSearchParams(searchParams.toString());
-      if (auto) {
-        params.delete("day");
-        params.delete("time");
-        params.delete("ciclo");
+  const updateUrlParams = (day: DayOfWeek, time: string, ciclo: PartOfTerm | "all", auto: boolean) => {
+    const params = new URLSearchParams(searchParams.toString());
+    if (auto) {
+      params.delete("day");
+      params.delete("time");
+      params.delete("ciclo");
+    } else {
+      params.set("day", day);
+      params.set("time", time);
+      if (ciclo !== getCurrentCiclo(manifestData.term, ciclosData)) {
+        params.set("ciclo", ciclo);
       } else {
-        params.set("day", day);
-        params.set("time", time);
-        if (ciclo !== getCurrentCiclo(manifestData.term, ciclosData)) {
-          params.set("ciclo", ciclo);
-        } else {
-          params.delete("ciclo");
-        }
+        params.delete("ciclo");
       }
-      const qs = params.toString();
-      router.replace(`${pathname}${qs ? `?${qs}` : ""}`, { scroll: false });
-    },
-    [searchParams, router, pathname]
-  );
+    }
+    const qs = params.toString();
+    router.replace(`${pathname}${qs ? `?${qs}` : ""}`, { scroll: false });
+  };
 
   // Auto-update time every 30 seconds when in auto mode
   useEffect(() => {
@@ -94,48 +91,39 @@ export function useTimeState() {
     return () => clearInterval(interval);
   }, [isAutoTime]);
 
-  const handleDayChange = useCallback(
-    (day: DayOfWeek) => {
-      setIsAutoTime(false);
-      setSelectedDay(day);
-      updateUrlParams(day, selectedTime, selectedCiclo, false);
-    },
-    [selectedTime, selectedCiclo, updateUrlParams]
-  );
+  const handleDayChange = (day: DayOfWeek) => {
+    setIsAutoTime(false);
+    setSelectedDay(day);
+    updateUrlParams(day, selectedTime, selectedCiclo, false);
+  };
 
-  const handleTimeChange = useCallback(
-    (time: string) => {
-      setIsAutoTime(false);
-      setSelectedTime(time);
-      updateUrlParams(selectedDay, time, selectedCiclo, false);
-    },
-    [selectedDay, selectedCiclo, updateUrlParams]
-  );
+  const handleTimeChange = (time: string) => {
+    setIsAutoTime(false);
+    setSelectedTime(time);
+    updateUrlParams(selectedDay, time, selectedCiclo, false);
+  };
 
-  const handleCicloChange = useCallback(
-    (ciclo: PartOfTerm | "all") => {
-      setSelectedCiclo(ciclo);
-      if (!isAutoTime) {
-        updateUrlParams(selectedDay, selectedTime, ciclo, false);
-      }
-    },
-    [isAutoTime, selectedDay, selectedTime, updateUrlParams]
-  );
+  const handleCicloChange = (ciclo: PartOfTerm | "all") => {
+    setSelectedCiclo(ciclo);
+    if (!isAutoTime) {
+      updateUrlParams(selectedDay, selectedTime, ciclo, false);
+    }
+  };
 
-  const handleGoToNow = useCallback(() => {
+  const handleGoToNow = () => {
     const now = getCurrentTime();
     const today = getCurrentDayCode();
     setIsAutoTime(true);
     setSelectedDay(today);
     setSelectedTime(now);
     updateUrlParams(today, now, selectedCiclo, true);
-  }, [selectedCiclo, updateUrlParams]);
+  };
 
   /**
    * Build query string to append to navigation links
    * so that manual time overrides are preserved across pages.
    */
-  const buildLinkQuery = useCallback((): string => {
+  const buildLinkQuery = (): string => {
     if (isAutoTime) return "";
     const params = new URLSearchParams();
     params.set("day", selectedDay);
@@ -144,7 +132,7 @@ export function useTimeState() {
       params.set("ciclo", selectedCiclo);
     }
     return `?${params.toString()}`;
-  }, [isAutoTime, selectedDay, selectedTime, selectedCiclo]);
+  };
 
   return {
     selectedDay,
