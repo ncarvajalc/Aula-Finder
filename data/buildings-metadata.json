@@ -288,5 +288,6 @@
     }
   ],
   "defaultImage": "/images/buildings/default.jpg",
+  "dataQuality": "⚠️ AI-GENERATED COORDINATES — The latitude/longitude values for buildings in this file were estimated by AI and have NOT been verified against actual GPS positions. They may place buildings in incorrect locations on the map. Please help verify coordinates: right-click on the building in Google Maps, copy the coordinates, and submit a correction. See data/README.md for instructions.",
   "lastUpdated": "2026-02-13T17:00:00.000Z"
 }
