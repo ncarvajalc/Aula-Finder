@@ -15,6 +15,7 @@ import { getRoomRestrictions } from "@/lib/data-loader";
 import { BuildingMetadata, PartOfTerm, DayOfWeek, RoomData } from "@/types";
 import { getAssetPath } from "@/lib/utils";
 import { useTimeState } from "@/lib/time-state";
+import { getClosureStatus } from "@/lib/closures";
 
 const DAY_NAMES: Record<string, string> = {
   L: "Lunes",
@@ -95,6 +96,9 @@ function BuildingsPageInner() {
     handleGoToNow,
     buildLinkQuery,
   } = useTimeState();
+
+  // Check if university is closed
+  const closureStatus = getClosureStatus(selectedDay, selectedTime);
 
   // Parse courses and compute availability
   const sections = parseCourseSections(coursesData as any[]);
@@ -215,11 +219,20 @@ function BuildingsPageInner() {
 
       {/* Buildings Grid */}
       <div className="max-w-7xl mx-auto px-4 py-6">
+        {closureStatus.isClosed && (
+          <div className="mb-6 p-4 rounded-xl border border-amber-300 bg-amber-50 text-amber-900">
+            <div className="flex items-center gap-2 font-semibold text-sm">
+              <span>🚫</span>
+              <span>Universidad cerrada</span>
+            </div>
+            <p className="text-xs mt-1 text-amber-800">{closureStatus.reason}</p>
+          </div>
+        )}
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
           {visibleBuildings.map((building) => {
             const stats = buildingStats.get(building.code);
             const hasAvailable = stats ? stats.available > 0 : false;
-            const isInactive = stats ? stats.available === 0 && stats.total > 0 : false;
+            const isInactive = closureStatus.isClosed || (stats ? stats.available === 0 && stats.total > 0 : false);
 
             return (
               <Link
@@ -260,9 +273,23 @@ function BuildingsPageInner() {
         </div>
 
         {/* Data info */}
-        <div className="mt-6 text-center text-xs text-muted-foreground">
-          Datos del semestre {manifestData.term} · Actualizado: {new Date(manifestData.timestamp).toLocaleDateString("es-CO")}
-          {" · "}{manifestData.totalSections} secciones
+        <div className="mt-6 text-center text-xs text-muted-foreground space-y-1">
+          <div>
+            Datos del semestre {manifestData.term} · Actualizado: {new Date(manifestData.timestamp).toLocaleDateString("es-CO")}
+            {" · "}{manifestData.totalSections} secciones
+          </div>
+          <div className="max-w-xl mx-auto">
+            La información se basa únicamente en la oferta de cursos actualizada a esa fecha.
+            Si conoces de algún evento que ocupe salones o de un cambio de salón,{" "}
+            <a
+              href="https://github.com/Open-Source-Uniandes/Aula-Finder/issues"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-uniandes-yellow underline"
+            >
+              crea un issue
+            </a>.
+          </div>
         </div>
       </div>
 

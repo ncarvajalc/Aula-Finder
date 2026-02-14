@@ -10,6 +10,7 @@ import coursesData from "@/data/courses/courses-202610.json";
 import { parseCourseSections, groupByRoom } from "@/lib/parse-courses";
 import { getRoomRestrictions, getAmenitiesByBuildingCode } from "@/lib/data-loader";
 import { useTimeState } from "@/lib/time-state";
+import { getClosureStatus } from "@/lib/closures";
 
 const DAY_NAMES: Record<string, string> = {
   L: "Lunes", M: "Martes", I: "Miércoles", J: "Jueves", V: "Viernes", S: "Sábado",
@@ -40,6 +41,8 @@ function BuildingDetailInner({ code }: { code: string }) {
     handleGoToNow,
     buildLinkQuery,
   } = useTimeState();
+
+  const closureStatus = getClosureStatus(selectedDay, selectedTime, undefined, buildingCode);
 
   const [collapsedFloors, setCollapsedFloors] = useState<Set<number>>(new Set());
 
@@ -195,6 +198,15 @@ function BuildingDetailInner({ code }: { code: string }) {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 py-6">
+        {closureStatus.isClosed && (
+          <div className="mb-6 p-4 rounded-xl border border-amber-300 bg-amber-50 text-amber-900">
+            <div className="flex items-center gap-2 font-semibold text-sm">
+              <span>🚫</span>
+              <span>Universidad cerrada</span>
+            </div>
+            <p className="text-xs mt-1 text-amber-800">{closureStatus.reason}</p>
+          </div>
+        )}
         {amenities.length > 0 && (
           <div className="flex flex-wrap gap-2 mb-6">
             {amenities.map((amenity, idx) => (

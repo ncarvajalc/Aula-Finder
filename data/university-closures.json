@@ -1,0 +1,63 @@
+{
+  "operatingHours": {
+    "description": "Horario de operación del campus de la Universidad de los Andes",
+    "weekdays": {
+      "days": ["L", "M", "I", "J", "V"],
+      "openTime": "05:30",
+      "closeTime": "22:00",
+      "comment": "Lunes a viernes, 5:30 AM a 10:00 PM"
+    },
+    "saturday": {
+      "days": ["S"],
+      "openTime": "06:00",
+      "closeTime": "18:00",
+      "comment": "Sábados, 6:00 AM a 6:00 PM"
+    },
+    "sunday": {
+      "days": ["D"],
+      "openTime": null,
+      "closeTime": null,
+      "comment": "Domingos la universidad está cerrada"
+    }
+  },
+  "holidays": {
+    "description": "Días festivos oficiales de Colombia (Ley 51 de 1983 - Ley Emiliani). Las fechas ya reflejan los traslados al lunes siguiente cuando aplica.",
+    "source": "https://www.calendarr.com/colombia/calendario-2026/",
+    "2026": [
+      { "date": "2026-01-01", "name": "Año Nuevo", "comment": "Festivo nacional" },
+      { "date": "2026-01-12", "name": "Día de los Reyes Magos", "comment": "Festivo trasladado al lunes (Ley Emiliani)" },
+      { "date": "2026-03-23", "name": "Día de San José", "comment": "Festivo trasladado al lunes (Ley Emiliani)" },
+      { "date": "2026-04-02", "name": "Jueves Santo", "comment": "Semana Santa" },
+      { "date": "2026-04-03", "name": "Viernes Santo", "comment": "Semana Santa" },
+      { "date": "2026-05-01", "name": "Día del Trabajo", "comment": "Festivo nacional" },
+      { "date": "2026-05-18", "name": "Día de la Ascensión", "comment": "Festivo trasladado al lunes (Ley Emiliani)" },
+      { "date": "2026-06-08", "name": "Corpus Christi", "comment": "Festivo trasladado al lunes (Ley Emiliani)" },
+      { "date": "2026-06-15", "name": "Sagrado Corazón de Jesús", "comment": "Festivo trasladado al lunes (Ley Emiliani)" },
+      { "date": "2026-07-06", "name": "San Pedro y San Pablo", "comment": "Festivo trasladado al lunes (Ley Emiliani)" },
+      { "date": "2026-07-20", "name": "Día de la Independencia", "comment": "Festivo nacional" },
+      { "date": "2026-08-07", "name": "Batalla de Boyacá", "comment": "Festivo nacional" },
+      { "date": "2026-08-17", "name": "Asunción de la Virgen", "comment": "Festivo trasladado al lunes (Ley Emiliani)" },
+      { "date": "2026-10-19", "name": "Día de la Raza", "comment": "Festivo trasladado al lunes (Ley Emiliani)" },
+      { "date": "2026-11-02", "name": "Día de Todos los Santos", "comment": "Festivo trasladado al lunes (Ley Emiliani)" },
+      { "date": "2026-11-16", "name": "Independencia de Cartagena", "comment": "Festivo trasladado al lunes (Ley Emiliani)" },
+      { "date": "2026-12-08", "name": "Inmaculada Concepción", "comment": "Festivo nacional" },
+      { "date": "2026-12-25", "name": "Navidad", "comment": "Festivo nacional" }
+    ]
+  },
+  "specialEvents": {
+    "description": "Eventos especiales que cierran el campus completo o edificios/salones específicos. Contribuye creando un issue en GitHub si conoces algún evento que afecte la disponibilidad de salones.",
+    "issueUrl": "https://github.com/Open-Source-Uniandes/Aula-Finder/issues",
+    "events": [
+      {
+        "name": "MoneyCon 2026",
+        "startDate": "2026-01-17",
+        "endDate": "2026-01-18",
+        "comment": "Evento MoneyCon - Universidad cerrada",
+        "scope": "campus",
+        "source": "https://moneycon.co/"
+      }
+    ]
+  },
+  "lastUpdated": "2026-02-14T00:00:00.000Z",
+  "notes": "Este archivo se mantiene manualmente. Los contribuidores pueden agregar días festivos de años futuros, eventos especiales, o cierres de edificios/salones creando un PR. Los eventos especiales soportan scope: 'campus' (toda la universidad), 'building' (edificio específico), o 'room' (salón específico). Cuando scope es 'building' o 'room', agrega los campos 'buildings' o 'rooms' con los códigos correspondientes."
+}
