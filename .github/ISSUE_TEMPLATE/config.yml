@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 💬 Discusiones
+    url: https://github.com/Open-Source-Uniandes/Aula-Finder/discussions
+    about: Para preguntas generales o discusiones sobre el proyecto
+  - name: 🏛️ Open Source Uniandes
+    url: https://github.com/Open-Source-Uniandes
+    about: Visita la comunidad Open Source Uniandes
