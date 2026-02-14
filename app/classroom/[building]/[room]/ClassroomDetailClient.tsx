@@ -1,6 +1,8 @@
 "use client";
 
+import { Suspense } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { Card, CardContent } from "@/components/ui/card";
 import WeekCalendar from "@/components/WeekCalendar";
 
@@ -17,6 +19,21 @@ export default function ClassroomDetailClient({
   building: string;
   room: string;
 }) {
+  return (
+    <Suspense>
+      <ClassroomDetailInner building={building} room={room} />
+    </Suspense>
+  );
+}
+
+function ClassroomDetailInner({
+  building,
+  room,
+}: {
+  building: string;
+  room: string;
+}) {
+  const searchParams = useSearchParams();
   const buildingCode = building.toUpperCase();
   const roomCode = decodeURIComponent(room);
 
@@ -46,12 +63,16 @@ export default function ClassroomDetailClient({
     new Set(roomData.occupancies.map((o) => o.courseCode))
   );
 
+  // Preserve time params in back link
+  const qs = searchParams.toString();
+  const backQuery = qs ? `?${qs}` : "";
+
   return (
     <main className="min-h-screen bg-background">
       <header className="border-b bg-uniandes-dark text-white">
         <div className="max-w-7xl mx-auto px-4 py-4">
           <Link
-            href={`/building/${buildingCode}`}
+            href={`/building/${buildingCode}${backQuery}`}
             className="text-white/70 hover:text-white transition-colors text-sm"
           >
             ← {buildingMeta.name}

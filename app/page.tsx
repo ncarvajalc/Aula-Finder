@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState, Suspense } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
@@ -10,10 +10,11 @@ import { Modal, ModalContent, ModalHeader, ModalTitle } from "@/components/ui/mo
 import buildingsMetadata from "@/data/buildings-metadata.json";
 import coursesData from "@/data/courses/courses-202610.json";
 import manifestData from "@/data/courses/manifest.json";
-import ciclosData from "@/data/ciclos.json";
-import { parseCourseSections, groupByRoom, getCurrentCiclo } from "@/lib/parse-courses";
+import { parseCourseSections, groupByRoom } from "@/lib/parse-courses";
 import { getRoomRestrictions } from "@/lib/data-loader";
 import { BuildingMetadata, PartOfTerm, DayOfWeek, RoomData } from "@/types";
+import { getAssetPath } from "@/lib/utils";
+import { useTimeState } from "@/lib/time-state";
 
 const DAY_NAMES: Record<string, string> = {
   L: "Lunes",
@@ -68,26 +69,32 @@ function addMinutes(time: string, mins: number): string {
 }
 
 export default function BuildingsPage() {
+  return (
+    <Suspense>
+      <BuildingsPageInner />
+    </Suspense>
+  );
+}
+
+function BuildingsPageInner() {
   const allBuildings = buildingsMetadata.buildings as BuildingMetadata[];
   const whitelisted = allBuildings.filter((b) => b.order !== undefined).sort((a, b) => (a.order || 0) - (b.order || 0));
 
   const [showHelp, setShowHelp] = useState(false);
   const [showConfig, setShowConfig] = useState(false);
   const [extraBuildings, setExtraBuildings] = useState<Set<string>>(new Set());
-  const [selectedDay, setSelectedDay] = useState<DayOfWeek>(getCurrentDayCode());
-  const [selectedTime, setSelectedTime] = useState<string>(getCurrentTime());
-  const [isAutoTime, setIsAutoTime] = useState(true);
-  const [selectedCiclo, setSelectedCiclo] = useState<PartOfTerm | "all">(() => getCurrentCiclo(manifestData.term, ciclosData));
 
-  // Auto-update time every 30 seconds
-  useEffect(() => {
-    if (!isAutoTime) return;
-    const interval = setInterval(() => {
-      setSelectedDay(getCurrentDayCode());
-      setSelectedTime(getCurrentTime());
-    }, 30000);
-    return () => clearInterval(interval);
-  }, [isAutoTime]);
+  const {
+    selectedDay,
+    selectedTime,
+    selectedCiclo,
+    isAutoTime,
+    handleDayChange,
+    handleTimeChange,
+    handleCicloChange,
+    handleGoToNow,
+    buildLinkQuery,
+  } = useTimeState();
 
   // Parse courses and compute availability
   const sections = parseCourseSections(coursesData as any[]);
@@ -112,16 +119,6 @@ export default function BuildingsPage() {
     const available = unrestricted.filter((r) => isRoomAvailableNow(r, selectedDay, selectedTime, selectedCiclo));
     buildingStats.set(bd.building, { total: unrestricted.length, available: available.length });
   }
-
-  const handleTimeChange = (time: string) => {
-    setIsAutoTime(false);
-    setSelectedTime(time);
-  };
-
-  const handleDayChange = (day: DayOfWeek) => {
-    setIsAutoTime(false);
-    setSelectedDay(day);
-  };
 
   return (
     <main className="min-h-screen bg-background">
@@ -189,9 +186,7 @@ export default function BuildingsPage() {
               />
               <button
                 onClick={() => {
-                  setIsAutoTime(true);
-                  setSelectedDay(getCurrentDayCode());
-                  setSelectedTime(getCurrentTime());
+                  handleGoToNow();
                 }}
                 className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
                   isAutoTime
@@ -206,7 +201,7 @@ export default function BuildingsPage() {
             {/* Ciclo selector */}
             <select
               value={selectedCiclo}
-              onChange={(e) => setSelectedCiclo(e.target.value as PartOfTerm | "all")}
+              onChange={(e) => handleCicloChange(e.target.value as PartOfTerm | "all")}
               className="px-3 py-1.5 rounded-lg border bg-background text-sm"
             >
               <option value="all">Todos los ciclos</option>
@@ -229,7 +224,7 @@ export default function BuildingsPage() {
             return (
               <Link
                 key={building.code}
-                href={`/building/${building.code}`}
+                href={`/building/${building.code}${buildLinkQuery()}`}
                 className="group"
               >
                 <Card className={`overflow-hidden transition-all hover:shadow-lg hover:scale-[1.02] ${
@@ -237,7 +232,7 @@ export default function BuildingsPage() {
                 }`}>
                   <div className="relative aspect-[4/3] w-full bg-muted">
                     <Image
-                      src={building.imageUrl || buildingsMetadata.defaultImage}
+                      src={getAssetPath(building.imageUrl || buildingsMetadata.defaultImage)}
                       alt={building.name}
                       fill
                       className="object-cover"

@@ -1,43 +1,45 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState, Suspense } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { RoomData, PartOfTerm, DayOfWeek, BuildingMetadata } from "@/types";
 import Link from "next/link";
 
 import buildingsMetadata from "@/data/buildings-metadata.json";
 import coursesData from "@/data/courses/courses-202610.json";
-import manifestData from "@/data/courses/manifest.json";
-import ciclosData from "@/data/ciclos.json";
-import { parseCourseSections, groupByRoom, getCurrentCiclo } from "@/lib/parse-courses";
+import { parseCourseSections, groupByRoom } from "@/lib/parse-courses";
 import { getRoomRestrictions, getAmenitiesByBuildingCode } from "@/lib/data-loader";
+import { useTimeState } from "@/lib/time-state";
 
 const DAY_NAMES: Record<string, string> = {
   L: "Lunes", M: "Martes", I: "Miércoles", J: "Jueves", V: "Viernes", S: "Sábado",
 };
 const DAY_ORDER: DayOfWeek[] = ["L", "M", "I", "J", "V", "S"];
 
-function getCurrentDayCode(): DayOfWeek {
-  const dayIndex = new Date().getDay();
-  const map: DayOfWeek[] = ["D", "L", "M", "I", "J", "V", "S"];
-  return map[dayIndex] || "L";
-}
-
-function getCurrentTime(): string {
-  const now = new Date();
-  return `${String(now.getHours()).padStart(2, "0")}:${String(now.getMinutes()).padStart(2, "0")}`;
-}
-
-// Classes end 10 minutes early to allow students to move between classrooms
 const CLASS_TRANSITION_MINUTES = 10;
 
 export default function BuildingDetailClient({ code }: { code: string }) {
+  return (
+    <Suspense>
+      <BuildingDetailInner code={code} />
+    </Suspense>
+  );
+}
+
+function BuildingDetailInner({ code }: { code: string }) {
   const buildingCode = code.toUpperCase();
 
-  const [selectedDay, setSelectedDay] = useState<DayOfWeek>(getCurrentDayCode());
-  const [selectedTime, setSelectedTime] = useState<string>(getCurrentTime());
-  const [isAutoTime, setIsAutoTime] = useState(true);
-  const [selectedCiclo, setSelectedCiclo] = useState<PartOfTerm | "all">(() => getCurrentCiclo(manifestData.term, ciclosData));
+  const {
+    selectedDay,
+    selectedTime,
+    selectedCiclo,
+    isAutoTime,
+    handleDayChange,
+    handleTimeChange,
+    handleCicloChange,
+    handleGoToNow,
+    buildLinkQuery,
+  } = useTimeState();
 
   const [collapsedFloors, setCollapsedFloors] = useState<Set<number>>(new Set());
 
@@ -49,15 +51,6 @@ export default function BuildingDetailClient({ code }: { code: string }) {
       return next;
     });
   };
-
-  useEffect(() => {
-    if (!isAutoTime) return;
-    const interval = setInterval(() => {
-      setSelectedDay(getCurrentDayCode());
-      setSelectedTime(getCurrentTime());
-    }, 30000);
-    return () => clearInterval(interval);
-  }, [isAutoTime]);
 
   const allBuildings = buildingsMetadata.buildings as BuildingMetadata[];
   const building = allBuildings.find((b) => b.code === buildingCode);
@@ -140,7 +133,7 @@ export default function BuildingDetailClient({ code }: { code: string }) {
     <main className="min-h-screen bg-background">
       <header className="border-b bg-uniandes-dark text-white">
         <div className="max-w-7xl mx-auto px-4 py-4">
-          <Link href="/" className="text-white/70 hover:text-white transition-colors text-sm">
+          <Link href={`/${buildLinkQuery()}`} className="text-white/70 hover:text-white transition-colors text-sm">
             ← Edificios
           </Link>
           <h1 className="text-2xl font-bold mt-2">
@@ -160,7 +153,7 @@ export default function BuildingDetailClient({ code }: { code: string }) {
               {DAY_ORDER.map((day) => (
                 <button
                   key={day}
-                  onClick={() => { setIsAutoTime(false); setSelectedDay(day); }}
+                  onClick={() => handleDayChange(day)}
                   className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
                     selectedDay === day
                       ? "bg-uniandes-yellow text-uniandes-dark"
@@ -175,11 +168,11 @@ export default function BuildingDetailClient({ code }: { code: string }) {
               <input
                 type="time"
                 value={selectedTime}
-                onChange={(e) => { setIsAutoTime(false); setSelectedTime(e.target.value); }}
+                onChange={(e) => handleTimeChange(e.target.value)}
                 className="px-3 py-1.5 rounded-lg border bg-background text-sm"
               />
               <button
-                onClick={() => { setIsAutoTime(true); setSelectedDay(getCurrentDayCode()); setSelectedTime(getCurrentTime()); }}
+                onClick={() => handleGoToNow()}
                 className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
                   isAutoTime ? "bg-green-100 text-green-800 border border-green-300" : "bg-secondary text-muted-foreground"
                 }`}
@@ -189,7 +182,7 @@ export default function BuildingDetailClient({ code }: { code: string }) {
             </div>
             <select
               value={selectedCiclo}
-              onChange={(e) => setSelectedCiclo(e.target.value as PartOfTerm | "all")}
+              onChange={(e) => handleCicloChange(e.target.value as PartOfTerm | "all")}
               className="px-3 py-1.5 rounded-lg border bg-background text-sm"
             >
               <option value="all">Todos los ciclos</option>
@@ -243,7 +236,7 @@ export default function BuildingDetailClient({ code }: { code: string }) {
                     {rooms.map((room) => {
                       const status = getRoomStatus(room);
                       return (
-                        <Link key={room.room} href={`/classroom/${buildingCode}/${encodeURIComponent(room.room)}`}>
+                        <Link key={room.room} href={`/classroom/${buildingCode}/${encodeURIComponent(room.room)}${buildLinkQuery()}`}>
                           <Card className={`border-l-4 transition-all hover:shadow-md hover:scale-[1.01] ${statusColors[status.status]}`}>
                             <CardContent className="p-3">
                               <div className="flex items-center justify-between mb-1">
