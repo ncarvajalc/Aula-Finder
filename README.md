@@ -169,11 +169,19 @@ python scripts/analyze-enums.py
 
 Consulta la **[Guía de Contribución](CONTRIBUTING.md)** para información detallada.
 
+### 💬 ¿Tienes una pregunta o idea?
+
+Antes de abrir un issue, revisa las **[Discusiones](https://github.com/Open-Source-Uniandes/Aula-Finder/discussions)** donde la comunidad comparte:
+
+- 💡 Ideas para nuevas funcionalidades
+- ❓ Preguntas sobre cómo usar la app
+- 🎓 Temas de discusión sobre el proyecto
+- 📢 Anuncios y novedades
+
 ### Formas rápidas de contribuir
 
 - **🐛 Reportar un error** — Abre un [issue](https://github.com/Open-Source-Uniandes/Aula-Finder/issues)
-- **💡 Proponer una idea** — Abre un [issue](https://github.com/Open-Source-Uniandes/Aula-Finder/issues) con la etiqueta "enhancement"
-- **📸 Agregar fotos de edificios** — Sube imágenes a `public/images/buildings/`
+- **💡 Proponer una idea** — Abre una [discusión](https://github.com/Open-Source-Uniandes/Aula-Finder/discussions) o un [issue](https://github.com/Open-Source-Uniandes/Aula-Finder/issues) con la etiqueta "enhancement"
 - **📝 Actualizar metadatos** — Edita los archivos JSON en `data/` (consulta `data/README.md` para instrucciones detalladas)
 - **🧑‍💻 Contribuir código** — Haz un fork, crea un branch, y abre un Pull Request
 

@@ -93,13 +93,18 @@ export interface RoomData {
 
 /**
  * BuildingAmenity represents a facility or service available in a building
+ * The icon and name fields are populated from amenityTypes based on the type
  */
 export interface BuildingAmenity {
   type: "coffee_shop" | "food" | "elevator" | "restroom" | "study_area" | "printer" | "lab" | "vending_machine" | "parking";
-  name: string;
-  icon?: string;
-  location?: string;
   description?: string;
+  // These fields are populated by the data loader from amenityTypes
+  icon?: string;
+  name?: string;
+  // Deprecated fields: These were removed from the JSON schema but kept in the type
+  // for backward compatibility with any components that might still reference them.
+  // TODO: Remove in next major version once all references are updated.
+  location?: string;
   count?: number;
   floors?: number[];
 }

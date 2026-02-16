@@ -87,6 +87,12 @@ function BuildingDetailInner({ code }: { code: string }) {
   const sortedFloors = Array.from(roomsByFloor.keys()).sort((a, b) => a - b);
 
   function getRoomStatus(room: RoomData) {
+    // Check if room is closed (e.g., university closed, special event, etc.)
+    const roomClosureStatus = getClosureStatus(selectedDay, selectedTime, undefined, buildingCode, `${buildingCode}_${room.room}`);
+    if (roomClosureStatus.isClosed) {
+      return { status: "restricted" as const, label: "Cerrado", sublabel: roomClosureStatus.reason || "Universidad cerrada" };
+    }
+
     if (room.isRestricted) return { status: "restricted" as const, label: room.restrictionNote || "Restringido", sublabel: undefined };
 
     const dayOccupancies = room.occupancies.filter((occ) => {

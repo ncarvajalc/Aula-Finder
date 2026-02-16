@@ -44,11 +44,12 @@ function MapInner() {
   }
 
   // Get amenities for each building
+  const amenityTypes = buildingsAmenitiesData.amenityTypes as Record<string, { icon: string; label: string }>;
   const amenitiesMap = new Map<string, string[]>();
   for (const ba of buildingsAmenitiesData.amenities) {
     amenitiesMap.set(
       ba.code,
-      ba.amenities.map((a: { icon?: string }) => a.icon || "").filter(Boolean)
+      ba.amenities.map((a: { type: string }) => amenityTypes[a.type]?.icon || "").filter(Boolean)
     );
   }
 

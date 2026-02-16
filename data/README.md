@@ -2,7 +2,7 @@
 
 Esta carpeta contiene los archivos JSON que alimentan la aplicación. **No necesitas saber programar** para contribuir: solo edita los archivos JSON siguiendo las instrucciones de esta guía.
 
-> **⚠️ Importante:** La información de la app se basa únicamente en la oferta de cursos actualizada a la fecha del último fetch. Si conoces de algún evento que ocupe salones del campus o si algún curso cambió de salón después de esa fecha, por favor [crea un issue](https://github.com/Open-Source-Uniandes/Aula-Finder/issues). Para información oficial del calendario académico, visita [Registro de la Universidad de los Andes](https://registro.uniandes.edu.co/).
+> **⚠️ Importante:** La información de la app se basa únicamente en la oferta de cursos actualizada a la fecha del último fetch. Si conoces de algún evento que ocupe salones del campus o si algún curso cambió de salón después de esa fecha, por favor [crea un issue](https://github.com/Open-Source-Uniandes/Aula-Finder/issues) (para reportar problemas) o inicia una [discusión](https://github.com/Open-Source-Uniandes/Aula-Finder/discussions) (para preguntas o sugerencias). Para información oficial del calendario académico, visita [Registro de la Universidad de los Andes](https://registro.uniandes.edu.co/).
 
 ## 📁 Archivos editables
 
@@ -31,10 +31,6 @@ Define la lista de edificios del campus con su información básica.
 | `name` | string | ✅ | Nombre legible del edificio |
 | `campus` | string | ✅ | Campus al que pertenece (casi siempre `"Campus Principal"`) |
 | `order` | number | ❌ | Orden de aparición en la página principal. Solo los edificios con `order` aparecen por defecto; los demás se pueden activar desde el menú de configuración. |
-| `imageUrl` | string | ❌ | Ruta a la imagen del edificio (ej: `/images/buildings/ml.jpg`). Si no se provee, se usa la imagen por defecto del campus. La imagen debe existir en `public/images/buildings/`. |
-| `coordinates` | object | ❌ | Coordenadas geográficas (`latitude`, `longitude`). Se usan en la vista de mapa. Para encontrarlas: clic derecho en [Google Maps](https://maps.google.com) sobre el edificio y copiar las coordenadas. |
-
-**Imagen por defecto:** `defaultImage` define la imagen que se usa cuando un edificio no tiene `imageUrl`. Se ubica en `public/images/buildings/default.jpg`.
 
 ---
 
@@ -48,10 +44,7 @@ Define las facilidades disponibles en cada edificio (cafeterías, ascensores, la
   "amenities": [
     {
       "type": "coffee_shop",
-      "name": "Juan Valdez Café",
-      "location": "Primer piso",
-      "icon": "☕",
-      "description": "Cafetería Juan Valdez en el lobby principal"
+      "description": "Cafetería Juan Valdez en el lobby principal, primer piso"
     }
   ]
 }
@@ -60,13 +53,8 @@ Define las facilidades disponibles en cada edificio (cafeterías, ascensores, la
 | Campo | Tipo | Requerido | Descripción |
 |-------|------|-----------|-------------|
 | `code` | string | ✅ | Código del edificio (debe coincidir con `buildings-metadata.json`) |
-| `amenities[].type` | string | ✅ | Tipo de amenidad (ver tabla abajo) |
-| `amenities[].name` | string | ✅ | Nombre descriptivo |
-| `amenities[].icon` | string | ❌ | Emoji que se muestra en la UI |
-| `amenities[].location` | string | ❌ | Ubicación dentro del edificio |
-| `amenities[].description` | string | ❌ | Información adicional (se muestra como tooltip) |
-| `amenities[].count` | number | ❌ | Cantidad (ej: número de ascensores) |
-| `amenities[].floors` | number[] | ❌ | Pisos donde está disponible |
+| `amenities[].type` | string | ✅ | Tipo de amenidad (ver tabla abajo). El icono y label se obtienen automáticamente de `amenityTypes` |
+| `amenities[].description` | string | ❌ | Información adicional específica de esta amenidad (ubicación, detalles, etc.) |
 
 **Tipos de amenidades soportados** (definidos en `amenityTypes` dentro del JSON):
 
