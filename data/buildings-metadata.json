@@ -8,7 +8,8 @@
       "coordinates": {
         "latitude": 4.60186,
         "longitude": -74.06472
-      }
+      },
+      "imageUrl": "/images/buildings/ml.jpg"
     },
     {
       "code": "SD",
@@ -18,7 +19,8 @@
       "coordinates": {
         "latitude": 4.6016,
         "longitude": -74.0658
-      }
+      },
+      "imageUrl": "/images/buildings/sd.jpg"
     },
     {
       "code": "RGD",
@@ -28,7 +30,8 @@
       "coordinates": {
         "latitude": 4.6023,
         "longitude": -74.0651
-      }
+      },
+      "imageUrl": "/images/buildings/rgd.jpg"
     },
     {
       "code": "AU",
@@ -38,7 +41,8 @@
       "coordinates": {
         "latitude": 4.60222,
         "longitude": -74.06528
-      }
+      },
+      "imageUrl": "/images/buildings/au.jpg"
     },
     {
       "code": "O",
@@ -68,7 +72,8 @@
       "coordinates": {
         "latitude": 4.6015,
         "longitude": -74.065
-      }
+      },
+      "imageUrl": "/images/buildings/w.jpg"
     },
     {
       "code": "LL",
@@ -88,7 +93,8 @@
       "coordinates": {
         "latitude": 4.6017,
         "longitude": -74.0648
-      }
+      },
+      "imageUrl": "/images/buildings/c.jpg"
     },
     {
       "code": "R",
@@ -108,7 +114,8 @@
       "coordinates": {
         "latitude": 4.6019,
         "longitude": -74.0653
-      }
+      },
+      "imageUrl": "/images/buildings/tx.jpg"
     },
     {
       "code": "S1",
@@ -158,7 +165,8 @@
       "coordinates": {
         "latitude": 4.6026,
         "longitude": -74.0647
-      }
+      },
+      "imageUrl": "/images/buildings/ga.jpg"
     },
     {
       "code": "G",
