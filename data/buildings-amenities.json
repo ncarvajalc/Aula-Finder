@@ -5,9 +5,7 @@
       "amenities": [
         {
           "type": "vending_machine",
-          "name": "Máquinas expendedoras",
-          "location": "Piso 1",
-          "icon": "🥤"
+          "description": "Piso 1"
         }
       ]
     }
@@ -28,5 +26,5 @@
     "https://uniandes.edu.co/",
     "Contributed by students and campus users"
   ],
-  "notes": "This data is maintained manually. Contributors can update amenities by editing this JSON file. Please add sources for any new information. Use amenityTypes as reference for the type and icon fields."
+  "notes": "This data is maintained manually. Contributors can update amenities by editing this JSON file. Use amenityTypes as reference for predefined types. Each amenity entry should only include 'type' (required) and 'description' (optional) - the icon and label are automatically determined from amenityTypes."
 }

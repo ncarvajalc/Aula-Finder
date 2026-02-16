@@ -276,15 +276,6 @@
         "latitude": 4.60245,
         "longitude": -74.0631
       }
-    },
-    {
-      "code": "CP",
-      "name": "Campus Principal",
-      "campus": "Campus Principal",
-      "coordinates": {
-        "latitude": 4.602,
-        "longitude": -74.0646
-      }
     }
   ],
   "defaultImage": "/images/buildings/default.jpg",

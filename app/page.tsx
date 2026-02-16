@@ -400,17 +400,6 @@ function BuildingsPageInner() {
                 ))}
               </div>
             </div>
-
-            {/* Data info */}
-            <div className="pt-3 border-t">
-              <h3 className="text-sm font-semibold mb-1">Datos del semestre</h3>
-              <div className="text-xs text-muted-foreground space-y-1">
-                <div>Semestre: {manifestData.term}</div>
-                <div>Secciones: {manifestData.totalSections}</div>
-                <div>Cursos únicos: {manifestData.totalCourses}</div>
-                <div>Actualización: {new Date(manifestData.timestamp).toLocaleString("es-CO")}</div>
-              </div>
-            </div>
           </div>
           <button
             onClick={() => setShowConfig(false)}
