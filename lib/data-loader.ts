@@ -23,9 +23,29 @@ function getBuildingAmenities(): BuildingAmenities[] {
 }
 
 /**
+ * Get amenity types (predefined icons and labels)
+ */
+function getAmenityTypes(): Record<string, { icon: string; label: string }> {
+  return buildingsAmenitiesData.amenityTypes as Record<string, { icon: string; label: string }>;
+}
+
+/**
  * Get amenities for a specific building by code
+ * Enriches amenities with icon and label from amenityTypes
  */
 export function getAmenitiesByBuildingCode(code: string): BuildingAmenity[] {
   const buildingAmenities = getBuildingAmenities().find((b) => b.code === code);
-  return buildingAmenities?.amenities || [];
+  if (!buildingAmenities) return [];
+  
+  const amenityTypes = getAmenityTypes();
+  
+  // Enrich amenities with icon and name from amenityTypes
+  return buildingAmenities.amenities.map((amenity) => {
+    const typeInfo = amenityTypes[amenity.type];
+    return {
+      ...amenity,
+      icon: typeInfo?.icon,
+      name: typeInfo?.label,
+    };
+  });
 }
