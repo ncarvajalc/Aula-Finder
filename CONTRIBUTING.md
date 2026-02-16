@@ -132,9 +132,9 @@ npm run test:watch # Tests en modo watch (para desarrollo)
 Usamos mensajes de commit descriptivos en español o inglés:
 
 ```
-Agregar vista de mapa del campus
-Corregir cálculo de disponibilidad para ciclo 8B
-Actualizar metadatos del edificio ML
+> Agregar vista de mapa del campus
+> Corregir cálculo de disponibilidad para ciclo 8B
+> Actualizar metadatos del edificio ML
 ```
 
 ## Contribuir metadatos (sin código)
