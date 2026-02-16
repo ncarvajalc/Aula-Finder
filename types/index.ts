@@ -101,7 +101,9 @@ export interface BuildingAmenity {
   // These fields are populated by the data loader from amenityTypes
   icon?: string;
   name?: string;
-  // Deprecated fields (kept for backward compatibility)
+  // Deprecated fields: These were removed from the JSON schema but kept in the type
+  // for backward compatibility with any components that might still reference them.
+  // TODO: Remove in next major version once all references are updated.
   location?: string;
   count?: number;
   floors?: number[];

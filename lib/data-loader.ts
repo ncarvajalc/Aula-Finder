@@ -42,6 +42,9 @@ export function getAmenitiesByBuildingCode(code: string): BuildingAmenity[] {
   // Enrich amenities with icon and name from amenityTypes
   return buildingAmenities.amenities.map((amenity) => {
     const typeInfo = amenityTypes[amenity.type];
+    if (!typeInfo) {
+      console.warn(`Unknown amenity type: ${amenity.type} for building ${code}`);
+    }
     return {
       ...amenity,
       icon: typeInfo?.icon,

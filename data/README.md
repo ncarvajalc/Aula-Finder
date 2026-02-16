@@ -2,7 +2,7 @@
 
 Esta carpeta contiene los archivos JSON que alimentan la aplicación. **No necesitas saber programar** para contribuir: solo edita los archivos JSON siguiendo las instrucciones de esta guía.
 
-> **⚠️ Importante:** La información de la app se basa únicamente en la oferta de cursos actualizada a la fecha del último fetch. Si conoces de algún evento que ocupe salones del campus o si algún curso cambió de salón después de esa fecha, por favor [crea un issue](https://github.com/Open-Source-Uniandes/Aula-Finder/issues) o inicia una [discusión](https://github.com/Open-Source-Uniandes/Aula-Finder/discussions). Para información oficial del calendario académico, visita [Registro de la Universidad de los Andes](https://registro.uniandes.edu.co/).
+> **⚠️ Importante:** La información de la app se basa únicamente en la oferta de cursos actualizada a la fecha del último fetch. Si conoces de algún evento que ocupe salones del campus o si algún curso cambió de salón después de esa fecha, por favor [crea un issue](https://github.com/Open-Source-Uniandes/Aula-Finder/issues) (para reportar problemas) o inicia una [discusión](https://github.com/Open-Source-Uniandes/Aula-Finder/discussions) (para preguntas o sugerencias). Para información oficial del calendario académico, visita [Registro de la Universidad de los Andes](https://registro.uniandes.edu.co/).
 
 ## 📁 Archivos editables
 
