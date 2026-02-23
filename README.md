@@ -9,6 +9,8 @@
 
 **[🌐 Visita la app → open-source-uniandes.github.io/Aula-Finder](https://open-source-uniandes.github.io/Aula-Finder/)**
 
+**[📊 Dashboard de OpenPanel](https://dashboard.openpanel.dev/share/overview/hQ9bOd)**
+
 ---
 
 ¡Bienvenido! Aula-Finder es una aplicación web que se nutre de la [API de cursos](https://ofertadecursos.uniandes.edu.co) de la Universidad de los Andes para ayudarte a encontrar salones libres en el campus. Para más detalles técnicos de la API, consulta la [Documentación de la API](docs/API.md).
@@ -212,6 +214,10 @@ Gracias a todas las personas que han hecho posible este proyecto:
 ## 📄 Licencia
 
 Este proyecto está licenciado bajo la [Licencia MIT](LICENSE).
+
+## 📊 Analítica
+
+Analytics powered by [OpenPanel](https://openpanel.dev/) — ¡Gracias por apoyar el software open source con tu visita! 🙌
 
 ## 🏛 Open Source Uniandes
 

@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import ServiceWorkerRegistration from "@/components/ServiceWorkerRegistration";
+import { OpenPanelComponent } from "@openpanel/nextjs";
 
 export const metadata: Metadata = {
   title: "Aula-Finder - Encuentra salones disponibles | Universidad de los Andes",
@@ -80,6 +81,12 @@ export default function RootLayout({
   return (
     <html lang="es" suppressHydrationWarning>
       <body className="font-sans antialiased">
+        <OpenPanelComponent
+          clientId="a73a03b1-cfa7-4cb3-912d-e4533b9f1a3c"
+          trackScreenViews={true}
+          trackOutgoingLinks={true}
+          trackAttributes={true}
+        />
         <ServiceWorkerRegistration />
         {children}
       </body>
