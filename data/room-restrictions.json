@@ -62,6 +62,20 @@
       "isRestricted": true,
       "restrictionType": "lab",
       "note": "Colaboratorio de la Facultad de Ingeniería - Reservado a través de IELE por islas y puestos de trabajo"
+    },
+    {
+      "building": "Z",
+      "room": "118",
+      "isRestricted": true,
+      "restrictionType": "lab",
+      "note": "Laboratorio del departamento de Geociencias - Administrado internamente, acceso restringido"
+    },
+    {
+      "building": "Z",
+      "room": "205",
+      "isRestricted": true,
+      "restrictionType": "lab",
+      "note": "Laboratorio del departamento de Geociencias - Administrado internamente, acceso restringido"
     }
   ],
   "lastUpdated": "2026-03-04T00:00:00.000Z",
