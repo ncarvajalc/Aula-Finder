@@ -12,9 +12,58 @@
       "room": "105",
       "isRestricted": true,
       "restrictionType": "lab",
-      "note": "Laboratorio de Ingeniería Civil y Ambiental - Acceso restringido"
+      "note": "Laboratorio del departamento de Ingeniería Civil y Ambiental - Acceso restringido"
+    },
+    {
+      "building": "ML",
+      "room": "029",
+      "isRestricted": true,
+      "restrictionType": "lab",
+      "note": "Laboratorio del departamento de Ingeniería Civil y Ambiental - Administrado internamente, acceso restringido"
+    },
+    {
+      "building": "ML",
+      "room": "033",
+      "isRestricted": true,
+      "restrictionType": "lab",
+      "note": "Laboratorio del departamento de Ingeniería Civil y Ambiental - Administrado internamente, acceso restringido"
+    },
+    {
+      "building": "ML",
+      "room": "038",
+      "isRestricted": true,
+      "restrictionType": "lab",
+      "note": "Laboratorio del departamento de Ingeniería Civil y Ambiental - Administrado internamente, acceso restringido"
+    },
+    {
+      "building": "ML",
+      "room": "206",
+      "isRestricted": true,
+      "restrictionType": "lab",
+      "note": "Laboratorio del departamento de Ingeniería Civil y Ambiental - Administrado internamente, acceso restringido"
+    },
+    {
+      "building": "ML",
+      "room": "417",
+      "isRestricted": true,
+      "restrictionType": "lab",
+      "note": "Laboratorio del departamento de Ingeniería Civil y Ambiental - Administrado internamente, acceso restringido"
+    },
+    {
+      "building": "ML",
+      "room": "420",
+      "isRestricted": true,
+      "restrictionType": "lab",
+      "note": "Laboratorio del departamento de Ingeniería Civil y Ambiental - Administrado internamente, acceso restringido"
+    },
+    {
+      "building": "ML",
+      "room": "026",
+      "isRestricted": true,
+      "restrictionType": "lab",
+      "note": "Colaboratorio de la Facultad de Ingeniería - Reservado a través de IELE por islas y puestos de trabajo"
     }
   ],
-  "lastUpdated": "2026-03-03T22:28:00.000Z",
+  "lastUpdated": "2026-03-04T00:00:00.000Z",
   "notes": "Room restrictions are matched per building. The 'room' field uses wildcard '*': e.g. '3*' in building 'B' matches rooms 301, 302, etc. Restricted rooms appear grayed out in the UI but are still shown in course detail views."
 }
