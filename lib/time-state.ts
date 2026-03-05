@@ -47,6 +47,7 @@ export function useTimeState() {
   const urlDay = searchParams.get("day");
   const urlTime = searchParams.get("time");
   const urlCiclo = searchParams.get("ciclo");
+  const urlRestricted = searchParams.get("restricted");
 
   const hasUrlOverride = isValidDay(urlDay) || isValidTime(urlTime);
 
@@ -60,9 +61,10 @@ export function useTimeState() {
   const [selectedCiclo, setSelectedCiclo] = useState<PartOfTerm | "all">(
     isValidCiclo(urlCiclo) ? urlCiclo : getCurrentCiclo(manifestData.term, ciclosData)
   );
+  const [showRestricted, setShowRestricted] = useState<boolean>(urlRestricted === "true");
 
   // Sync URL params when state changes (only for manual overrides)
-  const updateUrlParams = (day: DayOfWeek, time: string, ciclo: PartOfTerm | "all", auto: boolean) => {
+  const updateUrlParams = (day: DayOfWeek, time: string, ciclo: PartOfTerm | "all", auto: boolean, restricted: boolean) => {
     const params = new URLSearchParams(searchParams.toString());
     if (auto) {
       params.delete("day");
@@ -76,6 +78,11 @@ export function useTimeState() {
       } else {
         params.delete("ciclo");
       }
+    }
+    if (restricted) {
+      params.set("restricted", "true");
+    } else {
+      params.delete("restricted");
     }
     const qs = params.toString();
     router.replace(`${pathname}${qs ? `?${qs}` : ""}`, { scroll: false });
@@ -94,19 +101,19 @@ export function useTimeState() {
   const handleDayChange = (day: DayOfWeek) => {
     setIsAutoTime(false);
     setSelectedDay(day);
-    updateUrlParams(day, selectedTime, selectedCiclo, false);
+    updateUrlParams(day, selectedTime, selectedCiclo, false, showRestricted);
   };
 
   const handleTimeChange = (time: string) => {
     setIsAutoTime(false);
     setSelectedTime(time);
-    updateUrlParams(selectedDay, time, selectedCiclo, false);
+    updateUrlParams(selectedDay, time, selectedCiclo, false, showRestricted);
   };
 
   const handleCicloChange = (ciclo: PartOfTerm | "all") => {
     setSelectedCiclo(ciclo);
     if (!isAutoTime) {
-      updateUrlParams(selectedDay, selectedTime, ciclo, false);
+      updateUrlParams(selectedDay, selectedTime, ciclo, false, showRestricted);
     }
   };
 
@@ -116,22 +123,32 @@ export function useTimeState() {
     setIsAutoTime(true);
     setSelectedDay(today);
     setSelectedTime(now);
-    updateUrlParams(today, now, selectedCiclo, true);
+    updateUrlParams(today, now, selectedCiclo, true, showRestricted);
+  };
+
+  const handleShowRestrictedChange = (value: boolean) => {
+    setShowRestricted(value);
+    updateUrlParams(selectedDay, selectedTime, selectedCiclo, isAutoTime, value);
   };
 
   /**
    * Build query string to append to navigation links
-   * so that manual time overrides are preserved across pages.
+   * so that manual time overrides and settings are preserved across pages.
    */
   const buildLinkQuery = (): string => {
-    if (isAutoTime) return "";
     const params = new URLSearchParams();
-    params.set("day", selectedDay);
-    params.set("time", selectedTime);
-    if (selectedCiclo !== getCurrentCiclo(manifestData.term, ciclosData)) {
-      params.set("ciclo", selectedCiclo);
+    if (!isAutoTime) {
+      params.set("day", selectedDay);
+      params.set("time", selectedTime);
+      if (selectedCiclo !== getCurrentCiclo(manifestData.term, ciclosData)) {
+        params.set("ciclo", selectedCiclo);
+      }
     }
-    return `?${params.toString()}`;
+    if (showRestricted) {
+      params.set("restricted", "true");
+    }
+    const qs = params.toString();
+    return qs ? `?${qs}` : "";
   };
 
   return {
@@ -139,10 +156,13 @@ export function useTimeState() {
     selectedTime,
     selectedCiclo,
     isAutoTime,
+    showRestricted,
     handleDayChange,
     handleTimeChange,
     handleCicloChange,
     handleGoToNow,
+    handleShowRestrictedChange,
     buildLinkQuery,
   };
 }
+
