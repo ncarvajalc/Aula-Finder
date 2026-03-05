@@ -90,10 +90,12 @@ function BuildingsPageInner() {
     selectedTime,
     selectedCiclo,
     isAutoTime,
+    showRestricted,
     handleDayChange,
     handleTimeChange,
     handleCicloChange,
     handleGoToNow,
+    handleShowRestrictedChange,
     buildLinkQuery,
   } = useTimeState();
 
@@ -121,7 +123,8 @@ function BuildingsPageInner() {
   for (const bd of buildingsData) {
     const unrestricted = bd.rooms.filter((r) => !r.isRestricted);
     const available = unrestricted.filter((r) => isRoomAvailableNow(r, selectedDay, selectedTime, selectedCiclo));
-    buildingStats.set(bd.building, { total: unrestricted.length, available: available.length });
+    const total = showRestricted ? bd.rooms.length : unrestricted.length;
+    buildingStats.set(bd.building, { total, available: available.length });
   }
 
   return (
@@ -375,6 +378,22 @@ function BuildingsPageInner() {
             <ModalTitle>Configuración</ModalTitle>
           </ModalHeader>
           <div className="mt-4 space-y-4">
+            {/* Show restricted rooms toggle */}
+            <div>
+              <h3 className="text-sm font-semibold mb-2">Visibilidad de salones</h3>
+              <label className="flex items-center gap-2 text-sm cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={showRestricted}
+                  onChange={(e) => handleShowRestrictedChange(e.target.checked)}
+                  className="rounded"
+                />
+                <span>Mostrar salones con restricciones</span>
+              </label>
+              <p className="text-xs text-muted-foreground mt-1">
+                Incluye laboratorios y salones de acceso restringido en la lista.
+              </p>
+            </div>
             {/* Extra buildings toggle */}
             <div>
               <h3 className="text-sm font-semibold mb-2">Edificios adicionales</h3>
