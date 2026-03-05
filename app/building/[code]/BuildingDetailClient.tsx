@@ -35,6 +35,7 @@ function BuildingDetailInner({ code }: { code: string }) {
     selectedTime,
     selectedCiclo,
     isAutoTime,
+    showRestricted,
     handleDayChange,
     handleTimeChange,
     handleCicloChange,
@@ -77,7 +78,8 @@ function BuildingDetailInner({ code }: { code: string }) {
 
   const roomsByFloor = new Map<number, RoomData[]>();
   if (buildingData) {
-    buildingData.rooms.forEach((room) => {
+    const visibleRooms = showRestricted ? buildingData.rooms : buildingData.rooms.filter((r) => !r.isRestricted);
+    visibleRooms.forEach((room) => {
       const floor = room.floor ?? 0;
       if (!roomsByFloor.has(floor)) roomsByFloor.set(floor, []);
       roomsByFloor.get(floor)!.push(room);
@@ -128,8 +130,13 @@ function BuildingDetailInner({ code }: { code: string }) {
     return { status: "available" as const, label: "Disponible", sublabel: "Sin más clases hoy" };
   }
 
-  const totalRooms = buildingData?.rooms.filter((r) => !r.isRestricted).length || 0;
-  const availableRooms = buildingData?.rooms.filter((r) => getRoomStatus(r).status === "available").length || 0;
+  const totalRooms = showRestricted
+    ? (buildingData?.rooms.length || 0)
+    : (buildingData?.rooms.filter((r) => !r.isRestricted).length || 0);
+  const visibleRoomsForStats = showRestricted
+    ? (buildingData?.rooms || [])
+    : (buildingData?.rooms.filter((r) => !r.isRestricted) || []);
+  const availableRooms = visibleRoomsForStats.filter((r) => getRoomStatus(r).status === "available").length;
 
   const statusColors = {
     available: "border-l-green-500 bg-green-50",
