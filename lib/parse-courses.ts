@@ -37,7 +37,7 @@ export function parseCourseSections(rawData: any[]): CourseSection[] {
       term: course.term || "",
 
       // Part-of-term (ciclo) information
-      ptrm: course.ptrm || "1", // Default to full semester
+      ptrm: normalizePartOfTerm(course.ptrm, course.ptrmdesc || course.ptrmDesc),
       ptrmDesc: course.ptrmdesc || course.ptrmDesc,
 
       // Course information
@@ -68,6 +68,24 @@ export function parseCourseSections(rawData: any[]): CourseSection[] {
       requiresClassroom: requiresClassroom,
     };
   });
+}
+
+/**
+ * Normalize part-of-term values from external data.
+ * Treats known full-semester variants as "1" to keep ciclo filtering consistent.
+ */
+function normalizePartOfTerm(ptrm: unknown, ptrmDesc: unknown): string {
+  const normalizedPtrm = String(ptrm || "").trim().toUpperCase();
+  if (!normalizedPtrm) return "1";
+  if (normalizedPtrm === "1" || normalizedPtrm === "8A" || normalizedPtrm === "8B") {
+    return normalizedPtrm;
+  }
+
+  const normalizedDesc = String(ptrmDesc || "").toUpperCase();
+  if (normalizedDesc.includes("SEMESTRE")) return "1";
+  if (/\b16\s*SEMANAS?\b/.test(normalizedDesc)) return "1";
+
+  return normalizedPtrm;
 }
 
 /**
