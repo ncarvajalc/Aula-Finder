@@ -260,6 +260,30 @@ describe("groupByRoom", () => {
     expect(buildings[0].rooms[0].isRestricted).toBe(true);
   });
 
+  it("should apply room restrictions with alphanumeric room suffix", () => {
+    const raw = [
+      makeRawCourse({
+        schedules: [
+          { day: "L", startTime: "09:00", endTime: "10:00", building: "C", room: "409 A" },
+        ],
+      }),
+    ];
+    const restrictions: RoomRestriction[] = [
+      {
+        building: "C",
+        room: "409 A",
+        isRestricted: true,
+        restrictionType: "restricted",
+        note: "Salón administrado por otra unidad académica - Acceso restringido",
+      },
+    ];
+    const sections = parseCourseSections(raw);
+    const buildings = groupByRoom(sections, undefined, restrictions);
+
+    expect(buildings[0].rooms[0].isRestricted).toBe(true);
+    expect(buildings[0].rooms[0].restrictionNote).toContain("Acceso restringido");
+  });
+
   it("should sort rooms by floor then name", () => {
     const raw = [
       makeRawCourse({ nrc: "1", schedules: [{ day: "L", startTime: "09:00", endTime: "10:00", building: "ML", room: "301" }] }),
