@@ -76,8 +76,505 @@
       "isRestricted": true,
       "restrictionType": "lab",
       "note": "Laboratorio del departamento de Geociencias - Administrado internamente, acceso restringido"
+    },
+    {
+      "building": "W",
+      "room": "401",
+      "isRestricted": true,
+      "restrictionType": "restricted",
+      "note": "Salón administrado por otra unidad académica - Acceso restringido"
+    },
+    {
+      "building": "SD",
+      "room": "704",
+      "isRestricted": true,
+      "restrictionType": "restricted",
+      "note": "Salón administrado por otra unidad académica - Acceso restringido"
+    },
+    {
+      "building": "SD",
+      "room": "714",
+      "isRestricted": true,
+      "restrictionType": "restricted",
+      "note": "Salón administrado por otra unidad académica - Acceso restringido"
+    },
+    {
+      "building": "SD",
+      "room": "809",
+      "isRestricted": true,
+      "restrictionType": "restricted",
+      "note": "Salón administrado por otra unidad académica - Acceso restringido"
+    },
+    {
+      "building": "SD",
+      "room": "1004",
+      "isRestricted": true,
+      "restrictionType": "restricted",
+      "note": "Salón administrado por otra unidad académica - Acceso restringido"
+    },
+    {
+      "building": "C",
+      "room": "301",
+      "isRestricted": true,
+      "restrictionType": "restricted",
+      "note": "Salón administrado por otra unidad académica - Acceso restringido"
+    },
+    {
+      "building": "C",
+      "room": "302",
+      "isRestricted": true,
+      "restrictionType": "restricted",
+      "note": "Salón administrado por otra unidad académica - Acceso restringido"
+    },
+    {
+      "building": "C",
+      "room": "303",
+      "isRestricted": true,
+      "restrictionType": "restricted",
+      "note": "Salón administrado por otra unidad académica - Acceso restringido"
+    },
+    {
+      "building": "C",
+      "room": "304",
+      "isRestricted": true,
+      "restrictionType": "restricted",
+      "note": "Salón administrado por otra unidad académica - Acceso restringido"
+    },
+    {
+      "building": "C",
+      "room": "305",
+      "isRestricted": true,
+      "restrictionType": "restricted",
+      "note": "Salón administrado por otra unidad académica - Acceso restringido"
+    },
+    {
+      "building": "C",
+      "room": "306",
+      "isRestricted": true,
+      "restrictionType": "restricted",
+      "note": "Salón administrado por otra unidad académica - Acceso restringido"
+    },
+    {
+      "building": "C",
+      "room": "307",
+      "isRestricted": true,
+      "restrictionType": "restricted",
+      "note": "Salón administrado por otra unidad académica - Acceso restringido"
+    },
+    {
+      "building": "C",
+      "room": "308",
+      "isRestricted": true,
+      "restrictionType": "restricted",
+      "note": "Salón administrado por otra unidad académica - Acceso restringido"
+    },
+    {
+      "building": "C",
+      "room": "309",
+      "isRestricted": true,
+      "restrictionType": "restricted",
+      "note": "Salón administrado por otra unidad académica - Acceso restringido"
+    },
+    {
+      "building": "C",
+      "room": "401",
+      "isRestricted": true,
+      "restrictionType": "restricted",
+      "note": "Salón administrado por otra unidad académica - Acceso restringido"
+    },
+    {
+      "building": "C",
+      "room": "402",
+      "isRestricted": true,
+      "restrictionType": "restricted",
+      "note": "Salón administrado por otra unidad académica - Acceso restringido"
+    },
+    {
+      "building": "C",
+      "room": "403",
+      "isRestricted": true,
+      "restrictionType": "restricted",
+      "note": "Salón administrado por otra unidad académica - Acceso restringido"
+    },
+    {
+      "building": "C",
+      "room": "404",
+      "isRestricted": true,
+      "restrictionType": "restricted",
+      "note": "Salón administrado por otra unidad académica - Acceso restringido"
+    },
+    {
+      "building": "C",
+      "room": "405",
+      "isRestricted": true,
+      "restrictionType": "restricted",
+      "note": "Salón administrado por otra unidad académica - Acceso restringido"
+    },
+    {
+      "building": "C",
+      "room": "406",
+      "isRestricted": true,
+      "restrictionType": "restricted",
+      "note": "Salón administrado por otra unidad académica - Acceso restringido"
+    },
+    {
+      "building": "C",
+      "room": "407",
+      "isRestricted": true,
+      "restrictionType": "restricted",
+      "note": "Salón administrado por otra unidad académica - Acceso restringido"
+    },
+    {
+      "building": "C",
+      "room": "408",
+      "isRestricted": true,
+      "restrictionType": "restricted",
+      "note": "Salón administrado por otra unidad académica - Acceso restringido"
+    },
+    {
+      "building": "C",
+      "room": "409 A",
+      "isRestricted": true,
+      "restrictionType": "restricted",
+      "note": "Salón administrado por otra unidad académica - Acceso restringido"
+    },
+    {
+      "building": "C",
+      "room": "409 B",
+      "isRestricted": true,
+      "restrictionType": "restricted",
+      "note": "Salón administrado por otra unidad académica - Acceso restringido"
+    },
+    {
+      "building": "C",
+      "room": "410",
+      "isRestricted": true,
+      "restrictionType": "restricted",
+      "note": "Salón administrado por otra unidad académica - Acceso restringido"
+    },
+    {
+      "building": "C",
+      "room": "411",
+      "isRestricted": true,
+      "restrictionType": "restricted",
+      "note": "Salón administrado por otra unidad académica - Acceso restringido"
+    },
+    {
+      "building": "O",
+      "room": "201",
+      "isRestricted": true,
+      "restrictionType": "restricted",
+      "note": "Salón administrado por otra unidad académica - Acceso restringido"
+    },
+    {
+      "building": "O",
+      "room": "306",
+      "isRestricted": true,
+      "restrictionType": "restricted",
+      "note": "Salón administrado por otra unidad académica - Acceso restringido"
+    },
+    {
+      "building": "ML",
+      "room": "121",
+      "isRestricted": true,
+      "restrictionType": "restricted",
+      "note": "Salón administrado por otra unidad académica - Acceso restringido"
+    },
+    {
+      "building": "ML",
+      "room": "805 A",
+      "isRestricted": true,
+      "restrictionType": "restricted",
+      "note": "Salón administrado por otra unidad académica - Acceso restringido"
+    },
+    {
+      "building": "ML",
+      "room": "805 B",
+      "isRestricted": true,
+      "restrictionType": "restricted",
+      "note": "Salón administrado por otra unidad académica - Acceso restringido"
+    },
+    {
+      "building": "CP",
+      "room": "101",
+      "isRestricted": true,
+      "restrictionType": "restricted",
+      "note": "Salón administrado por otra unidad académica - Acceso restringido"
+    },
+    {
+      "building": "CP",
+      "room": "102",
+      "isRestricted": true,
+      "restrictionType": "restricted",
+      "note": "Salón administrado por otra unidad académica - Acceso restringido"
+    },
+    {
+      "building": "CP",
+      "room": "201",
+      "isRestricted": true,
+      "restrictionType": "restricted",
+      "note": "Salón administrado por otra unidad académica - Acceso restringido"
+    },
+    {
+      "building": "CP",
+      "room": "202",
+      "isRestricted": true,
+      "restrictionType": "restricted",
+      "note": "Salón administrado por otra unidad académica - Acceso restringido"
+    },
+    {
+      "building": "CP",
+      "room": "203",
+      "isRestricted": true,
+      "restrictionType": "restricted",
+      "note": "Salón administrado por otra unidad académica - Acceso restringido"
+    },
+    {
+      "building": "CP",
+      "room": "301",
+      "isRestricted": true,
+      "restrictionType": "restricted",
+      "note": "Salón administrado por otra unidad académica - Acceso restringido"
+    },
+    {
+      "building": "CP",
+      "room": "302",
+      "isRestricted": true,
+      "restrictionType": "restricted",
+      "note": "Salón administrado por otra unidad académica - Acceso restringido"
+    },
+    {
+      "building": "CP",
+      "room": "401",
+      "isRestricted": true,
+      "restrictionType": "restricted",
+      "note": "Salón administrado por otra unidad académica - Acceso restringido"
+    },
+    {
+      "building": "CP",
+      "room": "405",
+      "isRestricted": true,
+      "restrictionType": "restricted",
+      "note": "Salón administrado por otra unidad académica - Acceso restringido"
+    },
+    {
+      "building": "CP",
+      "room": "413",
+      "isRestricted": true,
+      "restrictionType": "restricted",
+      "note": "Salón administrado por otra unidad académica - Acceso restringido"
+    },
+    {
+      "building": "CP",
+      "room": "420",
+      "isRestricted": true,
+      "restrictionType": "restricted",
+      "note": "Salón administrado por otra unidad académica - Acceso restringido"
+    },
+    {
+      "building": "CP",
+      "room": "421",
+      "isRestricted": true,
+      "restrictionType": "restricted",
+      "note": "Salón administrado por otra unidad académica - Acceso restringido"
+    },
+    {
+      "building": "CP",
+      "room": "501",
+      "isRestricted": true,
+      "restrictionType": "restricted",
+      "note": "Salón administrado por otra unidad académica - Acceso restringido"
+    },
+    {
+      "building": "RGD",
+      "room": "10",
+      "isRestricted": true,
+      "restrictionType": "restricted",
+      "note": "Salón administrado por otra unidad académica - Acceso restringido"
+    },
+    {
+      "building": "RGD",
+      "room": "11",
+      "isRestricted": true,
+      "restrictionType": "restricted",
+      "note": "Salón administrado por otra unidad académica - Acceso restringido"
+    },
+    {
+      "building": "S1",
+      "room": "101",
+      "isRestricted": true,
+      "restrictionType": "restricted",
+      "note": "Salón administrado por otra unidad académica - Acceso restringido"
+    },
+    {
+      "building": "S1",
+      "room": "205",
+      "isRestricted": true,
+      "restrictionType": "restricted",
+      "note": "Salón administrado por otra unidad académica - Acceso restringido"
+    },
+    {
+      "building": "RGC",
+      "room": "218",
+      "isRestricted": true,
+      "restrictionType": "restricted",
+      "note": "Salón administrado por otra unidad académica - Acceso restringido"
+    },
+    {
+      "building": "RGA",
+      "room": "101",
+      "isRestricted": true,
+      "restrictionType": "restricted",
+      "note": "Salón administrado por otra unidad académica - Acceso restringido"
+    },
+    {
+      "building": "RGA",
+      "room": "102",
+      "isRestricted": true,
+      "restrictionType": "restricted",
+      "note": "Salón administrado por otra unidad académica - Acceso restringido"
+    },
+    {
+      "building": "S2",
+      "room": "302",
+      "isRestricted": true,
+      "restrictionType": "restricted",
+      "note": "Salón administrado por otra unidad académica - Acceso restringido"
+    },
+    {
+      "building": "W",
+      "room": "501",
+      "isRestricted": true,
+      "restrictionType": "restricted",
+      "note": "Salón administrado por otra unidad académica - Acceso restringido"
+    },
+    {
+      "building": "K",
+      "room": "208",
+      "isRestricted": true,
+      "restrictionType": "restricted",
+      "note": "Salón administrado por otra unidad académica - Acceso restringido"
+    },
+    {
+      "building": "CH",
+      "room": "001",
+      "isRestricted": true,
+      "restrictionType": "restricted",
+      "note": "Salón administrado por otra unidad académica - Acceso restringido"
+    },
+    {
+      "building": "TX",
+      "room": "304",
+      "isRestricted": true,
+      "restrictionType": "restricted",
+      "note": "Salón administrado por otra unidad académica - Acceso restringido"
+    },
+    {
+      "building": "E",
+      "room": "001",
+      "isRestricted": true,
+      "restrictionType": "restricted",
+      "note": "Salón administrado por otra unidad académica - Acceso restringido"
+    },
+    {
+      "building": "E",
+      "room": "002",
+      "isRestricted": true,
+      "restrictionType": "restricted",
+      "note": "Salón administrado por otra unidad académica - Acceso restringido"
+    },
+    {
+      "building": "R",
+      "room": "211",
+      "isRestricted": true,
+      "restrictionType": "restricted",
+      "note": "Salón administrado por otra unidad académica - Acceso restringido"
+    },
+    {
+      "building": "R",
+      "room": "212",
+      "isRestricted": true,
+      "restrictionType": "restricted",
+      "note": "Salón administrado por otra unidad académica - Acceso restringido"
+    },
+    {
+      "building": "CJ",
+      "room": "303",
+      "isRestricted": true,
+      "restrictionType": "restricted",
+      "note": "Salón administrado por otra unidad académica - Acceso restringido"
+    },
+    {
+      "building": "CJ",
+      "room": "201",
+      "isRestricted": true,
+      "restrictionType": "restricted",
+      "note": "Salón administrado por otra unidad académica - Acceso restringido"
+    },
+    {
+      "building": "CJ",
+      "room": "202",
+      "isRestricted": true,
+      "restrictionType": "restricted",
+      "note": "Salón administrado por otra unidad académica - Acceso restringido"
+    },
+    {
+      "building": "T",
+      "room": "202",
+      "isRestricted": true,
+      "restrictionType": "restricted",
+      "note": "Salón administrado por otra unidad académica - Acceso restringido"
+    },
+    {
+      "building": "ML",
+      "room": "507",
+      "isRestricted": true,
+      "restrictionType": "restricted",
+      "note": "Salón administrado por otra unidad académica - Acceso restringido"
+    },
+    {
+      "building": "ML",
+      "room": "508",
+      "isRestricted": true,
+      "restrictionType": "restricted",
+      "note": "Salón administrado por otra unidad académica - Acceso restringido"
+    },
+    {
+      "building": "AU",
+      "room": "404",
+      "isRestricted": true,
+      "restrictionType": "restricted",
+      "note": "Salón administrado por otra unidad académica - Acceso restringido"
+    },
+    {
+      "building": "GB",
+      "room": "101",
+      "isRestricted": true,
+      "restrictionType": "restricted",
+      "note": "Salón administrado por otra unidad académica - Acceso restringido"
+    },
+    {
+      "building": "RGC",
+      "room": "214",
+      "isRestricted": true,
+      "restrictionType": "restricted",
+      "note": "Salón administrado por otra unidad académica - Acceso restringido"
+    },
+    {
+      "building": "ML",
+      "room": "009",
+      "isRestricted": true,
+      "restrictionType": "restricted",
+      "note": "Salón administrado por otra unidad académica - Acceso restringido"
+    },
+    {
+      "building": "Z",
+      "room": "203",
+      "isRestricted": true,
+      "restrictionType": "restricted",
+      "note": "Salón administrado por otra unidad académica - Acceso restringido"
     }
   ],
-  "lastUpdated": "2026-03-04T00:00:00.000Z",
+  "lastUpdated": "2026-03-27T00:00:00.000Z",
   "notes": "Room restrictions are matched per building. The 'room' field uses wildcard '*': e.g. '3*' in building 'B' matches rooms 301, 302, etc. Restricted rooms appear grayed out in the UI but are still shown in course detail views."
 }

@@ -324,17 +324,28 @@ function findRoomRestriction(
 ): RoomRestriction | undefined {
   if (!restrictions) return undefined;
 
+  const normalizedRoom = normalizeRoomRestrictionValue(room, false);
+
   return restrictions.find((r) => {
     if (r.building !== building) return false;
+    const normalizedRestriction = normalizeRoomRestrictionValue(r.room, true);
     
     // Check for wildcard match
-    if (r.room.endsWith("*")) {
-      const prefix = r.room.slice(0, -1);
-      return room.startsWith(prefix);
+    if (normalizedRestriction.endsWith("*")) {
+      const prefix = normalizedRestriction.slice(0, -1);
+      return normalizedRoom.startsWith(prefix);
     }
     
-    return r.room === room;
+    return normalizedRestriction === normalizedRoom;
   });
+}
+
+function normalizeRoomRestrictionValue(value: string, preserveWildcard: boolean): string {
+  const upper = value.toUpperCase().trim();
+  if (preserveWildcard && upper.endsWith("*")) {
+    return `${upper.slice(0, -1).replace(/[^A-Z0-9]/g, "")}*`;
+  }
+  return upper.replace(/[^A-Z0-9]/g, "");
 }
 
 /**
