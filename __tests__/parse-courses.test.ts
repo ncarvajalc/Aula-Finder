@@ -136,6 +136,12 @@ describe("parseCourseSections", () => {
     expect(sections[0].ptrm).toBe("1");
   });
 
+  it("should normalize full-semester ptrm variants to '1'", () => {
+    const raw = [makeRawCourse({ ptrm: "D", ptrmdesc: "16 SEMANAS" })];
+    const sections = parseCourseSections(raw);
+    expect(sections[0].ptrm).toBe("1");
+  });
+
   it("should handle courses with multiple schedule blocks", () => {
     const raw = [
       makeRawCourse({
