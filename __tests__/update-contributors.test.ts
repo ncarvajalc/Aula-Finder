@@ -35,4 +35,20 @@ describe("update contributors script", () => {
     expect(updated).toContain("<table>nuevo</table>");
     expect(updated).not.toContain("contenido viejo");
   });
+
+  it("escapes HTML-sensitive characters from contributor data", () => {
+    const table = buildContributorsTable([
+      {
+        login: 'user"<script>',
+        html_url: "https://github.com/user?<x>",
+        avatar_url: "https://avatars.githubusercontent.com/u/1?v=4&x=<y>",
+      },
+    ]);
+
+    expect(table).toContain("user&quot;&lt;script&gt;");
+    expect(table).toContain("https://github.com/user?&lt;x&gt;");
+    expect(table).toContain(
+      "https://avatars.githubusercontent.com/u/1?v=4&amp;x=&lt;y&gt;",
+    );
+  });
 });

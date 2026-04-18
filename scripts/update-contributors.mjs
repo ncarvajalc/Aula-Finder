@@ -5,6 +5,16 @@ import path from "node:path";
 const START_MARKER = "<!-- ALL-CONTRIBUTORS-LIST:START -->";
 const END_MARKER = "<!-- ALL-CONTRIBUTORS-LIST:END -->";
 const COLUMNS_PER_ROW = 5;
+const MAX_PAGES = 100;
+
+function escapeHtml(value) {
+  return value
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#39;");
+}
 
 export function buildContributorsTable(contributors) {
   if (contributors.length === 0) {
@@ -16,10 +26,12 @@ export function buildContributorsTable(contributors) {
   for (let i = 0; i < contributors.length; i += COLUMNS_PER_ROW) {
     const chunk = contributors.slice(i, i + COLUMNS_PER_ROW);
     const cells = chunk
-      .map(
-        (contributor) =>
-          `      <td align="center"><a href="${contributor.html_url}"><img src="${contributor.avatar_url}" width="80px;" alt="${contributor.login}"/><br /><sub><b>${contributor.login}</b></sub></a></td>`,
-      )
+      .map((contributor) => {
+        const safeHtmlUrl = escapeHtml(contributor.html_url);
+        const safeAvatarUrl = escapeHtml(contributor.avatar_url);
+        const safeLogin = escapeHtml(contributor.login);
+        return `      <td align="center"><a href="${safeHtmlUrl}"><img src="${safeAvatarUrl}" width="80px;" alt="${safeLogin}"/><br /><sub><b>${safeLogin}</b></sub></a></td>`;
+      })
       .join("\n");
     rows.push(`    <tr>\n${cells}\n    </tr>`);
   }
@@ -58,6 +70,12 @@ async function fetchContributors() {
   let page = 1;
 
   while (true) {
+    if (page > MAX_PAGES) {
+      throw new Error(
+        `Se alcanzó el límite de paginación (${MAX_PAGES}) al consultar contribuidores.`,
+      );
+    }
+
     const url = `https://api.github.com/repos/${repository}/contributors?per_page=100&page=${page}`;
     const response = await fetch(url, { headers });
 
