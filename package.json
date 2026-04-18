@@ -9,6 +9,7 @@
     "start": "next start",
     "lint": "eslint .",
     "export": "next build",
+    "contributors:update": "node scripts/update-contributors.mjs",
     "test": "vitest run",
     "test:watch": "vitest"
   },

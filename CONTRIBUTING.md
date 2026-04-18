@@ -209,24 +209,9 @@ describe("miFuncion", () => {
 
 ## Añadirse a la lista de contribuidores
 
-Después de que tu Pull Request sea aceptado, puedes añadirte a la lista de contribuidores en el `README.md`:
+La lista de contribuidores en `README.md` se actualiza automáticamente con la API de GitHub.
 
-1. Abre `README.md` y busca la sección `<!-- ALL-CONTRIBUTORS-LIST:START -->`
-2. Agrega una nueva celda `<td>` dentro de la tabla con tu información:
-
-```html
-<td align="center">
-  <a href="https://github.com/TU-USUARIO">
-    <img src="https://avatars.githubusercontent.com/u/TU-ID?v=4" width="80px;" alt="Tu Nombre"/>
-    <br /><sub><b>Tu Nombre</b></sub>
-  </a>
-</td>
-```
-
-3. Reemplaza `TU-USUARIO` con tu nombre de usuario de GitHub
-4. Reemplaza `TU-ID` con tu ID numérico de GitHub (lo encuentras en `https://api.github.com/users/TU-USUARIO`)
-5. Reemplaza `Tu Nombre` con tu nombre
-6. Crea un PR con este cambio (puede ir en el mismo PR de tu contribución)
+Si tu Pull Request se fusiona en `main`, aparecerás en la lista en la próxima ejecución del workflow automático (también puedes ejecutarlo manualmente desde GitHub Actions).
 
 ## Preguntas frecuentes
 
