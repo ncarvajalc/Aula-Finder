@@ -6,8 +6,8 @@
       "campus": "Campus Principal",
       "order": 1,
       "coordinates": {
-        "latitude": 4.60186,
-        "longitude": -74.06472
+        "latitude": 4.60279,
+        "longitude": -74.06485
       },
       "imageUrl": "/images/buildings/ml.jpg"
     },
@@ -17,8 +17,8 @@
       "campus": "Campus Principal",
       "order": 2,
       "coordinates": {
-        "latitude": 4.6016,
-        "longitude": -74.0658
+        "latitude": 4.60453,
+        "longitude": -74.06593
       },
       "imageUrl": "/images/buildings/sd.jpg"
     },
@@ -28,8 +28,8 @@
       "campus": "Campus Principal",
       "order": 3,
       "coordinates": {
-        "latitude": 4.6023,
-        "longitude": -74.0651
+        "latitude": 4.60233,
+        "longitude": -74.06588
       },
       "imageUrl": "/images/buildings/rgd.jpg"
     },
@@ -39,8 +39,8 @@
       "campus": "Campus Principal",
       "order": 4,
       "coordinates": {
-        "latitude": 4.60222,
-        "longitude": -74.06528
+        "latitude": 4.60273,
+        "longitude": -74.06649
       },
       "imageUrl": "/images/buildings/au.jpg"
     },
@@ -50,8 +50,8 @@
       "campus": "Campus Principal",
       "order": 5,
       "coordinates": {
-        "latitude": 4.602,
-        "longitude": -74.064
+        "latitude": 4.60076,
+        "longitude": -74.06493
       }
     },
     {
@@ -60,8 +60,8 @@
       "campus": "Campus Principal",
       "order": 6,
       "coordinates": {
-        "latitude": 4.6018,
-        "longitude": -74.0645
+        "latitude": 4.60142,
+        "longitude": -74.0657
       },
       "imageUrl": "/images/buildings/b.jpg"
     },
@@ -71,8 +71,8 @@
       "campus": "Campus Principal",
       "order": 7,
       "coordinates": {
-        "latitude": 4.6015,
-        "longitude": -74.065
+        "latitude": 4.60224,
+        "longitude": -74.06503
       },
       "imageUrl": "/images/buildings/w.jpg"
     },
@@ -82,8 +82,8 @@
       "campus": "Campus Principal",
       "order": 8,
       "coordinates": {
-        "latitude": 4.6024,
-        "longitude": -74.0655
+        "latitude": 4.60213,
+        "longitude": -74.06525
       },
       "imageUrl": "/images/buildings/ll.jpg"
     },
@@ -93,8 +93,8 @@
       "campus": "Campus Principal",
       "order": 9,
       "coordinates": {
-        "latitude": 4.6017,
-        "longitude": -74.0648
+        "latitude": 4.60125,
+        "longitude": -74.06516
       },
       "imageUrl": "/images/buildings/c.jpg"
     },
@@ -104,8 +104,8 @@
       "campus": "Campus Principal",
       "order": 10,
       "coordinates": {
-        "latitude": 4.6021,
-        "longitude": -74.0642
+        "latitude": 4.60153,
+        "longitude": -74.06399
       },
       "imageUrl": "/images/buildings/r.jpg"
     },
@@ -115,8 +115,8 @@
       "campus": "Campus Principal",
       "order": 11,
       "coordinates": {
-        "latitude": 4.6019,
-        "longitude": -74.0653
+        "latitude": 4.60124,
+        "longitude": -74.06389
       },
       "imageUrl": "/images/buildings/tx.jpg"
     },
@@ -126,8 +126,8 @@
       "campus": "Campus Principal",
       "order": 12,
       "coordinates": {
-        "latitude": 4.6025,
-        "longitude": -74.0649
+        "latitude": 4.60185,
+        "longitude": -74.06424
       },
       "imageUrl": "/images/buildings/s1.jpg"
     },
@@ -137,8 +137,8 @@
       "campus": "Campus Principal",
       "order": 13,
       "coordinates": {
-        "latitude": 4.6023,
-        "longitude": -74.0646
+        "latitude": 4.60026,
+        "longitude": -74.06515
       },
       "imageUrl": "/images/buildings/q.jpg"
     },
@@ -148,8 +148,8 @@
       "campus": "Campus Principal",
       "order": 14,
       "coordinates": {
-        "latitude": 4.6022,
-        "longitude": -74.0654
+        "latitude": 4.60234,
+        "longitude": -74.06559
       },
       "imageUrl": "/images/buildings/z.jpg"
     },
@@ -159,8 +159,8 @@
       "campus": "Campus Principal",
       "order": 15,
       "coordinates": {
-        "latitude": 4.60215,
-        "longitude": -74.0652
+        "latitude": 4.60231,
+        "longitude": -74.06529
       }
     },
     {
@@ -169,8 +169,8 @@
       "campus": "Campus Principal",
       "order": 16,
       "coordinates": {
-        "latitude": 4.6026,
-        "longitude": -74.0647
+        "latitude": 4.6003,
+        "longitude": -74.06292
       },
       "imageUrl": "/images/buildings/ga.jpg"
     },
