@@ -11,6 +11,7 @@ import { parseCourseSections, groupByRoom } from "@/lib/parse-courses";
 import { getRoomRestrictions, getAmenitiesByBuildingCode } from "@/lib/data-loader";
 import { useTimeState } from "@/lib/time-state";
 import { getClosureStatus } from "@/lib/closures";
+import { withConfigParam } from "@/lib/query-utils";
 
 const DAY_NAMES: Record<string, string> = {
   L: "Lunes", M: "Martes", I: "Miércoles", J: "Jueves", V: "Viernes", S: "Sábado",
@@ -144,20 +145,54 @@ function BuildingDetailInner({ code }: { code: string }) {
     gap: "border-l-amber-400 bg-amber-50/50",
     restricted: "border-l-gray-300 bg-gray-50 opacity-60",
   };
+  const homeQuery = buildLinkQuery();
+  const homeHref = `/${homeQuery}`;
+  const mapHref = `/map${homeQuery}`;
+  const settingsHref = `/${withConfigParam(homeQuery)}`;
 
   return (
     <main className="min-h-screen bg-background">
       <header className="border-b bg-uniandes-dark text-white">
-        <div className="max-w-7xl mx-auto px-4 py-4">
-          <Link href={`/${buildLinkQuery()}`} className="text-white/70 hover:text-white transition-colors text-sm">
-            ← Edificios
-          </Link>
-          <h1 className="text-2xl font-bold mt-2">
-            {building.name}
-            <span className="text-white/60 text-lg ml-2 font-mono">({building.code})</span>
-          </h1>
-          <div className="text-sm text-white/70 mt-1">
-            {availableRooms} de {totalRooms} salones disponibles
+        <div className="max-w-7xl mx-auto px-4 py-4 flex items-start justify-between">
+          <div>
+            <Link href={homeHref} className="text-white/70 hover:text-white transition-colors text-sm">
+              ← Edificios
+            </Link>
+            <h1 className="text-2xl font-bold mt-2">
+              {building.name}
+              <span className="text-white/60 text-lg ml-2 font-mono">({building.code})</span>
+            </h1>
+            <div className="text-sm text-white/70 mt-1">
+              {availableRooms} de {totalRooms} salones disponibles
+            </div>
+          </div>
+          <div className="flex items-center gap-2">
+            <Link
+              href={mapHref}
+              className="inline-flex items-center justify-center rounded-md text-sm font-medium h-8 w-8 text-white hover:bg-white/10 transition-colors"
+              title="Mapa del campus"
+              aria-label="Ver mapa del campus"
+            >
+              🗺️
+            </Link>
+            <Link
+              href="https://dashboard.openpanel.dev/share/overview/hQ9bOd"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center rounded-md text-sm font-medium h-8 w-8 text-white hover:bg-white/10 transition-colors"
+              title="Ver analíticas"
+              aria-label="Ver analíticas de OpenPanel"
+            >
+              📊
+            </Link>
+            <Link
+              href={settingsHref}
+              className="inline-flex items-center justify-center rounded-md text-sm font-medium h-8 w-8 text-white hover:bg-white/10 transition-colors"
+              title="Abrir configuración"
+              aria-label="Abrir configuración"
+            >
+              ⚙️
+            </Link>
           </div>
         </div>
       </header>

@@ -11,6 +11,7 @@ import manifestData from "@/data/courses/manifest.json";
 import buildingsAmenitiesData from "@/data/buildings-amenities.json";
 import { parseCourseSections, groupByRoom } from "@/lib/parse-courses";
 import { getRoomRestrictions } from "@/lib/data-loader";
+import { withConfigParam } from "@/lib/query-utils";
 import { BuildingMetadata } from "@/types";
 
 // Dynamic import for Leaflet (SSR-incompatible)
@@ -28,6 +29,7 @@ function MapInner() {
   const searchParams = useSearchParams();
   const qs = searchParams.toString();
   const backQuery = qs ? `?${qs}` : "";
+  const settingsHref = `/${withConfigParam(backQuery)}`;
 
   const allBuildings = buildingsMetadata.buildings as BuildingMetadata[];
   const whitelisted = allBuildings.filter((b) => b.order !== undefined && b.coordinates);
@@ -75,12 +77,40 @@ function MapInner() {
             </Link>
             <h1 className="text-xl font-bold mt-1">Mapa del Campus</h1>
           </div>
-          <button
-            onClick={requestLocation}
-            className="px-3 py-1.5 rounded-lg text-sm font-medium bg-uniandes-yellow text-uniandes-dark hover:bg-uniandes-yellow/90 transition-colors"
-          >
-            📍 Mi ubicación
-          </button>
+          <div className="flex items-center gap-2">
+            <span
+              className="inline-flex items-center justify-center rounded-md text-sm font-medium h-8 w-8 text-white/90 bg-white/10 border border-white/30"
+              title="Mapa del campus (pantalla actual)"
+              aria-label="Mapa del campus (pantalla actual)"
+              aria-current="page"
+            >
+              🗺️
+            </span>
+            <Link
+              href="https://dashboard.openpanel.dev/share/overview/hQ9bOd"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center rounded-md text-sm font-medium h-8 w-8 text-white hover:bg-white/10 transition-colors"
+              title="Ver analíticas"
+              aria-label="Ver analíticas de OpenPanel"
+            >
+              📊
+            </Link>
+            <Link
+              href={settingsHref}
+              className="inline-flex items-center justify-center rounded-md text-sm font-medium h-8 w-8 text-white hover:bg-white/10 transition-colors"
+              title="Abrir configuración"
+              aria-label="Abrir configuración"
+            >
+              ⚙️
+            </Link>
+            <button
+              onClick={requestLocation}
+              className="px-3 py-1.5 rounded-lg text-sm font-medium bg-uniandes-yellow text-uniandes-dark hover:bg-uniandes-yellow/90 transition-colors"
+            >
+              📍 Mi ubicación
+            </button>
+          </div>
         </div>
       </header>
 

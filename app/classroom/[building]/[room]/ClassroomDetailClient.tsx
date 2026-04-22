@@ -12,6 +12,7 @@ import ciclosData from "@/data/ciclos.json";
 import manifestData from "@/data/courses/manifest.json";
 import { parseCourseSections, groupByRoom, getCurrentCiclo } from "@/lib/parse-courses";
 import { getRoomRestrictions } from "@/lib/data-loader";
+import { withConfigParam } from "@/lib/query-utils";
 import { BuildingMetadata, PartOfTerm } from "@/types";
 
 export default function ClassroomDetailClient({
@@ -85,6 +86,7 @@ function ClassroomDetailInner({
   // Preserve time params in back link
   const qs = searchParams.toString();
   const backQuery = qs ? `?${qs}` : "";
+  const settingsHref = `/${withConfigParam(backQuery)}`;
 
   /**
    * Check if a course title indicates it's in English.
@@ -98,32 +100,62 @@ function ClassroomDetailInner({
   return (
     <main className="min-h-screen bg-background">
       <header className="border-b bg-uniandes-dark text-white">
-        <div className="max-w-7xl mx-auto px-4 py-4">
-          <Link
-            href={`/building/${buildingCode}${backQuery}`}
-            className="text-white/70 hover:text-white transition-colors text-sm"
-          >
-            ← {buildingMeta.name}
-          </Link>
-          <h1 className="text-2xl font-bold mt-2">
-            {buildingCode} {roomCode}
-          </h1>
-          <div className="flex items-center gap-4 mt-1 text-sm text-white/70">
-            <span>{filteredOccupancies.length} sesiones</span>
-            <span>·</span>
-            <span>{uniqueCourses.length} cursos</span>
-            {roomData.floor !== undefined && (
-              <>
-                <span>·</span>
-                <span>Piso {roomData.floor}</span>
-              </>
-            )}
-            {roomData.isRestricted && (
-              <>
-                <span>·</span>
-                <span>🔒 {roomData.restrictionNote}</span>
-              </>
-            )}
+        <div className="max-w-7xl mx-auto px-4 py-4 flex items-start justify-between">
+          <div>
+            <Link
+              href={`/building/${buildingCode}${backQuery}`}
+              className="text-white/70 hover:text-white transition-colors text-sm"
+            >
+              ← {buildingMeta.name}
+            </Link>
+            <h1 className="text-2xl font-bold mt-2">
+              {buildingCode} {roomCode}
+            </h1>
+            <div className="flex items-center gap-4 mt-1 text-sm text-white/70">
+              <span>{filteredOccupancies.length} sesiones</span>
+              <span>·</span>
+              <span>{uniqueCourses.length} cursos</span>
+              {roomData.floor !== undefined && (
+                <>
+                  <span>·</span>
+                  <span>Piso {roomData.floor}</span>
+                </>
+              )}
+              {roomData.isRestricted && (
+                <>
+                  <span>·</span>
+                  <span>🔒 {roomData.restrictionNote}</span>
+                </>
+              )}
+            </div>
+          </div>
+          <div className="flex items-center gap-2">
+            <Link
+              href={`/map${backQuery}`}
+              className="inline-flex items-center justify-center rounded-md text-sm font-medium h-8 w-8 text-white hover:bg-white/10 transition-colors"
+              title="Mapa del campus"
+              aria-label="Ver mapa del campus"
+            >
+              🗺️
+            </Link>
+            <Link
+              href="https://dashboard.openpanel.dev/share/overview/hQ9bOd"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center rounded-md text-sm font-medium h-8 w-8 text-white hover:bg-white/10 transition-colors"
+              title="Ver analíticas"
+              aria-label="Ver analíticas de OpenPanel"
+            >
+              📊
+            </Link>
+            <Link
+              href={settingsHref}
+              className="inline-flex items-center justify-center rounded-md text-sm font-medium h-8 w-8 text-white hover:bg-white/10 transition-colors"
+              title="Abrir configuración"
+              aria-label="Abrir configuración"
+            >
+              ⚙️
+            </Link>
           </div>
         </div>
       </header>

@@ -3,6 +3,7 @@
 import { useState, Suspense } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useSearchParams } from "next/navigation";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Modal, ModalContent, ModalHeader, ModalTitle } from "@/components/ui/modal";
@@ -78,11 +79,13 @@ export default function BuildingsPage() {
 }
 
 function BuildingsPageInner() {
+  const searchParams = useSearchParams();
+  const shouldOpenConfigFromQuery = searchParams.get("config") === "1";
   const allBuildings = buildingsMetadata.buildings as BuildingMetadata[];
   const whitelisted = allBuildings.filter((b) => b.order !== undefined).sort((a, b) => (a.order || 0) - (b.order || 0));
 
   const [showHelp, setShowHelp] = useState(false);
-  const [showConfig, setShowConfig] = useState(false);
+  const [showConfig, setShowConfig] = useState(shouldOpenConfigFromQuery);
   const [extraBuildings, setExtraBuildings] = useState<Set<string>>(new Set());
 
   const {
@@ -149,6 +152,16 @@ function BuildingsPageInner() {
               aria-label="Ver mapa del campus"
             >
               🗺️
+            </Link>
+            <Link
+              href="https://dashboard.openpanel.dev/share/overview/hQ9bOd"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center rounded-md text-sm font-medium h-8 w-8 text-white hover:bg-white/10 transition-colors"
+              title="Ver analíticas"
+              aria-label="Ver analíticas de OpenPanel"
+            >
+              📊
             </Link>
             <Button
               variant="ghost"
