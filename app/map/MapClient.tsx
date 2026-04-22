@@ -76,14 +76,14 @@ function MapInner() {
             <h1 className="text-xl font-bold mt-1">Mapa del Campus</h1>
           </div>
           <div className="flex items-center gap-2">
-            <Link
-              href={`/map${backQuery}`}
-              className="inline-flex items-center justify-center rounded-md text-sm font-medium h-8 w-8 text-white hover:bg-white/10 transition-colors"
-              title="Mapa del campus"
-              aria-label="Ver mapa del campus"
+            <span
+              className="inline-flex items-center justify-center rounded-md text-sm font-medium h-8 w-8 text-white/90 bg-white/10"
+              title="Mapa del campus (pantalla actual)"
+              aria-label="Mapa del campus (pantalla actual)"
+              aria-current="page"
             >
               🗺️
-            </Link>
+            </span>
             <Link
               href="https://dashboard.openpanel.dev/share/overview/hQ9bOd"
               target="_blank"
