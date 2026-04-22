@@ -80,7 +80,7 @@ function MapInner() {
             <button
               type="button"
               disabled
-              className="inline-flex items-center justify-center rounded-md text-sm font-medium h-8 w-8 text-white/90 bg-white/10 disabled:opacity-100"
+              className="inline-flex items-center justify-center rounded-md text-sm font-medium h-8 w-8 text-white/90 bg-white/10 border border-white/30"
               title="Mapa del campus (pantalla actual)"
               aria-label="Mapa del campus (pantalla actual)"
               aria-current="page"
