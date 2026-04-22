@@ -195,21 +195,22 @@ Gracias a todas las personas que han hecho posible este proyecto:
 <table>
   <tbody>
     <tr>
-      <td align="center"><a href="https://github.com/t-montes"><img src="https://avatars.githubusercontent.com/u/59377362?v=4" width="80px;" alt="Tony Montes"/><br /><sub><b>Tony Montes</b></sub></a></td>
-      <td align="center"><a href="https://github.com/luccasrojas"><img src="https://avatars.githubusercontent.com/u/83490741?v=4" width="80px;" alt="Luccas Rojas"/><br /><sub><b>Luccas Rojas</b></sub></a></td>
-      <td align="center"><a href="https://github.com/SnowArtz"><img src="https://avatars.githubusercontent.com/u/93491002?v=4" width="80px;" alt="David Santiago Ortiz"/><br /><sub><b>David Santiago Ortiz</b></sub></a></td>
-      <td align="center"><a href="https://github.com/ddi4z"><img src="https://avatars.githubusercontent.com/u/110594320?v=4" width="80px;" alt="Daniel Diaz"/><br /><sub><b>Daniel Diaz</b></sub></a></td>
-      <td align="center"><a href="https://github.com/jsurrea"><img src="https://avatars.githubusercontent.com/u/68788933?v=4" width="80px;" alt="Sebastian Urrea"/><br /><sub><b>Sebastian Urrea</b></sub></a></td>
+      <td align="center"><a href="https://github.com/jsurrea"><img src="https://avatars.githubusercontent.com/u/68788933?v=4" width="80px;" alt="jsurrea"/><br /><sub><b>jsurrea</b></sub></a></td>
+      <td align="center"><a href="https://github.com/t-montes"><img src="https://avatars.githubusercontent.com/u/69558777?v=4" width="80px;" alt="t-montes"/><br /><sub><b>t-montes</b></sub></a></td>
+      <td align="center"><a href="https://github.com/luccasrojas"><img src="https://avatars.githubusercontent.com/u/62764177?v=4" width="80px;" alt="luccasrojas"/><br /><sub><b>luccasrojas</b></sub></a></td>
+      <td align="center"><a href="https://github.com/SnowArtz"><img src="https://avatars.githubusercontent.com/u/69651671?v=4" width="80px;" alt="SnowArtz"/><br /><sub><b>SnowArtz</b></sub></a></td>
+      <td align="center"><a href="https://github.com/ncarvajalc"><img src="https://avatars.githubusercontent.com/u/66692533?v=4" width="80px;" alt="ncarvajalc"/><br /><sub><b>ncarvajalc</b></sub></a></td>
     </tr>
     <tr>
-      <td align="center"><a href="https://github.com/FranklinSRomero"><img src="https://avatars.githubusercontent.com/u/105438748?v=4" width="80px;" alt="Franklin Romero"/><br /><sub><b>Franklin Romero</b></sub></a></td>
-      <td align="center"><a href="https://github.com/ikbakkk"><img src="https://avatars.githubusercontent.com/u/80040032?v=4" width="80px;" alt="ikbakkk"/><br /><sub><b>ikbakkk</b></sub></a></td>
+      <td align="center"><a href="https://github.com/ddi4z"><img src="https://avatars.githubusercontent.com/u/110594320?v=4" width="80px;" alt="ddi4z"/><br /><sub><b>ddi4z</b></sub></a></td>
+      <td align="center"><a href="https://github.com/FranklinSRomero"><img src="https://avatars.githubusercontent.com/u/113615053?v=4" width="80px;" alt="FranklinSRomero"/><br /><sub><b>FranklinSRomero</b></sub></a></td>
+      <td align="center"><a href="https://github.com/Yesopi"><img src="https://avatars.githubusercontent.com/u/100538974?v=4" width="80px;" alt="Yesopi"/><br /><sub><b>Yesopi</b></sub></a></td>
     </tr>
   </tbody>
 </table>
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
-¿Quieres aparecer en esta lista? Consulta la [Guía de Contribución](CONTRIBUTING.md#añadirse-a-la-lista-de-contribuidores) para instrucciones.
+¿Quieres aparecer en esta lista? Tu usuario se agrega automáticamente cuando tu PR se fusiona en `main`. Más detalles en la [Guía de Contribución](CONTRIBUTING.md#añadirse-a-la-lista-de-contribuidores).
 
 ## 📄 Licencia
 
