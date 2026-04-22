@@ -11,17 +11,11 @@ import manifestData from "@/data/courses/manifest.json";
 import buildingsAmenitiesData from "@/data/buildings-amenities.json";
 import { parseCourseSections, groupByRoom } from "@/lib/parse-courses";
 import { getRoomRestrictions } from "@/lib/data-loader";
+import { withConfigParam } from "@/lib/query-utils";
 import { BuildingMetadata } from "@/types";
 
 // Dynamic import for Leaflet (SSR-incompatible)
 const CampusMap = dynamic(() => import("./CampusMapLeaflet"), { ssr: false });
-
-function withConfigParam(query: string): string {
-  const params = new URLSearchParams(query.startsWith("?") ? query.slice(1) : query);
-  params.set("config", "1");
-  const queryString = params.toString();
-  return queryString ? `?${queryString}` : "";
-}
 
 export default function MapClient() {
   return (

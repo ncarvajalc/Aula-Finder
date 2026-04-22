@@ -11,6 +11,7 @@ import { parseCourseSections, groupByRoom } from "@/lib/parse-courses";
 import { getRoomRestrictions, getAmenitiesByBuildingCode } from "@/lib/data-loader";
 import { useTimeState } from "@/lib/time-state";
 import { getClosureStatus } from "@/lib/closures";
+import { withConfigParam } from "@/lib/query-utils";
 
 const DAY_NAMES: Record<string, string> = {
   L: "Lunes", M: "Martes", I: "Miércoles", J: "Jueves", V: "Viernes", S: "Sábado",
@@ -18,13 +19,6 @@ const DAY_NAMES: Record<string, string> = {
 const DAY_ORDER: DayOfWeek[] = ["L", "M", "I", "J", "V", "S"];
 
 const CLASS_TRANSITION_MINUTES = 10;
-
-function withConfigParam(query: string): string {
-  const params = new URLSearchParams(query.startsWith("?") ? query.slice(1) : query);
-  params.set("config", "1");
-  const queryString = params.toString();
-  return queryString ? `?${queryString}` : "";
-}
 
 export default function BuildingDetailClient({ code }: { code: string }) {
   return (

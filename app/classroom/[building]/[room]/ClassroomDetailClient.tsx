@@ -12,14 +12,8 @@ import ciclosData from "@/data/ciclos.json";
 import manifestData from "@/data/courses/manifest.json";
 import { parseCourseSections, groupByRoom, getCurrentCiclo } from "@/lib/parse-courses";
 import { getRoomRestrictions } from "@/lib/data-loader";
+import { withConfigParam } from "@/lib/query-utils";
 import { BuildingMetadata, PartOfTerm } from "@/types";
-
-function withConfigParam(query: string): string {
-  const params = new URLSearchParams(query.startsWith("?") ? query.slice(1) : query);
-  params.set("config", "1");
-  const queryString = params.toString();
-  return queryString ? `?${queryString}` : "";
-}
 
 export default function ClassroomDetailClient({
   building,
