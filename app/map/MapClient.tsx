@@ -28,6 +28,8 @@ function MapInner() {
   const searchParams = useSearchParams();
   const qs = searchParams.toString();
   const backQuery = qs ? `?${qs}` : "";
+  const mapHref = `/map${backQuery}`;
+  const settingsHref = `/${backQuery}`;
 
   const allBuildings = buildingsMetadata.buildings as BuildingMetadata[];
   const whitelisted = allBuildings.filter((b) => b.order !== undefined && b.coordinates);
@@ -76,14 +78,15 @@ function MapInner() {
             <h1 className="text-xl font-bold mt-1">Mapa del Campus</h1>
           </div>
           <div className="flex items-center gap-2">
-            <span
-              className="inline-flex items-center justify-center rounded-md text-sm font-medium h-8 w-8 text-white/90 bg-white/10"
+            <Link
+              href={mapHref}
+              className="inline-flex items-center justify-center rounded-md text-sm font-medium h-8 w-8 text-white/90 bg-white/10 pointer-events-none"
               title="Mapa del campus (pantalla actual)"
               aria-label="Mapa del campus (pantalla actual)"
               aria-current="page"
             >
               🗺️
-            </span>
+            </Link>
             <Link
               href="https://dashboard.openpanel.dev/share/overview/hQ9bOd"
               target="_blank"
@@ -95,7 +98,7 @@ function MapInner() {
               📊
             </Link>
             <Link
-              href={`/${backQuery}`}
+              href={settingsHref}
               className="inline-flex items-center justify-center rounded-md text-sm font-medium h-8 w-8 text-white hover:bg-white/10 transition-colors"
               title="Abrir configuración"
               aria-label="Abrir configuración"

@@ -144,13 +144,15 @@ function BuildingDetailInner({ code }: { code: string }) {
     gap: "border-l-amber-400 bg-amber-50/50",
     restricted: "border-l-gray-300 bg-gray-50 opacity-60",
   };
+  const homeHref = `/${buildLinkQuery()}`;
+  const mapHref = `/map${buildLinkQuery()}`;
 
   return (
     <main className="min-h-screen bg-background">
       <header className="border-b bg-uniandes-dark text-white">
         <div className="max-w-7xl mx-auto px-4 py-4 flex items-start justify-between">
           <div>
-            <Link href={`/${buildLinkQuery()}`} className="text-white/70 hover:text-white transition-colors text-sm">
+            <Link href={homeHref} className="text-white/70 hover:text-white transition-colors text-sm">
               ← Edificios
             </Link>
             <h1 className="text-2xl font-bold mt-2">
@@ -163,7 +165,7 @@ function BuildingDetailInner({ code }: { code: string }) {
           </div>
           <div className="flex items-center gap-2">
             <Link
-              href={`/map${buildLinkQuery()}`}
+              href={mapHref}
               className="inline-flex items-center justify-center rounded-md text-sm font-medium h-8 w-8 text-white hover:bg-white/10 transition-colors"
               title="Mapa del campus"
               aria-label="Ver mapa del campus"
@@ -181,7 +183,7 @@ function BuildingDetailInner({ code }: { code: string }) {
               📊
             </Link>
             <Link
-              href={`/${buildLinkQuery()}`}
+              href={homeHref}
               className="inline-flex items-center justify-center rounded-md text-sm font-medium h-8 w-8 text-white hover:bg-white/10 transition-colors"
               title="Abrir configuración"
               aria-label="Abrir configuración"

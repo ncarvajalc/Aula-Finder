@@ -85,6 +85,7 @@ function ClassroomDetailInner({
   // Preserve time params in back link
   const qs = searchParams.toString();
   const backQuery = qs ? `?${qs}` : "";
+  const settingsHref = `/${backQuery}`;
 
   /**
    * Check if a course title indicates it's in English.
@@ -147,7 +148,7 @@ function ClassroomDetailInner({
               📊
             </Link>
             <Link
-              href={`/${backQuery}`}
+              href={settingsHref}
               className="inline-flex items-center justify-center rounded-md text-sm font-medium h-8 w-8 text-white hover:bg-white/10 transition-colors"
               title="Abrir configuración"
               aria-label="Abrir configuración"
