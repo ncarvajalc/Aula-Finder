@@ -185,8 +185,8 @@ function BuildingDetailInner({ code }: { code: string }) {
             <Link
               href={homeHref}
               className="inline-flex items-center justify-center rounded-md text-sm font-medium h-8 w-8 text-white hover:bg-white/10 transition-colors"
-              title="Ir al inicio para configurar"
-              aria-label="Ir al inicio para configurar"
+              title="Ir al inicio"
+              aria-label="Ir al inicio"
             >
               ⚙️
             </Link>
