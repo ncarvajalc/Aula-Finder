@@ -75,12 +75,40 @@ function MapInner() {
             </Link>
             <h1 className="text-xl font-bold mt-1">Mapa del Campus</h1>
           </div>
-          <button
-            onClick={requestLocation}
-            className="px-3 py-1.5 rounded-lg text-sm font-medium bg-uniandes-yellow text-uniandes-dark hover:bg-uniandes-yellow/90 transition-colors"
-          >
-            📍 Mi ubicación
-          </button>
+          <div className="flex items-center gap-2">
+            <Link
+              href={`/map${backQuery}`}
+              className="inline-flex items-center justify-center rounded-md text-sm font-medium h-8 w-8 text-white hover:bg-white/10 transition-colors"
+              title="Mapa del campus"
+              aria-label="Ver mapa del campus"
+            >
+              🗺️
+            </Link>
+            <Link
+              href="https://dashboard.openpanel.dev/share/overview/hQ9bOd"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center rounded-md text-sm font-medium h-8 w-8 text-white hover:bg-white/10 transition-colors"
+              title="Ver analíticas"
+              aria-label="Ver analíticas de OpenPanel"
+            >
+              📊
+            </Link>
+            <Link
+              href={`/${backQuery}`}
+              className="inline-flex items-center justify-center rounded-md text-sm font-medium h-8 w-8 text-white hover:bg-white/10 transition-colors"
+              title="Abrir configuración"
+              aria-label="Abrir configuración"
+            >
+              ⚙️
+            </Link>
+            <button
+              onClick={requestLocation}
+              className="px-3 py-1.5 rounded-lg text-sm font-medium bg-uniandes-yellow text-uniandes-dark hover:bg-uniandes-yellow/90 transition-colors"
+            >
+              📍 Mi ubicación
+            </button>
+          </div>
         </div>
       </header>
 
