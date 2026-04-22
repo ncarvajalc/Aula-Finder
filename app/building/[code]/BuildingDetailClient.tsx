@@ -19,6 +19,13 @@ const DAY_ORDER: DayOfWeek[] = ["L", "M", "I", "J", "V", "S"];
 
 const CLASS_TRANSITION_MINUTES = 10;
 
+function withConfigParam(query: string): string {
+  const params = new URLSearchParams(query.startsWith("?") ? query.slice(1) : query);
+  params.set("config", "1");
+  const queryString = params.toString();
+  return queryString ? `?${queryString}` : "";
+}
+
 export default function BuildingDetailClient({ code }: { code: string }) {
   return (
     <Suspense>
@@ -144,8 +151,10 @@ function BuildingDetailInner({ code }: { code: string }) {
     gap: "border-l-amber-400 bg-amber-50/50",
     restricted: "border-l-gray-300 bg-gray-50 opacity-60",
   };
-  const homeHref = `/${buildLinkQuery()}`;
-  const mapHref = `/map${buildLinkQuery()}`;
+  const homeQuery = buildLinkQuery();
+  const homeHref = `/${homeQuery}`;
+  const mapHref = `/map${homeQuery}`;
+  const settingsHref = `/${withConfigParam(homeQuery)}`;
 
   return (
     <main className="min-h-screen bg-background">
@@ -183,10 +192,10 @@ function BuildingDetailInner({ code }: { code: string }) {
               📊
             </Link>
             <Link
-              href={homeHref}
+              href={settingsHref}
               className="inline-flex items-center justify-center rounded-md text-sm font-medium h-8 w-8 text-white hover:bg-white/10 transition-colors"
-              title="Ir al inicio"
-              aria-label="Ir al inicio"
+              title="Abrir configuración"
+              aria-label="Abrir configuración"
             >
               ⚙️
             </Link>

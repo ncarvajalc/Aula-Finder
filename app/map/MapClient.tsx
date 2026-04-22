@@ -16,6 +16,13 @@ import { BuildingMetadata } from "@/types";
 // Dynamic import for Leaflet (SSR-incompatible)
 const CampusMap = dynamic(() => import("./CampusMapLeaflet"), { ssr: false });
 
+function withConfigParam(query: string): string {
+  const params = new URLSearchParams(query.startsWith("?") ? query.slice(1) : query);
+  params.set("config", "1");
+  const queryString = params.toString();
+  return queryString ? `?${queryString}` : "";
+}
+
 export default function MapClient() {
   return (
     <Suspense>
@@ -28,7 +35,7 @@ function MapInner() {
   const searchParams = useSearchParams();
   const qs = searchParams.toString();
   const backQuery = qs ? `?${qs}` : "";
-  const settingsHref = `/${backQuery}`;
+  const settingsHref = `/${withConfigParam(backQuery)}`;
 
   const allBuildings = buildingsMetadata.buildings as BuildingMetadata[];
   const whitelisted = allBuildings.filter((b) => b.order !== undefined && b.coordinates);
@@ -98,8 +105,8 @@ function MapInner() {
             <Link
               href={settingsHref}
               className="inline-flex items-center justify-center rounded-md text-sm font-medium h-8 w-8 text-white hover:bg-white/10 transition-colors"
-              title="Ir al inicio"
-              aria-label="Ir al inicio"
+              title="Abrir configuración"
+              aria-label="Abrir configuración"
             >
               ⚙️
             </Link>
