@@ -22,18 +22,7 @@ interface CampusMapProps {
 function createBuildingIcon(code: string, hasRooms: boolean) {
   return L.divIcon({
     className: "custom-building-marker",
-    html: `<div style="
-      background: ${hasRooms ? "#1B2A4A" : "#888"};
-      color: white;
-      border: 2px solid ${hasRooms ? "#F5C400" : "#aaa"};
-      border-radius: 8px;
-      padding: 2px 8px;
-      font-size: 12px;
-      font-weight: bold;
-      white-space: nowrap;
-      text-align: center;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-    ">${code}</div>`,
+    html: `<div class="building-marker-label ${hasRooms ? "available" : "unavailable"}">${code}</div>`,
     iconSize: [0, 0],
     iconAnchor: [20, 15],
     popupAnchor: [0, -15],
@@ -100,29 +89,19 @@ export default function CampusMapLeaflet({
             icon={createBuildingIcon(building.code, !!stats)}
           >
             <Popup>
-              <div style={{ minWidth: 180 }}>
-                <div style={{ fontWeight: "bold", fontSize: 14 }}>
-                  {building.name}
-                </div>
-                <div style={{ fontSize: 12, color: "#666", marginBottom: 4 }}>
+              <div className="campus-building-popup">
+                <div className="campus-building-popup__title">{building.name}</div>
+                <div className="campus-building-popup__meta">
                   {building.code} · {building.campus}
                 </div>
                 {stats && (
-                  <div style={{ fontSize: 12, marginBottom: 4 }}>
+                  <div className="campus-building-popup__stats">
                     {stats.total} salones registrados
                   </div>
                 )}
                 <Link
                   href={`/building/${building.code}${linkQuery}`}
-                  style={{
-                    display: "inline-block",
-                    padding: "4px 12px",
-                    background: "#1B2A4A",
-                    color: "white",
-                    borderRadius: 6,
-                    fontSize: 12,
-                    textDecoration: "none",
-                  }}
+                  className="campus-building-popup__link"
                 >
                   Ver edificio →
                 </Link>
