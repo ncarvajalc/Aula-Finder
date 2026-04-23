@@ -12,7 +12,6 @@ y este proyecto adhiere a [Versionado Semántico](https://semver.org/lang/es/).
 - Integración con Leaflet para mapas interactivos
 - Vista detallada de salones por piso
 - Soporte para ciclos 8A y 8B
-- Visualización de amenidades por edificio
 - Pipeline de actualización automática de datos con GitHub Actions
 - CODE_OF_CONDUCT.md para establecer estándares de comunidad
 - Plantillas de issues (.github/ISSUE_TEMPLATE/) para bug reports, feature requests, documentación y preguntas

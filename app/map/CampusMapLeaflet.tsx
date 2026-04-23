@@ -14,7 +14,6 @@ const DEFAULT_ZOOM = 17;
 interface CampusMapProps {
   buildings: BuildingMetadata[];
   buildingStats: Map<string, { total: number; available: number }>;
-  amenitiesMap: Map<string, string[]>;
   userLocation: [number, number] | null;
   linkQuery: string;
 }
@@ -71,7 +70,6 @@ function UserLocationMarker({ position }: { position: [number, number] }) {
 export default function CampusMapLeaflet({
   buildings,
   buildingStats,
-  amenitiesMap,
   userLocation,
   linkQuery,
 }: CampusMapProps) {
@@ -94,7 +92,6 @@ export default function CampusMapLeaflet({
           building.coordinates.longitude,
         ];
         const stats = buildingStats.get(building.code);
-        const amenityIcons = amenitiesMap.get(building.code) || [];
 
         return (
           <Marker
@@ -113,11 +110,6 @@ export default function CampusMapLeaflet({
                 {stats && (
                   <div style={{ fontSize: 12, marginBottom: 4 }}>
                     {stats.total} salones registrados
-                  </div>
-                )}
-                {amenityIcons.length > 0 && (
-                  <div style={{ fontSize: 14, marginBottom: 6 }}>
-                    {amenityIcons.join(" ")}
                   </div>
                 )}
                 <Link

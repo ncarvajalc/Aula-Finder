@@ -34,44 +34,6 @@ Define la lista de edificios del campus con su información básica.
 
 ---
 
-### `buildings-amenities.json` — Amenidades de edificios
-
-Define las facilidades disponibles en cada edificio (cafeterías, ascensores, laboratorios, etc.).
-
-```json
-{
-  "code": "ML",
-  "amenities": [
-    {
-      "type": "coffee_shop",
-      "description": "Cafetería Juan Valdez en el lobby principal, primer piso"
-    }
-  ]
-}
-```
-
-| Campo | Tipo | Requerido | Descripción |
-|-------|------|-----------|-------------|
-| `code` | string | ✅ | Código del edificio (debe coincidir con `buildings-metadata.json`) |
-| `amenities[].type` | string | ✅ | Tipo de amenidad (ver tabla abajo). El icono y label se obtienen automáticamente de `amenityTypes` |
-| `amenities[].description` | string | ❌ | Información adicional específica de esta amenidad (ubicación, detalles, etc.) |
-
-**Tipos de amenidades soportados** (definidos en `amenityTypes` dentro del JSON):
-
-| Tipo | Descripción | Emoji |
-|------|-------------|-------|
-| `coffee_shop` | Cafetería o punto de café | ☕ |
-| `food` | Comida / Plaza de comidas | 🍽️ |
-| `elevator` | Ascensores | 🛗 |
-| `restroom` | Baños | 🚻 |
-| `study_area` | Salas de estudio | 📚 |
-| `printer` | Impresoras | 🖨️ |
-| `lab` | Laboratorios | 🔬 |
-| `vending_machine` | Máquinas expendedoras | 🥤 |
-| `parking` | Estacionamiento | 🅿️ |
-
----
-
 ### `room-restrictions.json` — Restricciones de salones
 
 Define qué salones están restringidos (laboratorios, oficinas, espacios de acceso limitado). Estos salones aparecen con un ícono de candado 🔒 y se excluyen del conteo de disponibilidad.
@@ -192,7 +154,7 @@ python scripts/analyze-enums.py
 La vista de mapa (`/map`) muestra los edificios del campus en un mapa interactivo usando OpenStreetMap. Las coordenadas de cada edificio se definen en `buildings-metadata.json`. Los marcadores muestran:
 
 - Código del edificio
-- Nombre completo y amenidades (en el popup)
+- Nombre completo (en el popup)
 - Enlace al detalle del edificio
 
 También soporta geolocalización del usuario para mostrar su posición en el mapa.

@@ -92,32 +92,6 @@ export interface RoomData {
 }
 
 /**
- * BuildingAmenity represents a facility or service available in a building
- * The icon and name fields are populated from amenityTypes based on the type
- */
-export interface BuildingAmenity {
-  type: "coffee_shop" | "food" | "elevator" | "restroom" | "study_area" | "printer" | "lab" | "vending_machine" | "parking";
-  description?: string;
-  // These fields are populated by the data loader from amenityTypes
-  icon?: string;
-  name?: string;
-  // Deprecated fields: These were removed from the JSON schema but kept in the type
-  // for backward compatibility with any components that might still reference them.
-  // TODO: Remove in next major version once all references are updated.
-  location?: string;
-  count?: number;
-  floors?: number[];
-}
-
-/**
- * BuildingAmenities contains amenities for a specific building
- */
-export interface BuildingAmenities {
-  code: string;
-  amenities: BuildingAmenity[];
-}
-
-/**
  * BuildingMetadata contains additional information about a building
  */
 export interface BuildingMetadata {
@@ -130,7 +104,6 @@ export interface BuildingMetadata {
     latitude: number;
     longitude: number;
   };
-  amenities?: BuildingAmenity[]; // Optional amenities for this building
 }
 
 /**
