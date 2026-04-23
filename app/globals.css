@@ -35,3 +35,77 @@
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
+
+.custom-building-marker {
+  background: transparent !important;
+  border: 0 !important;
+}
+
+.building-marker-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 42px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
+}
+
+.building-marker-label.available {
+  background: linear-gradient(180deg, #253a63 0%, #1b2a4a 100%);
+  border: 2px solid #f5c400;
+}
+
+.building-marker-label.unavailable {
+  background: #7a7d87;
+  border: 2px solid #bfc2cc;
+}
+
+.campus-building-popup {
+  min-width: 220px;
+  max-width: 260px;
+}
+
+.campus-building-popup__title {
+  margin-bottom: 4px;
+  color: #1b2a4a;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.campus-building-popup__meta {
+  margin-bottom: 6px;
+  color: #5c657a;
+  font-size: 12px;
+}
+
+.campus-building-popup__stats {
+  margin-bottom: 6px;
+  color: #273247;
+  font-size: 12px;
+}
+
+.campus-building-popup__amenities {
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.campus-building-popup__link {
+  display: inline-block;
+  border-radius: 6px;
+  background: #1b2a4a;
+  padding: 4px 12px;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+}
