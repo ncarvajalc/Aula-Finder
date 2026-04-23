@@ -8,7 +8,7 @@ import Link from "next/link";
 import buildingsMetadata from "@/data/buildings-metadata.json";
 import coursesData from "@/data/courses/courses-latest.json";
 import { parseCourseSections, groupByRoom } from "@/lib/parse-courses";
-import { getRoomRestrictions, getAmenitiesByBuildingCode } from "@/lib/data-loader";
+import { getRoomRestrictions } from "@/lib/data-loader";
 import { useTimeState } from "@/lib/time-state";
 import { getClosureStatus } from "@/lib/closures";
 import { withConfigParam } from "@/lib/query-utils";
@@ -75,7 +75,6 @@ function BuildingDetailInner({ code }: { code: string }) {
   const restrictions = getRoomRestrictions();
   const buildingsData = groupByRoom(sections, allBuildings, restrictions);
   const buildingData = buildingsData.find((b) => b.building === buildingCode);
-  const amenities = getAmenitiesByBuildingCode(buildingCode);
 
   const roomsByFloor = new Map<number, RoomData[]>();
   if (buildingData) {
@@ -253,20 +252,6 @@ function BuildingDetailInner({ code }: { code: string }) {
               <span>Universidad cerrada</span>
             </div>
             <p className="text-xs mt-1 text-amber-800">{closureStatus.reason}</p>
-          </div>
-        )}
-        {amenities.length > 0 && (
-          <div className="flex flex-wrap gap-2 mb-6">
-            {amenities.map((amenity, idx) => (
-              <span
-                key={idx}
-                className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-secondary text-xs text-muted-foreground"
-                title={amenity.description || amenity.name}
-              >
-                {amenity.icon && <span>{amenity.icon}</span>}
-                {amenity.name}
-              </span>
-            ))}
           </div>
         )}
         {sortedFloors.length === 0 ? (

@@ -1,6 +1,6 @@
 ---
 name: 📍 Corrección de Datos
-about: Reporta información incorrecta o faltante en los datos del campus (coordenadas, amenidades, horarios, etc.)
+about: Reporta información incorrecta o faltante en los datos del campus (coordenadas, horarios, etc.)
 title: '[DATA] '
 labels: ['data', 'good first issue']
 assignees: ''
@@ -11,7 +11,6 @@ assignees: ''
 <!-- Selecciona una o más categorías -->
 
 - [ ] Coordenadas de un edificio (posición incorrecta en el mapa)
-- [ ] Amenidades de un edificio (cafeterías, ascensores, baños, etc.)
 - [ ] Restricciones de salones (laboratorios, oficinas)
 - [ ] Horarios de operación de la universidad
 - [ ] Días festivos o eventos especiales
@@ -40,7 +39,6 @@ assignees: ''
 <!-- Puedes marcar los archivos que necesitan cambios (no es obligatorio) -->
 
 - [ ] `data/buildings-metadata.json` — Coordenadas, nombres de edificios
-- [ ] `data/buildings-amenities.json` — Amenidades (cafés, baños, ascensores, etc.)
 - [ ] `data/room-restrictions.json` — Restricciones de salones
 - [ ] `data/university-closures.json` — Festivos, horarios, eventos especiales
 - [ ] `data/ciclos.json` — Fechas de semestres y ciclos

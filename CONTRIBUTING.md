@@ -148,7 +148,6 @@ Para instrucciones detalladas sobre cada archivo, su estructura y los valores pe
 | Archivo | Qué puedes hacer |
 |---------|-----------------|
 | `data/buildings-metadata.json` | Agregar/editar info de edificios (nombre, coordenadas, orden de aparición, imagen) |
-| `data/buildings-amenities.json` | Agregar amenidades de edificios (cafeterías, ascensores, laboratorios, etc.) |
 | `data/room-restrictions.json` | Marcar salones como restringidos (laboratorios, oficinas) |
 | `data/ciclos.json` | Actualizar fechas de los ciclos 8A y 8B del semestre |
 
