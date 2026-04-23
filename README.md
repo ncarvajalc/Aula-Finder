@@ -88,7 +88,6 @@ Aula-Finder/
 ├── data/                       # Datos editables (ver data/README.md)
 │   ├── courses/               # Datos de cursos por semestre
 │   ├── buildings-metadata.json
-│   ├── buildings-amenities.json
 │   ├── room-restrictions.json
 │   └── ciclos.json            # Definiciones de ciclos (8A/8B)
 ├── scripts/                    # Pipeline de datos (Python)

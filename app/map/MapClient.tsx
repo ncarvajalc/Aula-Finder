@@ -8,7 +8,6 @@ import { useSearchParams } from "next/navigation";
 import buildingsMetadata from "@/data/buildings-metadata.json";
 import coursesData from "@/data/courses/courses-latest.json";
 import manifestData from "@/data/courses/manifest.json";
-import buildingsAmenitiesData from "@/data/buildings-amenities.json";
 import { parseCourseSections, groupByRoom } from "@/lib/parse-courses";
 import { getRoomRestrictions } from "@/lib/data-loader";
 import { withConfigParam } from "@/lib/query-utils";
@@ -43,16 +42,6 @@ function MapInner() {
   for (const bd of buildingsData) {
     const unrestricted = bd.rooms.filter((r) => !r.isRestricted);
     buildingStats.set(bd.building, { total: unrestricted.length, available: unrestricted.length });
-  }
-
-  // Get amenities for each building
-  const amenityTypes = buildingsAmenitiesData.amenityTypes as Record<string, { icon: string; label: string }>;
-  const amenitiesMap = new Map<string, string[]>();
-  for (const ba of buildingsAmenitiesData.amenities) {
-    amenitiesMap.set(
-      ba.code,
-      ba.amenities.map((a: { type: string }) => amenityTypes[a.type]?.icon || "").filter(Boolean)
-    );
   }
 
   // User location state
@@ -118,7 +107,6 @@ function MapInner() {
         <CampusMap
           buildings={whitelisted}
           buildingStats={buildingStats}
-          amenitiesMap={amenitiesMap}
           userLocation={userLocation}
           linkQuery={backQuery}
         />
