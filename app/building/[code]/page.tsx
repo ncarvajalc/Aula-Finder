@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import BuildingDetailClient from "./BuildingDetailClient";
+import SunsetPlaceholder from "@/components/SunsetPlaceholder";
 import buildingsMetadata from "@/data/buildings-metadata.json";
 import { BuildingMetadata } from "@/types";
 
@@ -15,12 +15,12 @@ export async function generateMetadata({ params }: { params: Promise<{ code: str
 
   if (!building) {
     return {
-      title: "Edificio no encontrado - Aula-Finder",
+      title: "Aula-Finder se está despidiendo",
     };
   }
 
-  const title = `${building.name} (${building.code}) - Aula-Finder`;
-  const description = `Consulta la disponibilidad de salones en ${building.name} de la Universidad de los Andes. Ve qué aulas están libres en tiempo real.`;
+  const title = `${building.name} (${building.code}) - Aula-Finder se está despidiendo`;
+  const description = `Aula-Finder se está despidiendo. La consulta oficial de salones disponibles en la Universidad de los Andes ahora continúa en una nueva plataforma institucional.`;
 
   return {
     title,
@@ -40,6 +40,6 @@ export async function generateMetadata({ params }: { params: Promise<{ code: str
 }
 
 export default async function BuildingDetailPage({ params }: { params: Promise<{ code: string }> }) {
-  const { code } = await params;
-  return <BuildingDetailClient code={code} />;
+  await params;
+  return <SunsetPlaceholder />;
 }

@@ -4,18 +4,15 @@ import ServiceWorkerRegistration from "@/components/ServiceWorkerRegistration";
 import { OpenPanelComponent } from "@openpanel/nextjs";
 
 export const metadata: Metadata = {
-  title: "Aula-Finder - Encuentra salones disponibles | Universidad de los Andes",
-  description: "Descubre en tiempo real qué salones están disponibles en el campus de la Universidad de los Andes. Anteriormente conocido como Sobrecupo. Visualiza horarios, disponibilidad por edificio y planifica tu día.",
+  title: "Aula-Finder se está despidiendo | Universidad de los Andes",
+  description: "Aula-Finder está entrando en cierre. La consulta oficial de salones disponibles para estudiantes ahora continúa en la nueva plataforma institucional de la Universidad de los Andes.",
   keywords: [
     "Aula-Finder",
-    "Sobrecupo",
     "Universidad de los Andes",
     "Uniandes",
     "salones disponibles",
-    "aulas libres",
-    "horarios campus",
-    "espacios estudio",
-    "disponibilidad salones"
+    "plataforma oficial",
+    "cierre"
   ],
   authors: [{ name: "Open Source Uniandes" }],
   creator: "Open Source Uniandes",
@@ -29,8 +26,8 @@ export const metadata: Metadata = {
     locale: "es_CO",
     url: "https://open-source-uniandes.github.io/Aula-Finder",
     siteName: "Aula-Finder",
-    title: "Aula-Finder - Encuentra salones disponibles en Uniandes",
-    description: "Descubre en tiempo real qué salones están disponibles en el campus de la Universidad de los Andes. Visualiza horarios, disponibilidad por edificio y planifica tu día.",
+    title: "Aula-Finder se está despidiendo",
+    description: "La consulta oficial de salones disponibles ahora continúa en la nueva plataforma institucional de la Universidad de los Andes.",
     images: [
       {
         url: "/Aula-Finder/seneca-singotto.png",
@@ -42,8 +39,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Aula-Finder - Encuentra salones disponibles en Uniandes",
-    description: "Descubre en tiempo real qué salones están disponibles en el campus de la Universidad de los Andes.",
+    title: "Aula-Finder se está despidiendo",
+    description: "La consulta oficial de salones disponibles ahora continúa en la nueva plataforma institucional de la Universidad de los Andes.",
     images: ["/Aula-Finder/seneca-singotto.png"],
   },
   robots: {

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import ClassroomDetailClient from "./ClassroomDetailClient";
+import SunsetPlaceholder from "@/components/SunsetPlaceholder";
 import buildingsMetadata from "@/data/buildings-metadata.json";
 import coursesData from "@/data/courses/courses-latest.json";
 import { parseCourseSections, groupByRoom } from "@/lib/parse-courses";
@@ -33,8 +33,8 @@ export async function generateMetadata({
   const buildingData = buildings.find((b) => b.code === building);
   const buildingName = buildingData?.name || building;
 
-  const title = `${building} ${room} - Aula-Finder`;
-  const description = `Consulta el horario y disponibilidad del salón ${room} en ${buildingName} de la Universidad de los Andes.`;
+  const title = `${building} ${room} - Aula-Finder se está despidiendo`;
+  const description = `Aula-Finder se está despidiendo. La consulta oficial de salones disponibles en ${buildingName} ahora continúa en una nueva plataforma institucional.`;
 
   return {
     title,
@@ -58,6 +58,6 @@ export default async function ClassroomDetailPage({
 }: {
   params: Promise<{ building: string; room: string }>;
 }) {
-  const { building, room } = await params;
-  return <ClassroomDetailClient building={building} room={room} />;
+  await params;
+  return <SunsetPlaceholder />;
 }
